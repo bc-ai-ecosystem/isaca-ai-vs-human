@@ -38,6 +38,35 @@ function comparison(s) {
     </section></div>`;
 }
 
+function watchFilm(id) {
+  const s = scenarios.find(s => s.id === Number(id));
+  if (!s) return;
+  const frame = document.querySelector("#film-frame"), status = document.querySelector("#film-status");
+  const video = document.createElement("video");
+  video.controls = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.poster = s.media.poster;
+  video.setAttribute("aria-label", `${s.title} scenario film`);
+  const captions = document.createElement("track");
+  Object.assign(captions, {kind: "captions", srclang: "en", label: "English", src: s.media.captions, default: true});
+  video.append(captions);
+  video.addEventListener("error", () => {
+    status.textContent = "The film couldn’t load. The full incident is below; you can still make your call.";
+    const retry = document.createElement("button");
+    retry.type = "button"; retry.className = "button"; retry.dataset.watch = s.id;
+    retry.textContent = "Try loading the film again";
+    frame.append(retry);
+  }, {once: true});
+  status.textContent = "";
+  frame.replaceChildren(video);
+  video.src = s.media.src;
+  video.play().catch(error => {
+    if (!video.error && error.name !== "AbortError") status.textContent = "Press play in the player to start the film.";
+  });
+  video.focus();
+}
+
 function home() {
   const first = scenarios[0];
   return `<div class="hero">
@@ -85,6 +114,8 @@ main.addEventListener("submit", event => {
   location.hash = `scenario-${id}/compare`;
 });
 main.addEventListener("click", event => {
+  const watch = event.target.closest("[data-watch]");
+  if (watch) watchFilm(watch.dataset.watch);
   if (event.target.closest("[data-read]")) {
     document.querySelector("#incident-brief").open = true;
     document.querySelector("#brief-heading").focus();
