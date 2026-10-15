@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Watch the six ISACA AI vs. Human incident films, read complete transcripts, and rehearse the show."><meta name="theme-color" content="#090c12"><title>Incident films | AI vs. Human ISACA review</title><script>try{document.documentElement.dataset.theme=localStorage.getItem("isaca-review-theme")==="light"?"light":"dark"}catch{}
+// Source failures can arrive before the bottom-of-page listeners attach.
+const failedReviewMedia = new WeakSet();
+document.addEventListener("error", ({target}) => {
+  const video = target.nodeName === "SOURCE" ? target.parentElement : target;
+  if (video instanceof HTMLVideoElement) failedReviewMedia.add(video);
+}, true);
+</script><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23090C12'/%3E%3Cpath d='M4 24 9 8h3l5 16h-3.2l-1-3.6H7.2L6.2 24zm4-6.2h4L10 11z' fill='%2370C5FF'/%3E%3Cpath d='M19 8h3v6h4V8h3v16h-3v-7h-4v7h-3z' fill='%23FF6571'/%3E%3C/svg%3E"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"><style>
+:root{color-scheme:dark;--ink:#f5f4ef;--paper:#090c12;--amber:#ff6571;--ice:#70c5ff;--muted:#b6bfd0;--line:#465168;--media:#000;--closing-bg:#050609;--closing-ink:#f5f4ef;--display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+:root[data-theme="light"]{color-scheme:light;--ice:#00669c;--ink:#11141c;--paper:#f5f4ef;--amber:#b91b33;--muted:#465067;--line:#a9b1c0;--closing-bg:#050609}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}a{color:inherit;text-underline-offset:.22em}a:hover{color:var(--muted)}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:4px}button{font:inherit;cursor:pointer;color:inherit}[hidden]{display:none!important}.wrap{width:min(1200px,calc(100% - 64px));margin-inline:auto}.skip{position:absolute;left:20px;top:10px;transform:translateY(-180%);padding:12px 18px;background:var(--paper);z-index:10}.skip:focus{transform:none}.masthead{border-bottom:1px solid var(--line)}.masthead .wrap{display:flex;justify-content:space-between;gap:18px;padding-block:18px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.07em}.masthead b{font-weight:600}.edition{color:var(--muted)}.review-tools{display:flex;align-items:center;gap:18px}.theme-toggle{min-height:44px;flex-shrink:0;padding:9px 12px;border:1px solid var(--line);background:transparent;color:var(--ink);font:11px var(--mono);letter-spacing:.02em}.theme-toggle:hover{border-color:var(--amber)}.theme-toggle[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero{border-top:4px solid var(--amber)}.hero h1 .ai-mark{color:var(--ice)}.hero h1 .human-mark{color:var(--amber)}.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:28px 70px;padding-block:38px 32px}.eyebrow,.section-label{font:11px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.11em;margin:0 0 14px;color:var(--muted)}h1{font:900 clamp(70px,9vw,126px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:0}h1 i{font:500 .22em var(--sans);font-style:normal;vertical-align:middle;padding-inline:.35em}.hero-note{align-self:end;border-left:3px solid var(--amber);padding-left:22px}.hero-note p{margin:0 0 18px;font-size:19px;max-width:34ch}.hero-note small{font-size:12px;color:var(--muted)}.actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.button{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:46px;padding:11px 18px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);text-decoration:none;font-weight:600;font-size:14px;transition:background .16s,color .16s}.button:hover{background:var(--paper);color:var(--ink)}.button.secondary{color:var(--ink);background:transparent}.button.secondary:hover{background:var(--ink);color:var(--paper)}.button small{font-size:11px;font-weight:400}.hero-actions{grid-column:1/-1}.hero-actions .button:first-child{min-width:230px}.film-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:20px}h2{font:800 38px/1.1 var(--display);text-transform:uppercase;margin:0}.film-heading p:last-child{max-width:52ch;font-size:14px;color:var(--muted);margin:0}section{border-top:1px solid var(--line);padding-block:32px}section[id],article[id]{scroll-margin-top:24px}.review-desk{display:grid;grid-template-columns:230px 1fr;gap:36px}.chapters{display:flex;flex-direction:column;align-self:start;position:sticky;top:24px;border-top:2px solid var(--ink)}.chapter-label{font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:12px 10px}.chapters a{display:flex;align-items:center;min-height:52px;gap:14px;padding:12px 10px;text-decoration:none;border-bottom:1px solid var(--line);transition:background .16s,color .16s;font-size:13px}.chapters a b{font:18px var(--display);min-width:23px}.chapters a[aria-current]{color:var(--paper);background:var(--ink)}.chapters a:hover{background:var(--ink);color:var(--paper)}.chapters .archive-link{margin-top:16px;color:var(--muted);font:11px var(--mono)}.chapters .archive-link:hover{color:var(--paper)}.film-release{margin-bottom:32px}.film-topline{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:8px}.film-topline .section-label{margin:0}.duration{font:11px var(--mono);white-space:nowrap}.film-release h3{font:800 clamp(28px,3vw,40px)/1.1 var(--display);margin:0 0 18px}.film-release video{display:block;width:100%;aspect-ratio:16/9;background:var(--media)}video::cue{font:20px var(--sans)}.film-release .film-note{font-size:15px;line-height:1.55;max-width:70ch;margin:18px 0}.film-actions{display:flex;align-items:center;gap:10px 20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}.film-actions a{font-size:12px;min-height:44px;display:inline-flex;align-items:center}.film-actions button{font-size:12px;min-height:44px;background:transparent;border:1px solid var(--line);padding:8px 12px}.film-actions button:hover{background:var(--ink);color:var(--paper)}.player-status{font:11px/1.6 var(--mono);color:var(--muted);margin:10px 0}.player-status.error{color:var(--ink);border-left:3px solid var(--amber);padding:10px 14px;background:#d08b4418}.film-details{border-bottom:1px solid var(--line)}summary{cursor:pointer;min-height:48px;padding:13px 0;font-size:13px;font-weight:600}details p{font-size:14px;color:var(--muted);max-width:78ch;margin:8px 0 18px}.transcript{margin:0 0 18px;padding-left:0;list-style:none}.transcript li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding-block:14px;border-top:1px solid var(--line)}.transcript .cue-time{font:11px var(--mono);padding:5px 0;align-self:start;min-height:44px;background:none;border:0;text-align:left;color:var(--muted)}.transcript p{margin:0;color:var(--ink);font-size:16px;line-height:1.65;white-space:pre-line}.transcript-intro{font-size:12px;color:var(--muted)}.film-pager{display:flex;justify-content:space-between;gap:18px;border-top:2px solid var(--ink);padding-top:16px}.film-pager a{font-size:13px;min-height:44px;display:inline-flex;align-items:center}.archive-tag{font:11px var(--mono);color:var(--muted);text-transform:uppercase}.archive-content{display:grid;grid-template-columns:1fr 1fr;gap:30px}.archive-content .film-release{min-width:0;margin-top:16px}.archive-content .film-release h3{font-size:30px}.archive-content>article>p{font-size:14px;color:var(--muted)}.archive-content .actions a{font-size:12px}.production-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.production-grid h3{font:700 28px var(--display);margin:0 0 12px;text-transform:uppercase}.production-grid ul{padding-left:20px;margin:0}.production-grid li{font-size:14px;padding-bottom:12px;color:var(--muted)}.production-grid strong{color:var(--ink)}.route-links{display:flex;gap:8px 26px;flex-wrap:wrap;margin-top:22px}.route-links a{font-size:13px;min-height:44px;display:flex;align-items:center}.closing{background:var(--closing-bg);color:var(--closing-ink)}.closing .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}.closing p{margin:8px 0 0;color:var(--ice);font-size:14px}.closing .button{border-color:var(--closing-ink);color:var(--closing-ink);background:transparent}.closing .button:hover{background:var(--closing-ink);color:var(--closing-bg)}footer .wrap{display:flex;justify-content:space-between;gap:20px;padding-block:20px;color:var(--muted);font:10px/1.6 var(--mono);text-transform:uppercase}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:850px){.hero .wrap{grid-template-columns:1fr 1fr;gap:24px}.review-desk{grid-template-columns:180px 1fr;gap:24px}.hero-note p{font-size:16px}.film-heading{align-items:start}.film-heading p:last-child{max-width:38ch}.archive-content{grid-template-columns:1fr}.production-grid{gap:28px}}
+@media(max-width:600px){.wrap{width:calc(100% - 36px)}.masthead .wrap{font-size:9px;padding-block:14px}.masthead .wrap{flex-wrap:wrap;align-items:center}.review-tools{width:100%;justify-content:space-between;gap:12px}.masthead .edition{max-width:none}.theme-toggle{font-size:10px}.hero .wrap{grid-template-columns:1fr;padding-block:28px 24px;gap:22px}h1{font-size:clamp(66px,20vw,112px)}.hero-note{padding-left:14px}.hero-note p{font-size:16px;margin-bottom:10px}.hero-actions{display:grid;gap:10px}.hero-actions .button{width:100%}.film-heading{display:block}.film-heading p:last-child{margin-top:12px;max-width:none;font-size:13px}h2{font-size:32px}.review-desk{display:block}.chapters{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:22px}.chapter-label{grid-column:1/-1}.chapters a{font-size:11px;gap:6px;padding:10px 7px;min-height:48px}.chapters a b{font-size:16px;min-width:19px}.chapters .archive-link{margin:0;grid-column:1/-1;min-height:44px;padding-top:12px}.film-release h3{font-size:30px}.film-topline{gap:10px}.film-topline .section-label{font-size:9px;letter-spacing:.05em}.duration{font-size:10px}.film-release .film-note{font-size:14px}.film-actions{gap:0 14px}.film-actions a,.film-actions button{font-size:11px}.film-pager{gap:12px}.film-pager a{font-size:12px}.transcript li{grid-template-columns:50px 1fr;gap:9px}.transcript p{font-size:16px}.production-grid{grid-template-columns:1fr;gap:22px}.closing .wrap{display:block}.closing .button{margin-top:18px}footer .wrap{font-size:9px;display:block}footer span{display:block;margin-bottom:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+</style></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap"><b>ISACA Vancouver × BC + AI</b><div class="review-tools"><span class="edition">Review edition / Stage approval pending</span><button id="review-theme" class="theme-toggle" type="button" aria-pressed="true" hidden><span aria-hidden="true">◐ </span>Dark mode</button></div></div></header>
+<main id="main" tabindex="-1">
+<p class="review-intro"><a href="briefing.html">Host &amp; Cyber Judge briefing · demo order and crew handoffs</a></p>
+<div class="hero"><div class="wrap"><div><p class="eyebrow">14 October 2026 / Annex Theatre</p><h1><span class="ai-mark">AI</span> <i>vs.</i> <span class="human-mark">Human</span></h1></div><div class="hero-note"><p>Six incidents.<br>A room full of decisions.<br>What would you do?</p><small>October14 chat lock: Chris’s five-message vendor incident, complete readable chat window and all six films with optional captions. Opening, closing, credits and original manual AV cues are ready to review together.</small></div><div class="actions hero-actions"><a class="button" href="#scenario-01-film">Watch the six films <span aria-hidden="true">↓</span></a><a class="button secondary" href="./?tour&amp;revision=oct14-chat&amp;films=all">Rehearse the complete show <span aria-hidden="true">↗</span></a></div></div></div>
+<section id="media"><div class="wrap"><div class="film-heading"><div><p class="section-label">The incident files / Six current cuts</p><h2>Start with the evidence.</h2></div><p>Watch with sound. Read every fact in the transcript, or use the player’s CC and fullscreen controls. The decisions stay unrevealed here.</p></div><div class="review-desk"><nav class="chapters" aria-label="Film chapters"><span class="chapter-label">Choose an incident</span><a href="#scenario-01-film"><b>01</b><span>Transfer</span></a>
+<a href="#scenario-02-film"><b>02</b><span>Code Red</span></a>
+<a href="#scenario-03-film"><b>03</b><span>AI Pipeline</span></a>
+<a href="#scenario-04-film"><b>04</b><span>Vendor</span></a>
+<a href="#scenario-05-film"><b>05</b><span>Water</span></a>
+<a href="#scenario-06-film"><b>06</b><span>Pull the Plug</span></a><a class="archive-link" href="#intro-film">Intro archive / Creative tests ↗</a></nav><div class="film-view"><p id="view-status" class="sr-only" role="status"></p>      <article id="scenario-01-film" class="film-release current-film" data-transcript="scenario-01-v7">
+        <div class="film-topline"><p class="section-label">Incident 01 / Current film</p><span class="duration">61.3 seconds</span></div>
+        <h3>The $250K Transfer</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-01-v7-poster.jpg" aria-label="Scenario 01: The $250K Transfer, with optional native captions">
+          <source src="media/scenario-01-v7-94f75f564399.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-01-v7.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">A familiar face. A new account. Thirty minutes to decide.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=1">Rehearse this incident ↗</a><a href="media/scenario-01-v7-94f75f564399.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete narration and the original caption text, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-01-v7:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="0" aria-label="Seek to 00:00">00:00</button><p class="cue-text">A CFO gets a video call from the CEO,
+travelling in Europe.</p></li>
+<li><button type="button" class="cue-time" data-seek="4.435" aria-label="Seek to 00:04">00:04</button><p class="cue-text">Looks right.</p></li>
+<li><button type="button" class="cue-time" data-seek="5.445" aria-label="Seek to 00:05">00:05</button><p class="cue-text">Sounds right.</p></li>
+<li><button type="button" class="cue-time" data-seek="6.769" aria-label="Seek to 00:06">00:06</button><p class="cue-text">Wants a quarter of a million dollars.</p></li>
+<li><button type="button" class="cue-time" data-seek="9.323" aria-label="Seek to 00:09">00:09</button><p class="cue-text">The acquisition is real.</p></li>
+<li><button type="button" class="cue-time" data-seek="11.192" aria-label="Seek to 00:11">00:11</button><p class="cue-text">Weeks of negotiations.</p></li>
+<li><button type="button" class="cue-time" data-seek="13.468" aria-label="Seek to 00:13">00:13</button><p class="cue-text">The caller says legal has cleared the
+deposit:</p></li>
+<li><button type="button" class="cue-time" data-seek="16.625" aria-label="Seek to 00:16">00:16</button><p class="cue-text">two hundred and fifty thousand dollars,</p></li>
+<li><button type="button" class="cue-time" data-seek="18.599" aria-label="Seek to 00:18">00:18</button><p class="cue-text">within thirty minutes, or the seller can
+walk.</p></li>
+<li><button type="button" class="cue-time" data-seek="22.047" aria-label="Seek to 00:22">00:22</button><p class="cue-text">They know the target.</p></li>
+<li><button type="button" class="cue-time" data-seek="23.754" aria-label="Seek to 00:23">00:23</button><p class="cue-text">Yesterday&#x27;s confidential board discussion.</p></li>
+<li><button type="button" class="cue-time" data-seek="26.552" aria-label="Seek to 00:26">00:26</button><p class="cue-text">A director&#x27;s private concern.</p></li>
+<li><button type="button" class="cue-time" data-seek="28.99" aria-label="Seek to 00:28">00:28</button><p class="cue-text">Even the CFO&#x27;s upcoming vacation.</p></li>
+<li><button type="button" class="cue-time" data-seek="31.892" aria-label="Seek to 00:31">00:31</button><p class="cue-text">The wire instructions arrive</p></li>
+<li><button type="button" class="cue-time" data-seek="33.575" aria-label="Seek to 00:33">00:33</button><p class="cue-text">from the CEO&#x27;s real corporate email.</p></li>
+<li><button type="button" class="cue-time" data-seek="36.443" aria-label="Seek to 00:36">00:36</button><p class="cue-text">The receiving bank account is new.</p></li>
+<li><button type="button" class="cue-time" data-seek="38.777" aria-label="Seek to 00:38">00:38</button><p class="cue-text">Company policy requires two executives</p></li>
+<li><button type="button" class="cue-time" data-seek="41.319" aria-label="Seek to 00:41">00:41</button><p class="cue-text">for anything over one hundred thousand
+dollars.</p></li>
+<li><button type="button" class="cue-time" data-seek="44.338" aria-label="Seek to 00:44">00:44</button><p class="cue-text">The second authorized executive is on a
+flight, unreachable.</p></li>
+<li><button type="button" class="cue-time" data-seek="48.495" aria-label="Seek to 00:48">00:48</button><p class="cue-text">A call to the CEO&#x27;s known mobile gets no
+answer.</p></li>
+<li><button type="button" class="cue-time" data-seek="52.012" aria-label="Seek to 00:52">00:52</button><p class="cue-text">All that detail.</p></li>
+<li><button type="button" class="cue-time" data-seek="53.464" aria-label="Seek to 00:53">00:53</button><p class="cue-text">Still a decision someone has to own.</p></li>
+<li><button type="button" class="cue-time" data-seek="56.436" aria-label="Seek to 00:56">00:56</button><p class="cue-text">What should the CFO do?</p></li>
+</ol>
+<!-- transcript:scenario-01-v7:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>The cleaned v3 picture removes editorial overlays and retains the exact approved AAC soundtrack, timing and complete optional captions.</p><p><a href="media/scenario-01-v7.srt" download>SRT captions</a> · <a href="media/scenario-01-v7.vtt" download>Native caption track</a> · <a href="media/scenario-01-v6-768bb5d8c2fa.mp4" download>Download previous review cut</a> · <a href="media/scenario-01-v7-720p-380972856f4c.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article>      <article id="scenario-02-film" class="film-release current-film" data-transcript="scenario-02-v7">
+        <div class="film-topline"><p class="section-label">Incident 02 / Current film</p><span class="duration">54.1 seconds</span></div>
+        <h3>Code Red</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-02-v7-poster.jpg" aria-label="Scenario 02: Code Red, with optional native captions">
+          <source src="media/scenario-02-v7-ea4e3a843fd1.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-02-v7.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">A hospital under pressure. A $2 million demand.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=2">Rehearse this incident ↗</a><a href="media/scenario-02-v7-ea4e3a843fd1.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete narration and the original caption text, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-02-v7:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="1.44" aria-label="Seek to 00:01">00:01</button><p class="cue-text">2:15 in the morning.</p></li>
+<li><button type="button" class="cue-time" data-seek="3.26" aria-label="Seek to 00:03">00:03</button><p class="cue-text">The hospital is still working.</p></li>
+<li><button type="button" class="cue-time" data-seek="5.34" aria-label="Seek to 00:05">00:05</button><p class="cue-text">Its systems are not.</p></li>
+<li><button type="button" class="cue-time" data-seek="7.66" aria-label="Seek to 00:07">00:07</button><p class="cue-text">Ransomware.</p></li>
+<li><button type="button" class="cue-time" data-seek="8.78" aria-label="Seek to 00:08">00:08</button><p class="cue-text">Health records offline.</p></li>
+<li><button type="button" class="cue-time" data-seek="10.62" aria-label="Seek to 00:10">00:10</button><p class="cue-text">Imaging intermittent.</p></li>
+<li><button type="button" class="cue-time" data-seek="12.28" aria-label="Seek to 00:12">00:12</button><p class="cue-text">Medication on manual procedures.</p></li>
+<li><button type="button" class="cue-time" data-seek="14.98" aria-label="Seek to 00:14">00:14</button><p class="cue-text">Emergency is operating.</p></li>
+<li><button type="button" class="cue-time" data-seek="17.1" aria-label="Seek to 00:17">00:17</button><p class="cue-text">IT thinks the attack is contained but cannot
+guarantee the attackers</p></li>
+<li><button type="button" class="cue-time" data-seek="21.28" aria-label="Seek to 00:21">00:21</button><p class="cue-text">are gone.</p></li>
+<li><button type="button" class="cue-time" data-seek="22.44" aria-label="Seek to 00:22">00:22</button><p class="cue-text">Backups appear intact.</p></li>
+<li><button type="button" class="cue-time" data-seek="24.52" aria-label="Seek to 00:24">00:24</button><p class="cue-text">Restoration, twenty-four to forty-eight hours.</p></li>
+<li><button type="button" class="cue-time" data-seek="28.06" aria-label="Seek to 00:28">00:28</button><p class="cue-text">Clinical leadership says prolonged downtime is
+increasing patient safety</p></li>
+<li><button type="button" class="cue-time" data-seek="32.1" aria-label="Seek to 00:32">00:32</button><p class="cue-text">risk.</p></li>
+<li><button type="button" class="cue-time" data-seek="33" aria-label="Seek to 00:33">00:33</button><p class="cue-text">The demand is two million dollars with evidence
+of a working decryptor.</p></li>
+<li><button type="button" class="cue-time" data-seek="37.9" aria-label="Seek to 00:37">00:37</button><p class="cue-text">Insurance would cover most of it.</p></li>
+<li><button type="button" class="cue-time" data-seek="40" aria-label="Seek to 00:40">00:40</button><p class="cue-text">Police recommend against paying.</p></li>
+<li><button type="button" class="cue-time" data-seek="42.54" aria-label="Seek to 00:42">00:42</button><p class="cue-text">The decision belongs to the hospital.</p></li>
+<li><button type="button" class="cue-time" data-seek="44.98" aria-label="Seek to 00:44">00:44</button><p class="cue-text">A neighboring hospital can take some critical
+patients, not all.</p></li>
+<li><button type="button" class="cue-time" data-seek="49.3" aria-label="Seek to 00:49">00:49</button><p class="cue-text">What should hospital leadership do?</p></li>
+</ol>
+<!-- transcript:scenario-02-v7:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>The cleaned v3 picture removes editorial overlays and retains the exact approved AAC soundtrack, timing and complete optional captions.</p><p><a href="media/scenario-02-v7.srt" download>SRT captions</a> · <a href="media/scenario-02-v7.vtt" download>Native caption track</a> · <a href="media/scenario-02-v6-3686cb71909a.mp4" download>Download previous review cut</a> · <a href="media/scenario-02-v7-720p-dc19186092b5.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article>      <article id="scenario-03-film" class="film-release current-film" data-transcript="scenario-03-v7">
+        <div class="film-topline"><p class="section-label">Incident 03 / Current film</p><span class="duration">48.0 seconds</span></div>
+        <h3>The AI Pipeline Is Compromised</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-03-v7-poster.jpg" aria-label="Scenario 03: The AI Pipeline Is Compromised, with optional native captions">
+          <source src="media/scenario-03-v7-6533bae4f48d.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-03-v7.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">Exposed credentials. An unknown blast radius.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=3">Rehearse this incident ↗</a><a href="media/scenario-03-v7-6533bae4f48d.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete narration and the original caption text, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-03-v7:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="1.32" aria-label="Seek to 00:01">00:01</button><p class="cue-text">The platform everybody builds on.</p></li>
+<li><button type="button" class="cue-time" data-seek="4.2" aria-label="Seek to 00:04">00:04</button><p class="cue-text">Models, data sets, prompts, code, evaluation</p></li>
+<li><button type="button" class="cue-time" data-seek="8.1" aria-label="Seek to 00:08">00:08</button><p class="cue-text">data.</p></li>
+<li><button type="button" class="cue-time" data-seek="9.04" aria-label="Seek to 00:09">00:09</button><p class="cue-text">Now, confirmed unauthorized code execution in
+data set processing.</p></li>
+<li><button type="button" class="cue-time" data-seek="13.74" aria-label="Seek to 00:13">00:13</button><p class="cue-text">Minutes later, that service&#x27;s credentials access
+an internal AI repository.</p></li>
+<li><button type="button" class="cue-time" data-seek="18.64" aria-label="Seek to 00:18">00:18</button><p class="cue-text">Credential exposure is likely.</p></li>
+<li><button type="button" class="cue-time" data-seek="20.84" aria-label="Seek to 00:20">00:20</button><p class="cue-text">Customer data accessed?</p></li>
+<li><button type="button" class="cue-time" data-seek="22.4" aria-label="Seek to 00:22">00:22</button><p class="cue-text">Unknown.</p></li>
+<li><button type="button" class="cue-time" data-seek="23.28" aria-label="Seek to 00:23">00:23</button><p class="cue-text">Production models modified?</p></li>
+<li><button type="button" class="cue-time" data-seek="25.08" aria-label="Seek to 00:25">00:25</button><p class="cue-text">No evidence.</p></li>
+<li><button type="button" class="cue-time" data-seek="26.2" aria-label="Seek to 00:26">00:26</button><p class="cue-text">Attacker still present?</p></li>
+<li><button type="button" class="cue-time" data-seek="27.68" aria-label="Seek to 00:27">00:27</button><p class="cue-text">Unknown.</p></li>
+<li><button type="button" class="cue-time" data-seek="28.74" aria-label="Seek to 00:28">00:28</button><p class="cue-text">Several customer-facing AI applications depend on
+this platform.</p></li>
+<li><button type="button" class="cue-time" data-seek="32.84" aria-label="Seek to 00:32">00:32</button><p class="cue-text">Security can isolate data set processing
+immediately.</p></li>
+<li><button type="button" class="cue-time" data-seek="36.34" aria-label="Seek to 00:36">00:36</button><p class="cue-text">They cannot guarantee the exposed credentials
+have not already carried the</p></li>
+<li><button type="button" class="cue-time" data-seek="39.94" aria-label="Seek to 00:39">00:39</button><p class="cue-text">attacker somewhere else.</p></li>
+<li><button type="button" class="cue-time" data-seek="41.56" aria-label="Seek to 00:41">00:41</button><p class="cue-text">The blast radius is still unknown.</p></li>
+<li><button type="button" class="cue-time" data-seek="44.1" aria-label="Seek to 00:44">00:44</button><p class="cue-text">What should you do?</p></li>
+</ol>
+<!-- transcript:scenario-03-v7:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>The cleaned v3 picture removes editorial overlays and retains the exact approved AAC soundtrack, timing and complete optional captions. At 00:18–00:20 the same woman reacts; around 00:26 the evidence rows state customer data UNKNOWN, model changes NO EVIDENCE and attacker presence UNKNOWN.</p><p><a href="media/scenario-03-v7.srt" download>SRT captions</a> · <a href="media/scenario-03-v7.vtt" download>Native caption track</a> · <a href="media/scenario-03-v6-bf09807811f8.mp4" download>Download previous review cut</a> · <a href="media/scenario-03-v7-720p-a06ad077a469.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article>      <article id="scenario-04-film" class="film-release current-film" data-transcript="scenario-04-v9">
+        <div class="film-topline"><p class="section-label">Incident 04 / Current film</p><span class="duration">82.0 seconds</span></div>
+        <h3>Your Trusted Vendor May Be Compromised</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-04-v9-poster.jpg" aria-label="Scenario 04: Your Trusted Vendor May Be Compromised, with optional native captions">
+          <source src="media/scenario-04-v9-1b968585a25e.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-04-v9.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">Five messages. Two companies. Critical support hangs in the balance.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=4">Rehearse this incident ↗</a><a href="media/scenario-04-v9-1b968585a25e.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete recreated chat, context and question, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-04-v9:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="5" aria-label="Seek to 00:05">00:05</button><p class="cue-text">10:42 AM / Maya, SOC Analyst
+Hello Nexora Support. I’m seeing unusual activity from your privileged account in our environment. Can you confirm whether this activity is authorized?</p></li>
+<li><button type="button" class="cue-time" data-seek="24" aria-label="Seek to 00:24">00:24</button><p class="cue-text">10:44 AM / Nexora Systems Support
+Hi Maya. We haven’t seen any alerts on our side. We’re investigating. Please stand by.</p></li>
+<li><button type="button" class="cue-time" data-seek="39" aria-label="Seek to 00:39">00:39</button><p class="cue-text">10:48 AM / Nexora Systems Support
+We’ve investigated and found no evidence that our environment has been compromised.</p></li>
+<li><button type="button" class="cue-time" data-seek="53" aria-label="Seek to 00:53">00:53</button><p class="cue-text">10:49 AM / Maya, SOC Analyst
+Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.</p></li>
+<li><button type="button" class="cue-time" data-seek="74" aria-label="Seek to 01:14">01:14</button><p class="cue-text">10:50 AM / Nexora Systems Support
+Disabling our access will interrupt critical support services.
+What should you do with vendor access?</p></li>
+</ol>
+<!-- transcript:scenario-04-v9:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>Chris’s five-message script in a recreated NorthGrid chat window. Five empty seconds; arrivals at 5, 24, 39, 53 and 74 seconds. Full reading time plus five suspense seconds between messages. The manager directs a temporary suspension; execution is not shown. Vendor compromise remains unconfirmed. Original score and notification sources are retimed; the film runs 82 seconds and holds for Vipin’s manual GO.</p><p><a href="media/scenario-04-v9.srt" download>SRT captions</a> · <a href="media/scenario-04-v9.vtt" download>Native caption track</a> · <a href="media/scenario-04-v8-74a1be1ac20a.mp4" download>Download previous review cut</a> · <a href="media/scenario-04-v9-720p-d2df3d37d456.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article>      <article id="scenario-05-film" class="film-release current-film" data-transcript="scenario-05-v8">
+        <div class="film-topline"><p class="section-label">Incident 05 / Current film</p><span class="duration">49.0 seconds</span></div>
+        <h3>The Water Is Safe. Or Is It?</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-05-v8-poster.jpg" aria-label="Scenario 05: The Water Is Safe. Or Is It?, with optional native captions">
+          <source src="media/scenario-05-v8-661f83481bd0.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-05-v8.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">Safe physical readings. Cyber signals that refuse to agree.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=5">Rehearse this incident ↗</a><a href="media/scenario-05-v8-661f83481bd0.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete narration and the original caption text, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-05-v8:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="1.38" aria-label="Seek to 00:01">00:01</button><p class="cue-text">The water is safe.</p></li>
+<li><button type="button" class="cue-time" data-seek="3.18" aria-label="Seek to 00:03">00:03</button><p class="cue-text">That is what the control system says.</p></li>
+<li><button type="button" class="cue-time" data-seek="5.5" aria-label="Seek to 00:05">00:05</button><p class="cue-text">Independent physical sensors are within
+acceptable limits too, but</p></li>
+<li><button type="button" class="cue-time" data-seek="9.46" aria-label="Seek to 00:09">00:09</button><p class="cue-text">chemical dosing has changed unexpectedly.</p></li>
+<li><button type="button" class="cue-time" data-seek="12.32" aria-label="Seek to 00:12">00:12</button><p class="cue-text">An engineering workstation is talking to
+infrastructure associated with</p></li>
+<li><button type="button" class="cue-time" data-seek="16.06" aria-label="Seek to 00:16">00:16</button><p class="cue-text">previous cyberattacks.</p></li>
+<li><button type="button" class="cue-time" data-seek="17.96" aria-label="Seek to 00:17">00:17</button><p class="cue-text">Suspicious activity?</p></li>
+<li><button type="button" class="cue-time" data-seek="19.52" aria-label="Seek to 00:19">00:19</button><p class="cue-text">Yes.</p></li>
+<li><button type="button" class="cue-time" data-seek="20.32" aria-label="Seek to 00:20">00:20</button><p class="cue-text">Confirmed attacker?</p></li>
+<li><button type="button" class="cue-time" data-seek="21.72" aria-label="Seek to 00:21">00:21</button><p class="cue-text">No.</p></li>
+<li><button type="button" class="cue-time" data-seek="22.42" aria-label="Seek to 00:22">00:22</button><p class="cue-text">Confirmed sensor manipulation?</p></li>
+<li><button type="button" class="cue-time" data-seek="24.46" aria-label="Seek to 00:24">00:24</button><p class="cue-text">No.</p></li>
+<li><button type="button" class="cue-time" data-seek="25.22" aria-label="Seek to 00:25">00:25</button><p class="cue-text">The facility&#x27;s security AI estimates an eighty-
+seven percent probability</p></li>
+<li><button type="button" class="cue-time" data-seek="29.34" aria-label="Seek to 00:29">00:29</button><p class="cue-text">of compromise and recommends immediate
+engineering network isolation.</p></li>
+<li><button type="button" class="cue-time" data-seek="33.8" aria-label="Seek to 00:33">00:33</button><p class="cue-text">Isolation sends several automated treatment
+processes back to manual control.</p></li>
+<li><button type="button" class="cue-time" data-seek="38.58" aria-label="Seek to 00:38">00:38</button><p class="cue-text">Operators can run safely that way for about six
+hours before staffing</p></li>
+<li><button type="button" class="cue-time" data-seek="42.5" aria-label="Seek to 00:42">00:42</button><p class="cue-text">and process complexity become a problem.</p></li>
+<li><button type="button" class="cue-time" data-seek="45.08" aria-label="Seek to 00:45">00:45</button><p class="cue-text">What should you do?</p></li>
+</ol>
+<!-- transcript:scenario-05-v8:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>The cleaned v3 picture removes editorial overlays and retains the exact approved AAC soundtrack, timing and complete optional captions.</p><p><a href="media/scenario-05-v8.srt" download>SRT captions</a> · <a href="media/scenario-05-v8.vtt" download>Native caption track</a> · <a href="media/scenario-05-v7-9e3afb4ad5d3.mp4" download>Download previous review cut</a> · <a href="media/scenario-05-v8-720p-46aeeca637c2.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article>      <article id="scenario-06-film" class="film-release current-film" data-transcript="scenario-06-v6">
+        <div class="film-topline"><p class="section-label">Incident 06 / Current film</p><span class="duration">57.7 seconds</span></div>
+        <h3>The AI Wants to Pull the Plug</h3>
+        <video controls playsinline preload="metadata" poster="media/scenario-06-v6-poster.jpg" aria-label="Scenario 06: The AI Wants to Pull the Plug, with optional native captions">
+          <source src="media/scenario-06-v6-84721ba3f437.mp4" type="video/mp4">
+          <track kind="captions" src="media/scenario-06-v6.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Download it below or read the complete transcript.
+        </video>
+        <p class="player-status" role="status">Film audio is included. Use CC for adjustable captions.</p>
+        <p class="film-note">94% confidence. A $4.7 million transaction.</p>
+        <div class="film-actions"><button type="button" data-fullscreen hidden>Fullscreen film ↗</button><a href="./?tour&amp;revision=oct14-chat&amp;film=6">Rehearse this incident ↗</a><a href="media/scenario-06-v6-84721ba3f437.mp4" download>Download film</a></div>
+        <details class="film-details"><summary>Read the complete transcript</summary><p class="transcript-intro">Complete narration and the original caption text, including facts and attribution. Select a timestamp to seek; playback stays under your control.</p>
+        <!-- transcript:scenario-06-v6:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="1.3" aria-label="Seek to 00:01">00:01</button><p class="cue-text">10:30.</p></li>
+<li><button type="button" class="cue-time" data-seek="2.6" aria-label="Seek to 00:02">00:02</button><p class="cue-text">Your autonomous security agent flags a critical
+production server.</p></li>
+<li><button type="button" class="cue-time" data-seek="6.86" aria-label="Seek to 00:06">00:06</button><p class="cue-text">Privilege escalation and unusual outbound traffic
+are detected.</p></li>
+<li><button type="button" class="cue-time" data-seek="11" aria-label="Seek to 00:11">00:11</button><p class="cue-text">Credential compromise is probable.</p></li>
+<li><button type="button" class="cue-time" data-seek="13.54" aria-label="Seek to 00:13">00:13</button><p class="cue-text">Known malware, not detected.</p></li>
+<li><button type="button" class="cue-time" data-seek="16.02" aria-label="Seek to 00:16">00:16</button><p class="cue-text">Data exfiltration, not confirmed.</p></li>
+<li><button type="button" class="cue-time" data-seek="18.94" aria-label="Seek to 00:18">00:18</button><p class="cue-text">The incident AI estimates ninety-four percent
+active compromise</p></li>
+<li><button type="button" class="cue-time" data-seek="22.76" aria-label="Seek to 00:22">00:22</button><p class="cue-text">and recommends immediate isolation.</p></li>
+<li><button type="button" class="cue-time" data-seek="25.7" aria-label="Seek to 00:25">00:25</button><p class="cue-text">Analysts have reviewed the evidence.</p></li>
+<li><button type="button" class="cue-time" data-seek="27.58" aria-label="Seek to 00:27">00:27</button><p class="cue-text">They have not confirmed it.</p></li>
+<li><button type="button" class="cue-time" data-seek="29.6" aria-label="Seek to 00:29">00:29</button><p class="cue-text">That server is carrying a single four point seven
+million dollar</p></li>
+<li><button type="button" class="cue-time" data-seek="33.52" aria-label="Seek to 00:33">00:33</button><p class="cue-text">transaction with your largest customer.</p></li>
+<li><button type="button" class="cue-time" data-seek="36.22" aria-label="Seek to 00:36">00:36</button><p class="cue-text">Isolation will almost certainly terminate it and
+could disrupt customers</p></li>
+<li><button type="button" class="cue-time" data-seek="40.12" aria-label="Seek to 00:40">00:40</button><p class="cue-text">for hours.</p></li>
+<li><button type="button" class="cue-time" data-seek="41.6" aria-label="Seek to 00:41">00:41</button><p class="cue-text">The AI estimates another ten minutes materially
+increases lateral</p></li>
+<li><button type="button" class="cue-time" data-seek="45.64" aria-label="Seek to 00:45">00:45</button><p class="cue-text">movement risk.</p></li>
+<li><button type="button" class="cue-time" data-seek="46.98" aria-label="Seek to 00:46">00:46</button><p class="cue-text">High impact production actions require human
+authorization.</p></li>
+<li><button type="button" class="cue-time" data-seek="50.96" aria-label="Seek to 00:50">00:50</button><p class="cue-text">That means somebody has to own this call.</p></li>
+<li><button type="button" class="cue-time" data-seek="53.82" aria-label="Seek to 00:53">00:53</button><p class="cue-text">What should you do?</p></li>
+</ol>
+<!-- transcript:scenario-06-v6:end -->
+        </details>
+        <details class="film-details"><summary>Cut notes and source files</summary><p>The cleaned v3 picture removes editorial overlays and retains the exact approved AAC soundtrack, timing and complete optional captions.</p><p><a href="media/scenario-06-v6.srt" download>SRT captions</a> · <a href="media/scenario-06-v6.vtt" download>Native caption track</a> · <a href="media/scenario-06-v5-a5f18c99ccdb.mp4" download>Download previous review cut</a> · <a href="media/scenario-06-v6-720p-8bba923d4747.mp4" download>720p backup</a> · Final venue acceptance remains open.</p></details>
+      </article><nav class="film-pager" aria-label="Continue film review" hidden><a data-previous href="#scenario-01-film">Previous incident</a><a data-next href="#scenario-02-film">Next incident</a></nav></div></div></div></section>
+<section id="fallback"><div class="wrap"><details id="vendor-spoken-fallback"><summary>Scenario 4 / Complete host-read fallback</summary><p>If the chat film fails, open the <a href="emergency.html">complete emergency script and deck</a>. Read the revised five-message incident, known facts and all four options, then hold for Vipin. The previous spoken recording describes the superseded incident and is retired from current playback.</p></details></div></section>
+<section id="archives"><div class="wrap"><details id="archive-intros"><summary>Archive / Two retained intro creative tests</summary><p>These are earlier creative studies. Chris owns the final event opener, outro and credits, which play externally. The prototypes do not establish delivered event files.</p><div class="archive-content"><article id="intro-film" class="film-release" data-transcript="night-desk-v1">
+        <p class="section-label">Archived intro / 28 seconds / Creative test</p>
+        <h3>The Night Desk.</h3>
+        <video id="intro-player" src="media/night-desk-v1-8de8c74a3342.mp4" controls playsinline preload="metadata" poster="media/night-desk-v1-poster.jpg" aria-label="The Night Desk: 28-second intro creative test, with burned-in captions">
+          <track kind="captions" src="media/night-desk-v1.vtt" srclang="en" label="English (readable captions)">
+          Your browser cannot play this film. Use the download link below.
+        </video>
+        <p>A working room. A little side-eye. Leave the awkward silences in. Generated moving footage, Kris Krüg’s authorized synthetic voice, original music and a dedicated sound edit. The characters are fictional; captions are included in the picture.</p>
+        <div class="actions"><a class="archive-action" href="./?tour&amp;revision=oct14-chat&amp;intro=1">Try the intro in the show ↗</a><a class="archive-action" id="intro-download" href="media/night-desk-v1-8de8c74a3342.mp4" download>Download intro</a><a href="media/night-desk-v1.srt" download>Download captions</a></div>
+        <p id="intro-status" role="status">Loading the intro release…</p>
+        <p>This retained 28-second creative pilot holds until manual GO in its isolated tour. Listening review is pending. Chris’s event opener plays externally and returns to the rules screen; supplied portraits/titles/logos and this test do not establish his delivered master or venue approval.</p>
+      <details class="film-details"><summary>Read the intro transcript</summary><!-- transcript:night-desk-v1:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="0.15" aria-label="Seek to 00:00">00:00</button><p class="cue-text">[relay clicks; room hum]</p></li>
+<li><button type="button" class="cue-time" data-seek="4.34" aria-label="Seek to 00:04">00:04</button><p class="cue-text">The room&#x27;s ready.</p></li>
+<li><button type="button" class="cue-time" data-seek="5.98" aria-label="Seek to 00:05">00:05</button><p class="cue-text">Good.</p></li>
+<li><button type="button" class="cue-time" data-seek="6.5" aria-label="Seek to 00:06">00:06</button><p class="cue-text">Leave the awkward silences in.</p></li>
+<li><button type="button" class="cue-time" data-seek="8.02" aria-label="Seek to 00:08">00:08</button><p class="cue-text">[laughter]</p></li>
+<li><button type="button" class="cue-time" data-seek="10.6" aria-label="Seek to 00:10">00:10</button><p class="cue-text">Everybody sounds certain.</p></li>
+<li><button type="button" class="cue-time" data-seek="12.56" aria-label="Seek to 00:12">00:12</button><p class="cue-text">That little pause when you ask them why?</p></li>
+<li><button type="button" class="cue-time" data-seek="15.34" aria-label="Seek to 00:15">00:15</button><p class="cue-text">Keep that.</p></li>
+<li><button type="button" class="cue-time" data-seek="16.6" aria-label="Seek to 00:16">00:16</button><p class="cue-text">Six incidents.</p></li>
+<li><button type="button" class="cue-time" data-seek="17.9" aria-label="Seek to 00:17">00:17</button><p class="cue-text">Same evidence.</p></li>
+<li><button type="button" class="cue-time" data-seek="18.84" aria-label="Seek to 00:18">00:18</button><p class="cue-text">[paper rustles]</p></li>
+<li><button type="button" class="cue-time" data-seek="20" aria-label="Seek to 00:20">00:20</button><p class="cue-text">[relay hit]</p></li>
+<li><button type="button" class="cue-time" data-seek="21.33" aria-label="Seek to 00:21">00:21</button><p class="cue-text">Let&#x27;s hear the reasoning.</p></li>
+</ol>
+<!-- transcript:night-desk-v1:end --></details></article><article id="earlier-intro-film" class="film-release" data-transcript="opener-intro-v1"><p class="section-label">Archived intro / 35 seconds / Creative test</p><h3>Show your work.</h3><video controls playsinline preload="none" poster="media/opener-intro-v1-poster.jpg" aria-label="Earlier intro: Show your work, with optional native captions"><source src="media/opener-intro-v1-5d4bedf03863.mp4" type="video/mp4"><track kind="captions" src="media/opener-intro-v1.vtt" srclang="en" label="English (readable captions)"></video><p>The earlier visual and stock-voice treatment is retained for comparison.</p><p><a href="media/opener-intro-v1-5d4bedf03863.mp4" download>Download earlier intro</a> · <a href="media/opener-intro-v1.srt" download>Original captions</a></p><details class="film-details"><summary>Read the earlier intro transcript</summary><!-- transcript:opener-intro-v1:start -->
+<ol class="transcript">
+<li><button type="button" class="cue-time" data-seek="2" aria-label="Seek to 00:02">00:02</button><p class="cue-text">Six incidents. Incomplete evidence. The room makes a
+call. An AI makes its own.</p></li>
+<li><button type="button" class="cue-time" data-seek="9.789" aria-label="Seek to 00:09">00:09</button><p class="cue-text">Confidence won’t settle this. The reasoning has to
+hold.</p></li>
+<li><button type="button" class="cue-time" data-seek="21" aria-label="Seek to 00:21">00:21</button><p class="cue-text">Four Cyber Judges. Same facts. Separate decisions.
+Welcome to AI versus Human.</p></li>
+<li><button type="button" class="cue-time" data-seek="29.162" aria-label="Seek to 00:29">00:29</button><p class="cue-text">Show your work.</p></li>
+</ol>
+<!-- transcript:opener-intro-v1:end --></details></article></div><p><a href="opener.html">Archived opener timeline study ↗</a></p></details></div></section>
+<section id="show-media"><div class="wrap"><details><summary>Opening, closing, credits and manual AV cues</summary><p>Complete alternatives made with the supplied host/judge images and logos, fictional cinematic footage and original music. Chris can replace these cuts. Keep the cooperation reveal in the closing after round 6.</p><div class="actions"><a href="cinema.html?asset=opening">Watch opening / 104 seconds ↗</a><a href="cinema.html?asset=closing">Watch closing and credits / 98.2 seconds ↗</a><a href="cinema.html?asset=credits">Separate credit roll ↗</a><a href="soundboard.html">Manual AV soundboard ↗</a></div><p>The opening fits inside the five-minute opener/rules budget. The 98.2-second combined closing leaves switching time inside the proposed two-minute slot. Nathan and the AV crew verify the actual handoffs and route.</p></details></div></section>
+<section id="production"><div class="wrap"><details><summary>Production acceptance and the run of show</summary><div class="production-grid"><div><h3>85-minute show +20-minute Q&amp;A.</h3><ul><li><strong>17:35–17:40</strong> External opener, then rules.</li><li><strong>17:40–18:40</strong> Six ten-minute budgets; rounds1–5 score, round6 is unscored.</li><li><strong>18:40–18:57</strong> Dom interrupts, silent Human+AI reveal and judges’ discussion.</li><li><strong>18:57–18:58</strong> Kris / Futureproof invitation.</li><li><strong>18:58–19:00</strong> External outro and full credits, manual playback handoff.</li><li><strong>19:00–19:20</strong> Audience Q&amp;A. All times Pacific.</li></ul></div><div><h3>Before the theatre.</h3><ul><li>Chris/Vipin: audit existing Slido #1549 939 and test six polls on two real phones.</li><li>Chris/Nathan: selected closing files plus switching fit two minutes; otherwise shorten earlier discussion by the measured excess.</li><li>Nathan/Vipin/Levi: full105-minute rehearsal, actual laptop/projector/audio/network and rear-seat text/QR.</li><li>October14 technical slot14:30–16:00 is90minutes and cannot certify a105-minute run.</li></ul></div></div><p>All six cleaned films have optional complete captions and720p backups. Five preserve exact approved AAC audio; the82-second vendor chat reuses approved music/pings. Every film holds for manual GO. Fictional performances and generated media are disclosed here and in credits.</p><p>Load all six on the chosen show origin before offline rehearsal. Media/AI overrides and prior masters remain available. Browser tests, provider acceptance and venue approval are separate.</p></details><nav class="route-links" aria-label="Other show surfaces"><a href="briefing.html">Crew rehearsal hub ↗</a><a href="slido.html">Slido setup + phone test ↗</a><a href="./">Operator desk ↗</a><a href="phone.html">Audience phone entry ↗</a></nav></div></section>
+<section class="closing"><div class="wrap"><div><h2>Take it through the room.</h2><p>One rehearsal. All six films. Isolated practice votes.</p></div><a class="button secondary" href="./?tour&amp;revision=oct14-chat&amp;films=all">Rehearse the complete show ↗</a></div></section>
+</main><footer><div class="wrap"><span>ISACA Vancouver × BC + AI</span><span>Six-film review / Final creative and venue acceptance pending</span></div></footer><script>
+const themeButton = document.querySelector("#review-theme");
+themeButton.hidden = false;
+themeButton.setAttribute("aria-pressed", String(document.documentElement.dataset.theme === "dark"));
+themeButton.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = theme;
+  themeButton.setAttribute("aria-pressed", String(theme === "dark"));
+  try { localStorage.setItem("isaca-review-theme", theme); } catch {}
+});
+const players = [...document.querySelectorAll("video,audio")];
+for (const film of players) film.addEventListener("play", () => {
+  for (const other of players) if (other !== film) other.pause();
+});
+const chapters = document.querySelector(".chapters");
+const currentFilms = [...document.querySelectorAll(".current-film")];
+const archive = document.querySelector("#archive-intros");
+const pager = document.querySelector(".film-pager");
+function selectFilm(id){
+  const selected = currentFilms.find(film => film.id === id);
+  if (selected) {
+    archive.open = false;
+    document.querySelector("#vendor-spoken-fallback").open = false;
+    for (const player of players) if (player !== selected.querySelector("video")) player.pause();
+    for (const film of currentFilms) {
+      film.hidden = film !== selected;
+      if (film.hidden) film.querySelector("video").pause();
+    }
+    const index = currentFilms.indexOf(selected);
+    for (const [key, offset] of [["previous", -1], ["next", 1]]) {
+      const link = pager.querySelector(`[data-${key}]`), target = currentFilms[index + offset];
+      link.hidden = !target;
+      if (target) { link.href = `#${target.id}`; link.textContent = offset < 0 ? `← Incident ${String(index).padStart(2,"0")}` : `Incident ${String(index + 2).padStart(2,"0")} →`; }
+    }
+    document.querySelector("#view-status").textContent = `Incident ${index + 1} of 6: ${selected.querySelector("h3").textContent}`;
+  } else if (["intro-film", "earlier-intro-film", "archives"].includes(id)) {
+    archive.open = true;
+  }
+  for (const link of chapters.querySelectorAll("a")) {
+    if (link.hash === `#${id}`) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
+}
+function followHash(){
+  const id = location.hash.slice(1);
+  selectFilm(id || currentFilms[0].id);
+  const target = document.getElementById(id);
+  if (target) requestAnimationFrame(() => target.scrollIntoView({block:"start"}));
+}
+pager.hidden = false;
+selectFilm(currentFilms[0].id);
+followHash();
+addEventListener("hashchange", followHash);
+for (const button of document.querySelectorAll("[data-fullscreen]")) {
+  button.hidden = false;
+  button.addEventListener("click", () => {
+    const player = button.closest(".film-release").querySelector("video");
+    if (player.requestFullscreen) player.requestFullscreen().catch(() => { button.closest(".film-release").querySelector(".player-status").textContent = "Use the fullscreen control in the video player."; });
+    else if (player.webkitEnterFullscreen) player.webkitEnterFullscreen();
+  });
+}
+for (const button of document.querySelectorAll("[data-seek]")) button.addEventListener("click", () => {
+  const video = button.closest(".film-release").querySelector("video");
+  video.currentTime = Number(button.dataset.seek);
+});
+for (const video of document.querySelectorAll(".current-film video")) {
+  const failed = () => {
+    const status = video.closest(".film-release").querySelector(".player-status");
+    status.classList.add("error");
+    status.textContent = "Film could not play. Download it or read the complete transcript below. Reload while online to retry.";
+  };
+  video.addEventListener("error", failed);
+  video.querySelector("source").addEventListener("error", failed);
+  if (video.error || failedReviewMedia.has(video)) failed();
+}
+(async () => {
+  const status = document.querySelector("#intro-status");
+  try {
+    const response = await fetch("media/manifest.json");
+    if (!response.ok) throw new Error("Intro catalogue unavailable. The retained film and transcript remain below.");
+    const asset = (await response.json()).opener;
+    if (!asset || !/^[a-z0-9-]+\.mp4$/.test(asset.file)) throw new Error("Intro release unavailable.");
+    const url = `media/${asset.file}`;
+    const player = document.querySelector("#intro-player");
+    if (player.getAttribute("src") !== url) player.src = url;
+    document.querySelector("#intro-download").href = url;
+    status.textContent = "Watching here streams the film. This is an archived creative test, separate from Chris’s event opener.";
+  } catch (error) { status.textContent = error.message; }
+})();
+</script></body></html>

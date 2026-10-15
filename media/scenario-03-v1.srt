@@ -1,0 +1,76 @@
+1
+00:00:01,320 --> 00:00:03,740
+The platform everybody builds on.
+
+2
+00:00:04,200 --> 00:00:08,160
+Models, data sets, prompts, code, evaluation
+
+3
+00:00:08,100 --> 00:00:08,500
+data.
+
+4
+00:00:09,040 --> 00:00:13,260
+Now, confirmed unauthorized code execution in
+data set processing.
+
+5
+00:00:13,740 --> 00:00:18,280
+Minutes later, that service's credentials access
+an internal AI repository.
+
+6
+00:00:18,640 --> 00:00:20,460
+Credential exposure is likely.
+
+7
+00:00:20,840 --> 00:00:22,120
+Customer data accessed?
+
+8
+00:00:22,400 --> 00:00:22,940
+Unknown.
+
+9
+00:00:23,280 --> 00:00:24,660
+Production models modified?
+
+10
+00:00:25,080 --> 00:00:25,820
+No evidence.
+
+11
+00:00:26,200 --> 00:00:27,360
+Attacker still present?
+
+12
+00:00:27,680 --> 00:00:28,240
+Unknown.
+
+13
+00:00:28,740 --> 00:00:32,480
+Several customer-facing AI applications depend on
+this platform.
+
+14
+00:00:32,840 --> 00:00:35,980
+Security can isolate data set processing
+immediately.
+
+15
+00:00:36,340 --> 00:00:40,020
+They cannot guarantee the exposed credentials
+have not already carried the
+
+16
+00:00:39,940 --> 00:00:41,160
+attacker somewhere else.
+
+17
+00:00:41,560 --> 00:00:43,620
+The blast radius is still unknown.
+
+18
+00:00:44,100 --> 00:00:44,880
+What should you do?

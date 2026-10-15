@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#090c12">
+<title>Your call | AI vs. Human</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23090C12'/%3E%3Cpath d='M4 24 9 8h3l5 16h-3.2l-1-3.6H7.2L6.2 24zm4-6.2h4L10 11z' fill='%2370C5FF'/%3E%3Cpath d='M19 8h3v6h4V8h3v16h-3v-7h-4v7h-3z' fill='%23FF6571'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{color-scheme:dark;--ink:#f5f4ef;--paper:#090c12;--amber:#ff6571;--ice:#70c5ff;--muted:#b6bfd0;--line:#465168;--disp:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html{scroll-padding-block:18px}body{margin:0;background:#050609;color:var(--ink);font:16px/1.5 var(--sans);padding:max(18px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}.ticket{max-width:540px;margin:0 auto;background:var(--paper);padding:26px 30px 22px;border-top:5px solid var(--amber)}.masthead{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px;font:10px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase}.masthead span:last-child{text-align:right;color:var(--muted)}.teams{display:flex;align-items:center;gap:12px;margin:24px 0 18px;font:800 23px var(--disp);letter-spacing:.025em}.teams span:first-child{color:var(--amber)}.teams span:last-child{color:var(--ice)}.teams i{font:11px var(--mono);font-style:normal;color:var(--muted)}.eyebrow{font:10px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}h1{font:900 clamp(68px,19vw,100px)/.88 var(--disp);letter-spacing:-.015em;text-transform:uppercase;margin:0 0 16px}.intro{font-size:17px;line-height:1.5;margin:0 0 26px}.join{border-block:2px solid var(--ink);padding:22px 0 18px;scroll-margin-block:18px}.step{font:10px var(--mono);letter-spacing:.09em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}label{display:block;font-size:15px;font-weight:600;margin-bottom:10px}input{width:100%;min-height:60px;border:1px solid var(--line);border-radius:0;padding:8px 10px;color:var(--ink);background:transparent;font:600 clamp(25px,8vw,33px)/1.2 var(--mono);letter-spacing:.08em;text-align:center;caret-color:var(--ink);transition:border-color .16s}input::placeholder{color:var(--muted);opacity:.6}input:focus-visible{outline:2px solid var(--ink);outline-offset:3px}input[aria-invalid=true]{border-color:var(--amber)}.pin-help{margin:8px 0 0;font-size:12px;color:var(--muted)}.go{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:54px;margin-top:18px;padding:14px 17px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:0;font:600 16px var(--sans);cursor:pointer;transition:background .16s,color .16s}.go:hover{background:var(--paper);color:var(--ink)}a:focus-visible,.go:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:4px}.join-note{font-size:12px;color:var(--muted);margin:12px 0 0}.pin-error,.status{margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--amber);color:var(--ink);font-size:13px;overflow-wrap:anywhere}.status:empty,[hidden]{display:none!important}.instructions{padding:24px 0 18px;border-bottom:1px solid var(--line)}h2{font:800 30px/1 var(--disp);text-transform:uppercase;margin:0 0 13px}.instructions p{font-size:14px;color:var(--muted);margin:0 0 17px}.shapes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.shape{height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font:600 13px var(--mono)}.shape svg{width:20px;height:20px;fill:currentColor}.a{background:#e21b3c;color:#fff}.b{background:#1368ce;color:#fff}.c{background:#d89e00;color:#1a1200}.d{background:#26890c;color:#fff}details{margin:12px 0 20px}summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-size:14px;font-weight:600;min-height:48px;padding:10px 0;list-style:none;border-bottom:1px solid transparent}summary::-webkit-details-marker{display:none}summary::after{content:"+";font:22px var(--mono);transition:transform .16s}details[open] summary{border-bottom-color:var(--line)}details[open] summary::after{transform:rotate(45deg)}details p{color:var(--muted);font-size:14px;line-height:1.6;margin:14px 0}.follow-through{border-top:2px solid var(--ink);padding-block:22px}.follow-through p{font-size:14px;color:var(--muted);margin:0 0 14px}.follow-through a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding-block:10px;color:var(--ink);font-weight:600;text-underline-offset:.2em}footer{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:18px;font:9px/1.7 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}footer b{font-weight:500;color:var(--ink)}
+@media(max-width:520px){body{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom))}.ticket{max-width:none;padding:22px 20px 18px}.intro{font-size:16px}.masthead{font-size:9px}.teams{margin-top:20px}.shapes{gap:7px}}@media(max-width:350px){.ticket{padding:20px 16px 16px}.masthead{font-size:8px;gap:12px}.teams{font-size:21px;gap:9px}h1{font-size:68px}.intro{font-size:15px}.shape{gap:5px}.shape svg{width:17px;height:17px}footer{font-size:8px}}@media(min-width:600px) and (max-height:520px){.ticket{max-width:900px;display:grid;grid-template-columns:.9fr 1.1fr;gap:18px 30px;padding:20px 24px}.masthead{grid-column:1/-1;padding-bottom:12px}.welcome{align-self:center}.teams{margin:0 0 16px}h1{font-size:74px}.intro{margin-bottom:0;font-size:15px}.join{padding:16px 0;align-self:start}.pin-help{font-size:11px}.join-note{margin-top:10px}.instructions,details,.follow-through,footer{grid-column:1/-1}.instructions{padding-top:6px}.instructions p{max-width:58ch}.shapes{max-width:420px}details{margin-block:0}.go{margin-top:14px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="ticket">
+  <header class="masthead"><span>ISACA Vancouver<br>Signature Series</span><span>14 October 2026<br>Annex Theatre</span></header>
+  <div class="welcome">
+    <div class="teams" aria-label="Humans versus AI"><span>HUMANS</span><i>VS.</i><span>AI</span></div>
+    <p class="eyebrow">Six incidents / You’re on team human</p>
+    <h1>Your call.</h1>
+    <p class="intro">Same facts. Real pressure.<br>Bring your judgment to the game.</p>
+  </div>
+  <form class="join" id="join-form" action="https://www.slido.com/" method="get">
+    <p class="step">01 / Join the room</p><label for="pin">Slido event code from the big screen</label>
+    <input id="pin" name="pin" type="text" inputmode="numeric" enterkeyhint="go" autocomplete="off" spellcheck="false" pattern=" *[0-9](?: *[0-9]){3,9} *" maxlength="19" value="" placeholder="— — — — — —" aria-describedby="pin-help pin-error status" aria-invalid="false" required>
+    <p class="pin-help" id="pin-help">Join at slido.com with #1234 567. Match the code shown by the host. Spaces are OK.</p>
+    <p class="pin-error" id="pin-error" role="alert" hidden></p>
+    <button class="go" type="submit"><span>Join the game</span><span aria-hidden="true">↗</span></button>
+    <p class="join-note" id="join-note">Stay in Slido for all six votes. Read each answer on your phone and choose the matching A, B, C or D option when the host opens voting.</p>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+  <section class="instructions" aria-labelledby="play-heading">
+    <p class="step">02 / Make your call</p><h2 id="play-heading">Watch. Think. Vote.</h2>
+    <p id="vote-instructions">Read the incident on the big screen. When voting opens, read the choices in Slido and select one answer by its letter and wording.</p>
+    <div class="shapes" aria-label="Answer choices A, B, C and D">
+      <span class="shape a" aria-hidden="true">A</span>
+      <span class="shape b" aria-hidden="true">B</span>
+      <span class="shape c" aria-hidden="true">C</span>
+      <span class="shape d" aria-hidden="true">D</span>
+    </div>
+  </section>
+  <details><summary>How does the scoring work?</summary><p>Each of the six scenarios has one audience vote. The most popular answer becomes the Human decision; the AI gets the same incident facts. During scored rounds, four Cyber Judges compare the decisions: 3–1 or 4–0 earns a point, and 2–2 is a draw. Matching Human and AI answers are also a draw during scored rounds.</p><p id="count-instructions">Use A/B/C/D and the answer wording. The operator transfers the Slido results into the show controls. Keep watching the room between votes; your phone is for voting and the discussion happens here.</p></details>
+  <section class="follow-through" aria-labelledby="festival-heading"><p class="step">After the show</p><h2 id="festival-heading">Keep asking better questions.</h2><p>Continue the conversation at Futureproof Festival. Explore the program and join the community.</p><a href="https://www.futureproof.website/">futureproof.website <span aria-hidden="true">↗</span></a></section>
+  <footer><span><b>AI vs. Human</b><br>Interactive Cyber Awareness</span><span>Six incidents<br>One room. Your judgment.</span></footer>
+</main>
+<script>
+(() => {
+  const form = document.querySelector("#join-form"), pin = document.querySelector("#pin"), error = document.querySelector("#pin-error"), status = document.querySelector("#status");
+  const params = new URLSearchParams(location.search), provider = params.get("provider") === "kahoot" ? "kahoot" : "slido", name = provider === "slido" ? "Slido" : "Kahoot";
+  const safeSlidoURL = value => {
+    try { const u = new URL(value); return u.protocol === "https:" && !u.username && !u.password && ["qr.sli.do","app.sli.do","slido.com","www.slido.com"].includes(u.hostname) ? u.href : null; } catch { return null; }
+  };
+  const supplied = params.get("pin") ?? (provider === "slido" ? "" : "");
+  const join = safeSlidoURL(params.get("join")) || (!params.has("pin") || supplied.replace(/\s/g, "") === "" ? "https://www.slido.com/" : "https://www.slido.com/");
+  const clean = value => value.replace(/\s/g, "");
+  const valid = value => /^\d{4,10}$/.test(value);
+  const offlineMessage = `You're offline. Connect to Wi-Fi or mobile data to join ${name}. Your code stays here.`;
+  const showError = message => {
+    error.textContent = message;
+    error.hidden = !message;
+    pin.setAttribute("aria-invalid", message ? "true" : "false");
+  };
+  const keepEntryVisible = () => {
+    if (document.activeElement === pin) form.scrollIntoView({block:"center", behavior:"auto"});
+  };
+  pin.value = "";
+  if (valid(clean(supplied))) pin.value = clean(supplied);
+  form.action = provider === "slido" ? join : "https://kahoot.it/";
+  document.querySelector('label[for="pin"]').textContent = provider === "slido" ? "Slido event code from the big screen" : "Kahoot game PIN from the big screen";
+  document.querySelector("#pin-help").textContent = `Match the ${name} code shown by the host. Spaces are OK.`;
+  document.querySelector("#join-note").textContent = `Stay in ${name} for all six votes. Read the choices and select one answer when the host opens voting.`;
+  document.querySelector("#vote-instructions").textContent = `Read the incident on the big screen. When voting opens, read the choices in ${name} and select one answer by its wording.`;
+  document.querySelector("#count-instructions").textContent = `The operator transfers the ${name} results into the show controls. Keep watching the room between votes; your phone is for voting and the discussion happens here.`;
+  form.noValidate = true;
+  form.addEventListener("submit", event => {
+    const value = clean(pin.value);
+    if (!valid(value)) {
+      event.preventDefault();
+      showError(value ? "Use 4–10 digits from the joining code on the big screen." : "Enter the joining code shown on the big screen.");
+      pin.focus(); keepEntryVisible(); return;
+    }
+    showError("");
+    if (!navigator.onLine) { event.preventDefault(); status.textContent = offlineMessage; form.scrollIntoView({block:"center", behavior:"auto"}); return; }
+    pin.value = value;
+    status.textContent = `Opening ${name}. Wait for the host to open voting.`;
+    if (provider === "slido") { event.preventDefault(); location.assign(value === clean(supplied) ? join : "https://www.slido.com/"); }
+  });
+  pin.addEventListener("input", () => { if (valid(clean(pin.value))) showError(""); });
+  pin.addEventListener("focus", () => { keepEntryVisible(); requestAnimationFrame(keepEntryVisible); });
+  if (window.visualViewport) visualViewport.addEventListener("resize", keepEntryVisible);
+  addEventListener("offline", () => { status.textContent = offlineMessage; });
+  addEventListener("online", () => { status.textContent = `Back online. Try joining ${name} when you're ready.`; });
+  if (!navigator.onLine) status.textContent = offlineMessage;
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || ["127.0.0.1", "localhost"].includes(location.hostname))) navigator.serviceWorker.register("phone-sw.js", { scope:"./phone.html" }).catch(() => {});
+})();
+</script>
+</body>
+</html>

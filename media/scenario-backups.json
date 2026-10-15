@@ -1,0 +1,68 @@
+{
+  "vig1": {
+    "file": "scenario-01-v7-720p-380972856f4c.mp4",
+    "bytes": 7685850,
+    "sha256": "380972856f4c60bd5a55b17ac7a7aa5375b72349a9df06902ee5532a1e93c544",
+    "duration_seconds": 61.3,
+    "width": 1280,
+    "height": 720,
+    "fps": 30.0,
+    "master_sha256": "94f75f5643995cc9a83d6da8f595cb5221a1678e55e1b86042b78eead80a241a",
+    "audio_packets_identical": true
+  },
+  "vig2": {
+    "file": "scenario-02-v7-720p-dc19186092b5.mp4",
+    "bytes": 10027400,
+    "sha256": "dc19186092b5ed458d4d36e5694797e0f563bae43668c710d66feb4e930947cd",
+    "duration_seconds": 54.125,
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "master_sha256": "ea4e3a843fd1d23d56d6b0a21ba1cb198d671a068ef1ce9e7f52df02675337a0",
+    "audio_packets_identical": true
+  },
+  "vig3": {
+    "file": "scenario-03-v7-720p-a06ad077a469.mp4",
+    "bytes": 5415984,
+    "sha256": "a06ad077a4693b63497d04351b178e5223ae8701dda7189baa8c7255a37e25d8",
+    "duration_seconds": 48.0,
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "master_sha256": "6533bae4f48d80caec32e43e6cab165b475477bfa837c22c8871dff3778d9348",
+    "audio_packets_identical": true
+  },
+  "vig4": {
+    "file": "scenario-04-v9-720p-d2df3d37d456.mp4",
+    "bytes": 2621424,
+    "sha256": "d2df3d37d456a33e426e6e5057ca58a2d1aee38addf3d3572d0cda02064175ae",
+    "duration_seconds": 82.0,
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "master_sha256": "1b968585a25e7c0f576145685c842f91b65528b1d12cc1c6fffaeebe0bf8e786",
+    "audio_packets_identical": true
+  },
+  "vig5": {
+    "file": "scenario-05-v8-720p-46aeeca637c2.mp4",
+    "bytes": 6576897,
+    "sha256": "46aeeca637c20cc189cee57d31e20ff6edfb45d73d2e5863d28fa021d05f4a7a",
+    "duration_seconds": 48.958008,
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "master_sha256": "661f83481bd029167e1ac684c00c6e0c3143a9f12f0c622281d947d039710464",
+    "audio_packets_identical": true
+  },
+  "vig6": {
+    "file": "scenario-06-v6-720p-8bba923d4747.mp4",
+    "bytes": 9150136,
+    "sha256": "8bba923d474768adc008ba5e1f9128924e3ac3385b10d0a0fa4aaf977b494a61",
+    "duration_seconds": 57.708333,
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "master_sha256": "84721ba3f4379bd5ba2ff1e43340c30b0e43ceef98fa3a66f65c827f76a0acf8",
+    "audio_packets_identical": true
+  }
+}

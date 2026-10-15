@@ -1,0 +1,868 @@
+{
+  "upstream_commit": "e4b2e68694a28652c4f96372b9c306652f0e88bf",
+  "upstream_path": "apps/isaca-ai-vs-human",
+  "snapshot_date": "2026-10-14",
+  "adaptations": [
+    "Live Slido code and destination removed from community defaults; numeric documentation examples and synthetic test destinations used.",
+    "Only public app assets and selected runnable tests/preparation scripts exported; no repository history or private correspondence.",
+    "Large audiovisual binaries remain separate downloads verified against the media catalogues.",
+    "Browser test dependency lookup uses this standalone package instead of a sibling monorepo app."
+  ],
+  "files": [
+    {
+      "file": "briefing.html",
+      "source_sha256": "22523b657aac6d8852d1b521c134633b533abf76297daeefda0067ec8cd53bde",
+      "export_sha256": "22523b657aac6d8852d1b521c134633b533abf76297daeefda0067ec8cd53bde"
+    },
+    {
+      "file": "cinema.html",
+      "source_sha256": "1a83eb07759e319c2d4c1f6d6eff42600590f5478c91695ee0ad32e14a8903e9",
+      "export_sha256": "1a83eb07759e319c2d4c1f6d6eff42600590f5478c91695ee0ad32e14a8903e9"
+    },
+    {
+      "file": "emergency.html",
+      "source_sha256": "df10cef48ce522478a783bf60190aaf13aafb405bcbc7e30e0e57c0bd2f293a3",
+      "export_sha256": "df10cef48ce522478a783bf60190aaf13aafb405bcbc7e30e0e57c0bd2f293a3"
+    },
+    {
+      "file": "index.html",
+      "source_sha256": "02a447736f48ad494b9df627af95393bcb896f12589e00d9a5b5bc2278ecc606",
+      "export_sha256": "d702168a06fb48265a538c1423aa57201a2c6b021a9dc11ffb8d89dd757d2395"
+    },
+    {
+      "file": "media/ai-provider-chatgpt.svg",
+      "source_sha256": "a29919808335f2e28e40cd1eed2ca5f5dd6e9e24d177a775a4d73137e1d0e8fe",
+      "export_sha256": "a29919808335f2e28e40cd1eed2ca5f5dd6e9e24d177a775a4d73137e1d0e8fe"
+    },
+    {
+      "file": "media/ai-provider-claude.png",
+      "source_sha256": "4004381309500f25e49a1ae639912ce307ea81da74cc383954a1ac8b9d343fe6",
+      "export_sha256": "4004381309500f25e49a1ae639912ce307ea81da74cc383954a1ac8b9d343fe6"
+    },
+    {
+      "file": "media/ai-provider-grok.svg",
+      "source_sha256": "c3db0dfaf760b702b8490c6cbefe07fd8bfe00db43cae6a0acccf768f44d6179",
+      "export_sha256": "c3db0dfaf760b702b8490c6cbefe07fd8bfe00db43cae6a0acccf768f44d6179"
+    },
+    {
+      "file": "media/av-soundbank.json",
+      "source_sha256": "79d3526fd79c61bbe3e75a041aae4abd0d0223e2c088dc109f5d9a88c205fc11",
+      "export_sha256": "79d3526fd79c61bbe3e75a041aae4abd0d0223e2c088dc109f5d9a88c205fc11"
+    },
+    {
+      "file": "media/cinematic-alternatives.json",
+      "source_sha256": "3acfef82def54a59181b64d899428d8444d466c3eff948b28622272e2df8f11b",
+      "export_sha256": "3acfef82def54a59181b64d899428d8444d466c3eff948b28622272e2df8f11b"
+    },
+    {
+      "file": "media/fallbacks.json",
+      "source_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "export_sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "file": "media/isaca-cinematic-alternative-v1-poster.jpg",
+      "source_sha256": "b4f08343b741e01e9ed5691ae3db063ec9f5e011fe5f0dc88da9b6b21e048ff6",
+      "export_sha256": "b4f08343b741e01e9ed5691ae3db063ec9f5e011fe5f0dc88da9b6b21e048ff6"
+    },
+    {
+      "file": "media/isaca-cinematic-alternative-v1.srt",
+      "source_sha256": "b0a3f711d997c3b5436a37f4b83649e3a9690482626cd8e451071a5f34c0d28f",
+      "export_sha256": "b0a3f711d997c3b5436a37f4b83649e3a9690482626cd8e451071a5f34c0d28f"
+    },
+    {
+      "file": "media/isaca-cinematic-alternative-v1.vtt",
+      "source_sha256": "e3d644fc1bd2621109c4ef52d5cb02fc25635c6ac618229e53f1877a9caeed88",
+      "export_sha256": "e3d644fc1bd2621109c4ef52d5cb02fc25635c6ac618229e53f1877a9caeed88"
+    },
+    {
+      "file": "media/isaca-closing-alternative-v1-poster.jpg",
+      "source_sha256": "b4f08343b741e01e9ed5691ae3db063ec9f5e011fe5f0dc88da9b6b21e048ff6",
+      "export_sha256": "b4f08343b741e01e9ed5691ae3db063ec9f5e011fe5f0dc88da9b6b21e048ff6"
+    },
+    {
+      "file": "media/isaca-closing-alternative-v1.srt",
+      "source_sha256": "55585a84406b90d157d44abe2b1f7186c1922b02ea3ac9c198c432490ffe3dd6",
+      "export_sha256": "55585a84406b90d157d44abe2b1f7186c1922b02ea3ac9c198c432490ffe3dd6"
+    },
+    {
+      "file": "media/isaca-closing-alternative-v1.vtt",
+      "source_sha256": "2a9697765cf702aaede658fea0d51f6086afb374080c44da73e7f0b2b4c61203",
+      "export_sha256": "2a9697765cf702aaede658fea0d51f6086afb374080c44da73e7f0b2b4c61203"
+    },
+    {
+      "file": "media/isaca-credits-alternative-v1-poster.jpg",
+      "source_sha256": "07adbb14c2fe81cf12357ba1c90c546519c515c44983907da777e9d8776737f3",
+      "export_sha256": "07adbb14c2fe81cf12357ba1c90c546519c515c44983907da777e9d8776737f3"
+    },
+    {
+      "file": "media/isaca-credits-alternative-v1.srt",
+      "source_sha256": "9e9382105c2f96fa787b4d44b9e944d08f94d7599ed2eb4e58b062ef7f39d4cc",
+      "export_sha256": "9e9382105c2f96fa787b4d44b9e944d08f94d7599ed2eb4e58b062ef7f39d4cc"
+    },
+    {
+      "file": "media/isaca-credits-alternative-v1.vtt",
+      "source_sha256": "88183dc0e5ea5c71180295b765e79cb7080abeef3cd3fdb709bcb1be7641cae8",
+      "export_sha256": "88183dc0e5ea5c71180295b765e79cb7080abeef3cd3fdb709bcb1be7641cae8"
+    },
+    {
+      "file": "media/isaca-opening-alternative-v1-poster.jpg",
+      "source_sha256": "bb4733f4e055b37d07fa976742037ae6b271203509cfa57ed7b4e3c30e59c313",
+      "export_sha256": "bb4733f4e055b37d07fa976742037ae6b271203509cfa57ed7b4e3c30e59c313"
+    },
+    {
+      "file": "media/isaca-opening-alternative-v1.srt",
+      "source_sha256": "81e9f028ae8b9dcc77c1de1f878b544a417d1552cb03ebb327e4532bcbde6f9d",
+      "export_sha256": "81e9f028ae8b9dcc77c1de1f878b544a417d1552cb03ebb327e4532bcbde6f9d"
+    },
+    {
+      "file": "media/isaca-opening-alternative-v1.vtt",
+      "source_sha256": "70146ae27f38e48f7ba5a19c9ae3dc366135553baef59f8a9037283754542579",
+      "export_sha256": "70146ae27f38e48f7ba5a19c9ae3dc366135553baef59f8a9037283754542579"
+    },
+    {
+      "file": "media/isaca-rehearsal-oct11.pdf",
+      "source_sha256": "c74a6da1b85d42a51510293ec672713f88f03a1e3fe25a743a8f8b0e7c16c9e0",
+      "export_sha256": "c74a6da1b85d42a51510293ec672713f88f03a1e3fe25a743a8f8b0e7c16c9e0"
+    },
+    {
+      "file": "media/isaca-rehearsal-oct13-final.pdf",
+      "source_sha256": "8bd088201e540bf90840952fb97f90674db2cc7381d60546fad8a4fd8755e05c",
+      "export_sha256": "8bd088201e540bf90840952fb97f90674db2cc7381d60546fad8a4fd8755e05c"
+    },
+    {
+      "file": "media/isaca-rehearsal-oct13-v3.pdf",
+      "source_sha256": "14f8673ff239344da86820538d651bcd2cbcffe33b69f8071f0312f834748060",
+      "export_sha256": "14f8673ff239344da86820538d651bcd2cbcffe33b69f8071f0312f834748060"
+    },
+    {
+      "file": "media/isaca-rehearsal-oct14-chat.pdf",
+      "source_sha256": "0611af078e99d630d9a9ae93d875269097d583f480f4dfc7b0010018e73aead0",
+      "export_sha256": "0611af078e99d630d9a9ae93d875269097d583f480f4dfc7b0010018e73aead0"
+    },
+    {
+      "file": "media/manifest.json",
+      "source_sha256": "b28e0707a8a067dad1912bad95bc1bf8bd548dd8a44c665ddf00215328cbcd9e",
+      "export_sha256": "b28e0707a8a067dad1912bad95bc1bf8bd548dd8a44c665ddf00215328cbcd9e"
+    },
+    {
+      "file": "media/night-desk-v1-poster.jpg",
+      "source_sha256": "279b2fd4161c27f44d9c25c3372c7746469ebf2f445640ebc93f78df0c037d29",
+      "export_sha256": "279b2fd4161c27f44d9c25c3372c7746469ebf2f445640ebc93f78df0c037d29"
+    },
+    {
+      "file": "media/night-desk-v1.srt",
+      "source_sha256": "54bc19c6df3c48f8f64429a2d4a0d3484c7d9e8bc0a665c2027dbaf4b77b5890",
+      "export_sha256": "54bc19c6df3c48f8f64429a2d4a0d3484c7d9e8bc0a665c2027dbaf4b77b5890"
+    },
+    {
+      "file": "media/night-desk-v1.vtt",
+      "source_sha256": "5acb779b56beaf74ee2356b31dee2fed060c29613730f2b2777336fa8e1fd8b7",
+      "export_sha256": "5acb779b56beaf74ee2356b31dee2fed060c29613730f2b2777336fa8e1fd8b7"
+    },
+    {
+      "file": "media/opener-intro-v1-poster.jpg",
+      "source_sha256": "725837d9de0cc731b57d768d329c673d24e44ed60872478add88fe5e9b62cd80",
+      "export_sha256": "725837d9de0cc731b57d768d329c673d24e44ed60872478add88fe5e9b62cd80"
+    },
+    {
+      "file": "media/opener-intro-v1.srt",
+      "source_sha256": "931814cfe7723dac78639a54a87f0fcd7f5752bcb0f00e4d22a0b3c414f07951",
+      "export_sha256": "931814cfe7723dac78639a54a87f0fcd7f5752bcb0f00e4d22a0b3c414f07951"
+    },
+    {
+      "file": "media/opener-intro-v1.vtt",
+      "source_sha256": "05374776b7e2d97cb5f217d6ce503255ed69e845292c042fdf9599192adf3af5",
+      "export_sha256": "05374776b7e2d97cb5f217d6ce503255ed69e845292c042fdf9599192adf3af5"
+    },
+    {
+      "file": "media/scenario-01-v2-poster.jpg",
+      "source_sha256": "a25a88d4178f9f3de0de68ff83abc744b0996a934c4585e38bf661291cc718eb",
+      "export_sha256": "a25a88d4178f9f3de0de68ff83abc744b0996a934c4585e38bf661291cc718eb"
+    },
+    {
+      "file": "media/scenario-01-v2.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v3-poster.jpg",
+      "source_sha256": "b732339f7a601a08f6a8ab6ee9ce44b2d8b39593b02452142704330e057fbd46",
+      "export_sha256": "b732339f7a601a08f6a8ab6ee9ce44b2d8b39593b02452142704330e057fbd46"
+    },
+    {
+      "file": "media/scenario-01-v3.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v3.vtt",
+      "source_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682",
+      "export_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    {
+      "file": "media/scenario-01-v4-poster.jpg",
+      "source_sha256": "0f86be01d91c492bacbdbd9542f0ce65a8171f6db3522c3da31f5d1d78355149",
+      "export_sha256": "0f86be01d91c492bacbdbd9542f0ce65a8171f6db3522c3da31f5d1d78355149"
+    },
+    {
+      "file": "media/scenario-01-v4.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v4.vtt",
+      "source_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682",
+      "export_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    {
+      "file": "media/scenario-01-v5-poster.jpg",
+      "source_sha256": "6a2271ee53453d63b4a21cec224a6294532dd7310aa82d4a294eca17b113be80",
+      "export_sha256": "6a2271ee53453d63b4a21cec224a6294532dd7310aa82d4a294eca17b113be80"
+    },
+    {
+      "file": "media/scenario-01-v5.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v5.vtt",
+      "source_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682",
+      "export_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    {
+      "file": "media/scenario-01-v6-poster.jpg",
+      "source_sha256": "b14ec3f394dab2fab9329ae5ed028783358a10f87960d057ef7583cf34cce711",
+      "export_sha256": "b14ec3f394dab2fab9329ae5ed028783358a10f87960d057ef7583cf34cce711"
+    },
+    {
+      "file": "media/scenario-01-v6.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v6.vtt",
+      "source_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682",
+      "export_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    {
+      "file": "media/scenario-01-v7-poster.jpg",
+      "source_sha256": "75497b9b791bc3f2b8f74daf1539251acf25468f708ee8840c8889df3e2d3e4e",
+      "export_sha256": "75497b9b791bc3f2b8f74daf1539251acf25468f708ee8840c8889df3e2d3e4e"
+    },
+    {
+      "file": "media/scenario-01-v7.srt",
+      "source_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4",
+      "export_sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    {
+      "file": "media/scenario-01-v7.vtt",
+      "source_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682",
+      "export_sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    {
+      "file": "media/scenario-02-v1-poster.jpg",
+      "source_sha256": "1b67caa85c335e304997326a23d1d8504dbd56c28e33d8406b8573a43f8e2fd7",
+      "export_sha256": "1b67caa85c335e304997326a23d1d8504dbd56c28e33d8406b8573a43f8e2fd7"
+    },
+    {
+      "file": "media/scenario-02-v1.srt",
+      "source_sha256": "356aa0b744063994e26443c9119fd3e1dbd35dca2d9189ca7740183c40f61afa",
+      "export_sha256": "356aa0b744063994e26443c9119fd3e1dbd35dca2d9189ca7740183c40f61afa"
+    },
+    {
+      "file": "media/scenario-02-v1.vtt",
+      "source_sha256": "a72a1420ff9e016871e251856d5d14fa89b6c06a3bbfd11c4509d36c10993b95",
+      "export_sha256": "a72a1420ff9e016871e251856d5d14fa89b6c06a3bbfd11c4509d36c10993b95"
+    },
+    {
+      "file": "media/scenario-02-v2-poster.jpg",
+      "source_sha256": "01dae2b03d5107bc8a28ee5b2a9e21636f5480ff207180a3bb2f668a3f6b922f",
+      "export_sha256": "01dae2b03d5107bc8a28ee5b2a9e21636f5480ff207180a3bb2f668a3f6b922f"
+    },
+    {
+      "file": "media/scenario-02-v2.srt",
+      "source_sha256": "356aa0b744063994e26443c9119fd3e1dbd35dca2d9189ca7740183c40f61afa",
+      "export_sha256": "356aa0b744063994e26443c9119fd3e1dbd35dca2d9189ca7740183c40f61afa"
+    },
+    {
+      "file": "media/scenario-02-v2.vtt",
+      "source_sha256": "a6d6044e31eaaed5810525244ea8992915923246ca66e793ea36175ddc8ce399",
+      "export_sha256": "a6d6044e31eaaed5810525244ea8992915923246ca66e793ea36175ddc8ce399"
+    },
+    {
+      "file": "media/scenario-02-v3-poster.jpg",
+      "source_sha256": "01dae2b03d5107bc8a28ee5b2a9e21636f5480ff207180a3bb2f668a3f6b922f",
+      "export_sha256": "01dae2b03d5107bc8a28ee5b2a9e21636f5480ff207180a3bb2f668a3f6b922f"
+    },
+    {
+      "file": "media/scenario-02-v3.srt",
+      "source_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8",
+      "export_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    {
+      "file": "media/scenario-02-v3.vtt",
+      "source_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656",
+      "export_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    {
+      "file": "media/scenario-02-v4-poster.jpg",
+      "source_sha256": "111738a87cea2e0a4d8f2183d0fc276c967f970d179a938ef6079a80edc877e8",
+      "export_sha256": "111738a87cea2e0a4d8f2183d0fc276c967f970d179a938ef6079a80edc877e8"
+    },
+    {
+      "file": "media/scenario-02-v4.srt",
+      "source_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8",
+      "export_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    {
+      "file": "media/scenario-02-v4.vtt",
+      "source_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656",
+      "export_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    {
+      "file": "media/scenario-02-v5-poster.jpg",
+      "source_sha256": "e21944b8d9efb4d76e735a1333fbfbd1c8d835819702ab0f8abbc6eb3cdb2c8f",
+      "export_sha256": "e21944b8d9efb4d76e735a1333fbfbd1c8d835819702ab0f8abbc6eb3cdb2c8f"
+    },
+    {
+      "file": "media/scenario-02-v5.srt",
+      "source_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8",
+      "export_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    {
+      "file": "media/scenario-02-v5.vtt",
+      "source_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656",
+      "export_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    {
+      "file": "media/scenario-02-v6-poster.jpg",
+      "source_sha256": "e97eb368ec37076686f3859cab0b1db16bab8da4506b738364eac46023908188",
+      "export_sha256": "e97eb368ec37076686f3859cab0b1db16bab8da4506b738364eac46023908188"
+    },
+    {
+      "file": "media/scenario-02-v6.srt",
+      "source_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8",
+      "export_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    {
+      "file": "media/scenario-02-v6.vtt",
+      "source_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656",
+      "export_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    {
+      "file": "media/scenario-02-v7-poster.jpg",
+      "source_sha256": "585a3ce3455a6f4d411432385caf627c9a75156c02b3ad267f3c99dbff760bf5",
+      "export_sha256": "585a3ce3455a6f4d411432385caf627c9a75156c02b3ad267f3c99dbff760bf5"
+    },
+    {
+      "file": "media/scenario-02-v7.srt",
+      "source_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8",
+      "export_sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    {
+      "file": "media/scenario-02-v7.vtt",
+      "source_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656",
+      "export_sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    {
+      "file": "media/scenario-03-v1-poster.jpg",
+      "source_sha256": "bcfa356bc7c6d4f306978d205a96fadce5532adc469bc3f7ebaeacaf3006fe6f",
+      "export_sha256": "bcfa356bc7c6d4f306978d205a96fadce5532adc469bc3f7ebaeacaf3006fe6f"
+    },
+    {
+      "file": "media/scenario-03-v1.srt",
+      "source_sha256": "f12399029bd9b1546657752ca1fa77bf576df003d6b06f7db4db6d468f716de6",
+      "export_sha256": "f12399029bd9b1546657752ca1fa77bf576df003d6b06f7db4db6d468f716de6"
+    },
+    {
+      "file": "media/scenario-03-v1.vtt",
+      "source_sha256": "c4d71fc3b7ebe52c93c15ade87d93fa67597756cc53c5295ba24619944928c7c",
+      "export_sha256": "c4d71fc3b7ebe52c93c15ade87d93fa67597756cc53c5295ba24619944928c7c"
+    },
+    {
+      "file": "media/scenario-03-v2-poster.jpg",
+      "source_sha256": "7a5cb2cc4a605083223ae31a8fd66b56822f8f89c4e45e01ad9c5d9534f2e0b6",
+      "export_sha256": "7a5cb2cc4a605083223ae31a8fd66b56822f8f89c4e45e01ad9c5d9534f2e0b6"
+    },
+    {
+      "file": "media/scenario-03-v2.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v2.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-03-v3-poster.png",
+      "source_sha256": "f8faaa8f6433693dd7befb5060b897b3067570bdecbf900c5e06999c7b4a8807",
+      "export_sha256": "f8faaa8f6433693dd7befb5060b897b3067570bdecbf900c5e06999c7b4a8807"
+    },
+    {
+      "file": "media/scenario-03-v3.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v3.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-03-v4-poster.jpg",
+      "source_sha256": "87fcdcc21ce1de510fd0e2d8aac5895e224af4da0757099732532633746b6f06",
+      "export_sha256": "87fcdcc21ce1de510fd0e2d8aac5895e224af4da0757099732532633746b6f06"
+    },
+    {
+      "file": "media/scenario-03-v4.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v4.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-03-v5-poster.jpg",
+      "source_sha256": "917a3a16c5d2f440036fb8edf555b58769c28aaaec431ae532bb5cb27958f0ad",
+      "export_sha256": "917a3a16c5d2f440036fb8edf555b58769c28aaaec431ae532bb5cb27958f0ad"
+    },
+    {
+      "file": "media/scenario-03-v5.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v5.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-03-v6-poster.jpg",
+      "source_sha256": "cd3fb00e385bb63cda72340a82a3edf8821586cdb2d8fe3de090593d6b4f3756",
+      "export_sha256": "cd3fb00e385bb63cda72340a82a3edf8821586cdb2d8fe3de090593d6b4f3756"
+    },
+    {
+      "file": "media/scenario-03-v6.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v6.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-03-v7-poster.jpg",
+      "source_sha256": "a4f73c32049f5e1cab4fb13cc2d57c28bfd0d06aa95ae63b22564c818dcf3dd5",
+      "export_sha256": "a4f73c32049f5e1cab4fb13cc2d57c28bfd0d06aa95ae63b22564c818dcf3dd5"
+    },
+    {
+      "file": "media/scenario-03-v7.srt",
+      "source_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff",
+      "export_sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    {
+      "file": "media/scenario-03-v7.vtt",
+      "source_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783",
+      "export_sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    {
+      "file": "media/scenario-04-v1-poster.jpg",
+      "source_sha256": "7eeb72faec515554567875e1804a886df248967eb5970f5e3f6e4f85a2ecab12",
+      "export_sha256": "7eeb72faec515554567875e1804a886df248967eb5970f5e3f6e4f85a2ecab12"
+    },
+    {
+      "file": "media/scenario-04-v1.srt",
+      "source_sha256": "ace303dcab601cd2d6977c580def46a18be2ff9b5810285eb5523d6456ba270e",
+      "export_sha256": "ace303dcab601cd2d6977c580def46a18be2ff9b5810285eb5523d6456ba270e"
+    },
+    {
+      "file": "media/scenario-04-v1.vtt",
+      "source_sha256": "77f6488404c068caef5eafa3f7832639df1268dcb2596b37e993b555db6ec972",
+      "export_sha256": "77f6488404c068caef5eafa3f7832639df1268dcb2596b37e993b555db6ec972"
+    },
+    {
+      "file": "media/scenario-04-v2-poster.jpg",
+      "source_sha256": "6c90cd1aff4a1a79a47c8266fecefc2b28b4de00c2f8fe4433682ec71a386796",
+      "export_sha256": "6c90cd1aff4a1a79a47c8266fecefc2b28b4de00c2f8fe4433682ec71a386796"
+    },
+    {
+      "file": "media/scenario-04-v2.srt",
+      "source_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636",
+      "export_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636"
+    },
+    {
+      "file": "media/scenario-04-v2.vtt",
+      "source_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152",
+      "export_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152"
+    },
+    {
+      "file": "media/scenario-04-v3-poster.png",
+      "source_sha256": "d97a7ae6c779a713bb3ed97178e9fea545d820148d9a951fb19488a77922fe5a",
+      "export_sha256": "d97a7ae6c779a713bb3ed97178e9fea545d820148d9a951fb19488a77922fe5a"
+    },
+    {
+      "file": "media/scenario-04-v3.srt",
+      "source_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636",
+      "export_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636"
+    },
+    {
+      "file": "media/scenario-04-v3.vtt",
+      "source_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152",
+      "export_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152"
+    },
+    {
+      "file": "media/scenario-04-v4-poster.jpg",
+      "source_sha256": "178728f206f0d99e9a31908acacd63c3d01693753ad686799f6baf9c51ca7597",
+      "export_sha256": "178728f206f0d99e9a31908acacd63c3d01693753ad686799f6baf9c51ca7597"
+    },
+    {
+      "file": "media/scenario-04-v4.srt",
+      "source_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636",
+      "export_sha256": "313fd10592b56db35285d99aa7d734cf339ccfdb989a0e9fbcdb63bbf6453636"
+    },
+    {
+      "file": "media/scenario-04-v4.vtt",
+      "source_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152",
+      "export_sha256": "2d4d31c7b9ac7feedd886d3df789591425cb6b9e6c5f64cd42bdfdc9779f1152"
+    },
+    {
+      "file": "media/scenario-04-v5-poster.jpg",
+      "source_sha256": "427f3b0c4fa47b8560b3db5ec4d29d332850f36eea865ed6b6c2d4d4405f8d24",
+      "export_sha256": "427f3b0c4fa47b8560b3db5ec4d29d332850f36eea865ed6b6c2d4d4405f8d24"
+    },
+    {
+      "file": "media/scenario-04-v5.srt",
+      "source_sha256": "f72034ffe3a7f3809ecf75e4ecc7df4143df864a8416a1ea29264bdc0802ac9e",
+      "export_sha256": "f72034ffe3a7f3809ecf75e4ecc7df4143df864a8416a1ea29264bdc0802ac9e"
+    },
+    {
+      "file": "media/scenario-04-v5.vtt",
+      "source_sha256": "7d424c22cf2236e919eb6681e00076b1328419039cfff6b59d56178efe9db781",
+      "export_sha256": "7d424c22cf2236e919eb6681e00076b1328419039cfff6b59d56178efe9db781"
+    },
+    {
+      "file": "media/scenario-04-v6-poster.png",
+      "source_sha256": "9f82fb76606845a12240a0dda78e60fcd126b225647dc6090dda5cd8d56b9964",
+      "export_sha256": "9f82fb76606845a12240a0dda78e60fcd126b225647dc6090dda5cd8d56b9964"
+    },
+    {
+      "file": "media/scenario-04-v6.srt",
+      "source_sha256": "dfad10186c2a6ecb8c2e030773003a9ad3564b7d974b3d173ea5fff3f6565765",
+      "export_sha256": "dfad10186c2a6ecb8c2e030773003a9ad3564b7d974b3d173ea5fff3f6565765"
+    },
+    {
+      "file": "media/scenario-04-v6.vtt",
+      "source_sha256": "fc2e78d7db7c5b8c74d0b69a934d06de0de1e544bbd15e6fb2b8104465b78752",
+      "export_sha256": "fc2e78d7db7c5b8c74d0b69a934d06de0de1e544bbd15e6fb2b8104465b78752"
+    },
+    {
+      "file": "media/scenario-04-v7-poster.jpg",
+      "source_sha256": "c565db9998e666c2fc2800ad1702135151e6e0333c08ae534b710ad3bb9c7c55",
+      "export_sha256": "c565db9998e666c2fc2800ad1702135151e6e0333c08ae534b710ad3bb9c7c55"
+    },
+    {
+      "file": "media/scenario-04-v7.srt",
+      "source_sha256": "ef1968734989b3ec26ffcc3c709f01d9904d769edbd5874120a6fc5e6be2f08d",
+      "export_sha256": "ef1968734989b3ec26ffcc3c709f01d9904d769edbd5874120a6fc5e6be2f08d"
+    },
+    {
+      "file": "media/scenario-04-v7.vtt",
+      "source_sha256": "7f2cc19e581bbd7887cb3bb444341f76a67fcad5a3a5b02a9efa621d07afcc1a",
+      "export_sha256": "7f2cc19e581bbd7887cb3bb444341f76a67fcad5a3a5b02a9efa621d07afcc1a"
+    },
+    {
+      "file": "media/scenario-04-v8-poster.jpg",
+      "source_sha256": "53cbfa63cc4027579b185e6a96c01ef524a56a965fa55167daf790c3959fa6df",
+      "export_sha256": "53cbfa63cc4027579b185e6a96c01ef524a56a965fa55167daf790c3959fa6df"
+    },
+    {
+      "file": "media/scenario-04-v8.srt",
+      "source_sha256": "ef1968734989b3ec26ffcc3c709f01d9904d769edbd5874120a6fc5e6be2f08d",
+      "export_sha256": "ef1968734989b3ec26ffcc3c709f01d9904d769edbd5874120a6fc5e6be2f08d"
+    },
+    {
+      "file": "media/scenario-04-v8.vtt",
+      "source_sha256": "7f2cc19e581bbd7887cb3bb444341f76a67fcad5a3a5b02a9efa621d07afcc1a",
+      "export_sha256": "7f2cc19e581bbd7887cb3bb444341f76a67fcad5a3a5b02a9efa621d07afcc1a"
+    },
+    {
+      "file": "media/scenario-04-v9-poster.jpg",
+      "source_sha256": "fe74fe298b5da967989549415787e7c21f75b0da1c50bbcda5b7500e4e42b09c",
+      "export_sha256": "fe74fe298b5da967989549415787e7c21f75b0da1c50bbcda5b7500e4e42b09c"
+    },
+    {
+      "file": "media/scenario-04-v9.srt",
+      "source_sha256": "3002ebc849dbaaf6a7e2839ba6ba7d6b952f8ff44241296116e336e1fc5d1448",
+      "export_sha256": "3002ebc849dbaaf6a7e2839ba6ba7d6b952f8ff44241296116e336e1fc5d1448"
+    },
+    {
+      "file": "media/scenario-04-v9.vtt",
+      "source_sha256": "32596267102369aafb5e43731115e2adcc1a02ab9de9d026883cfd56ddcbb48c",
+      "export_sha256": "32596267102369aafb5e43731115e2adcc1a02ab9de9d026883cfd56ddcbb48c"
+    },
+    {
+      "file": "media/scenario-05-v1-poster.jpg",
+      "source_sha256": "071a560a24ace5a9cf2f0d98eb6afea9034012c52c93a0c95e66d847fb561d67",
+      "export_sha256": "071a560a24ace5a9cf2f0d98eb6afea9034012c52c93a0c95e66d847fb561d67"
+    },
+    {
+      "file": "media/scenario-05-v1.srt",
+      "source_sha256": "1cdb5a4cfbd30f6d12847c45657eb6218bff3b61188e082c874e5f8d9985bd48",
+      "export_sha256": "1cdb5a4cfbd30f6d12847c45657eb6218bff3b61188e082c874e5f8d9985bd48"
+    },
+    {
+      "file": "media/scenario-05-v1.vtt",
+      "source_sha256": "56ca5cf96aefa44a38162608d1ed4292cbf1c6c9d546664e9b8854eaed8e4cbb",
+      "export_sha256": "56ca5cf96aefa44a38162608d1ed4292cbf1c6c9d546664e9b8854eaed8e4cbb"
+    },
+    {
+      "file": "media/scenario-05-v2-poster.jpg",
+      "source_sha256": "e3c16176c4af5be0586456c6f96741483afab824597bf4473318d1703dc43def",
+      "export_sha256": "e3c16176c4af5be0586456c6f96741483afab824597bf4473318d1703dc43def"
+    },
+    {
+      "file": "media/scenario-05-v2.srt",
+      "source_sha256": "1cdb5a4cfbd30f6d12847c45657eb6218bff3b61188e082c874e5f8d9985bd48",
+      "export_sha256": "1cdb5a4cfbd30f6d12847c45657eb6218bff3b61188e082c874e5f8d9985bd48"
+    },
+    {
+      "file": "media/scenario-05-v2.vtt",
+      "source_sha256": "9a3cece85bfd5e894b160da7ddd07d805586098446de3d55066a61302fd42d07",
+      "export_sha256": "9a3cece85bfd5e894b160da7ddd07d805586098446de3d55066a61302fd42d07"
+    },
+    {
+      "file": "media/scenario-05-v3-poster.jpg",
+      "source_sha256": "d72298c30cf6257d7e1b285ee042f05286fda2a09ca9b2bdc033f7ec2760a313",
+      "export_sha256": "d72298c30cf6257d7e1b285ee042f05286fda2a09ca9b2bdc033f7ec2760a313"
+    },
+    {
+      "file": "media/scenario-05-v3.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v3.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-05-v4-poster.png",
+      "source_sha256": "6342de31469cfabcab8b8918b8a46b05d4e28f7f98b62382b3bfd40472f54f81",
+      "export_sha256": "6342de31469cfabcab8b8918b8a46b05d4e28f7f98b62382b3bfd40472f54f81"
+    },
+    {
+      "file": "media/scenario-05-v4.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v4.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-05-v5-poster.jpg",
+      "source_sha256": "fcd34676ac7570155c99d33edf8d0c8cbe53b92c60e5ae689eb1422bc4bb9580",
+      "export_sha256": "fcd34676ac7570155c99d33edf8d0c8cbe53b92c60e5ae689eb1422bc4bb9580"
+    },
+    {
+      "file": "media/scenario-05-v5.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v5.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-05-v6-poster.jpg",
+      "source_sha256": "2e2759023be6eb20c4b80c4873951a7128e46bdd0d4e790bdee3a2dff294c0b5",
+      "export_sha256": "2e2759023be6eb20c4b80c4873951a7128e46bdd0d4e790bdee3a2dff294c0b5"
+    },
+    {
+      "file": "media/scenario-05-v6.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v6.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-05-v7-poster.jpg",
+      "source_sha256": "a18e04d7727c175fc5ba9d990b7999529fe1fdebd5c08b508521c8abfa33cbbf",
+      "export_sha256": "a18e04d7727c175fc5ba9d990b7999529fe1fdebd5c08b508521c8abfa33cbbf"
+    },
+    {
+      "file": "media/scenario-05-v7.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v7.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-05-v8-poster.jpg",
+      "source_sha256": "7f5f691a03c19c1ace6d362cc9b8eacef8ed2c4481c9660c090c5a70711817e9",
+      "export_sha256": "7f5f691a03c19c1ace6d362cc9b8eacef8ed2c4481c9660c090c5a70711817e9"
+    },
+    {
+      "file": "media/scenario-05-v8.srt",
+      "source_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f",
+      "export_sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    {
+      "file": "media/scenario-05-v8.vtt",
+      "source_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3",
+      "export_sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    {
+      "file": "media/scenario-06-v1-poster.jpg",
+      "source_sha256": "be4dc6bfac2370864260ac6306f76ecb6051faef587476f48fea16d40d840237",
+      "export_sha256": "be4dc6bfac2370864260ac6306f76ecb6051faef587476f48fea16d40d840237"
+    },
+    {
+      "file": "media/scenario-06-v1.srt",
+      "source_sha256": "cbf13c5607178b13a03ea4146d77ecca154137bf68eadd7aff62ba8d30e5dc5d",
+      "export_sha256": "cbf13c5607178b13a03ea4146d77ecca154137bf68eadd7aff62ba8d30e5dc5d"
+    },
+    {
+      "file": "media/scenario-06-v1.vtt",
+      "source_sha256": "141f10accc900758e55886e08614ebab6a9218525a18a2e3fc92df28837de7a5",
+      "export_sha256": "141f10accc900758e55886e08614ebab6a9218525a18a2e3fc92df28837de7a5"
+    },
+    {
+      "file": "media/scenario-06-v2-poster.jpg",
+      "source_sha256": "393b2528100b638d3381535ae07d0fd90b609a60c609717569a6326126eb553f",
+      "export_sha256": "393b2528100b638d3381535ae07d0fd90b609a60c609717569a6326126eb553f"
+    },
+    {
+      "file": "media/scenario-06-v2.srt",
+      "source_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5",
+      "export_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    {
+      "file": "media/scenario-06-v2.vtt",
+      "source_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25",
+      "export_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    {
+      "file": "media/scenario-06-v3-poster.jpg",
+      "source_sha256": "2448bf88325f0c9c12d308d4c6a04fad108deca4ff4d53579fbbd69c9828dc8f",
+      "export_sha256": "2448bf88325f0c9c12d308d4c6a04fad108deca4ff4d53579fbbd69c9828dc8f"
+    },
+    {
+      "file": "media/scenario-06-v3.srt",
+      "source_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5",
+      "export_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    {
+      "file": "media/scenario-06-v3.vtt",
+      "source_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25",
+      "export_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    {
+      "file": "media/scenario-06-v4-poster.jpg",
+      "source_sha256": "cc30ee3a571f9330997414d1cb0169d3758de7455fd015699fd7c1295c206cd9",
+      "export_sha256": "cc30ee3a571f9330997414d1cb0169d3758de7455fd015699fd7c1295c206cd9"
+    },
+    {
+      "file": "media/scenario-06-v4.srt",
+      "source_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5",
+      "export_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    {
+      "file": "media/scenario-06-v4.vtt",
+      "source_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25",
+      "export_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    {
+      "file": "media/scenario-06-v5-poster.jpg",
+      "source_sha256": "0614febcb9749dbcee5977dee7cd49d443782d0b88d9ed7c64d37105e0817a87",
+      "export_sha256": "0614febcb9749dbcee5977dee7cd49d443782d0b88d9ed7c64d37105e0817a87"
+    },
+    {
+      "file": "media/scenario-06-v5.srt",
+      "source_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5",
+      "export_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    {
+      "file": "media/scenario-06-v5.vtt",
+      "source_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25",
+      "export_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    {
+      "file": "media/scenario-06-v6-poster.jpg",
+      "source_sha256": "cb3d95c0fbcba8b28a27f8a949f9b2bdcea9f9f420d41bcdd2b5eb41d9dbd0d9",
+      "export_sha256": "cb3d95c0fbcba8b28a27f8a949f9b2bdcea9f9f420d41bcdd2b5eb41d9dbd0d9"
+    },
+    {
+      "file": "media/scenario-06-v6.srt",
+      "source_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5",
+      "export_sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    {
+      "file": "media/scenario-06-v6.vtt",
+      "source_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25",
+      "export_sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    {
+      "file": "media/scenario-backups.json",
+      "source_sha256": "88b7de78d458f9ea29ebe2fa47ab25c3a062f5801a835768c478a9482c67825b",
+      "export_sha256": "88b7de78d458f9ea29ebe2fa47ab25c3a062f5801a835768c478a9482c67825b"
+    },
+    {
+      "file": "opener.html",
+      "source_sha256": "225c9841a2c98cbeada57323ccf14729c4c54b0e1f7054edb0bab73fd9eb06da",
+      "export_sha256": "225c9841a2c98cbeada57323ccf14729c4c54b0e1f7054edb0bab73fd9eb06da"
+    },
+    {
+      "file": "phone-sw.js",
+      "source_sha256": "5fa9708c6be0c5b25ac5706fd2f3d4d2f55dfae65359ae27112e914df0b6ee34",
+      "export_sha256": "5fa9708c6be0c5b25ac5706fd2f3d4d2f55dfae65359ae27112e914df0b6ee34"
+    },
+    {
+      "file": "phone.html",
+      "source_sha256": "1728f42548519a250df3198f029ab857035c0a2289a6ec5c28dba327e575574d",
+      "export_sha256": "3d0fe10cccb5a92efcb7598577a3a96f833a71b74d77195e8d33e53505e14309"
+    },
+    {
+      "file": "review.html",
+      "source_sha256": "7d8ab6ad89030e503aa9cb6803aa73b1d6799d193f2b6337abfc37c1cec731f1",
+      "export_sha256": "7d8ab6ad89030e503aa9cb6803aa73b1d6799d193f2b6337abfc37c1cec731f1"
+    },
+    {
+      "file": "showpiece.css",
+      "source_sha256": "66d091d37a2ec9e82ef1d4017e0775304d10ace1bdacb274e83a3b9538a2b588",
+      "export_sha256": "66d091d37a2ec9e82ef1d4017e0775304d10ace1bdacb274e83a3b9538a2b588"
+    },
+    {
+      "file": "slido.html",
+      "source_sha256": "89a5b37a0fd7413c7f4019f3b7f67f109f453c44ba839e02a818726e886afcab",
+      "export_sha256": "e665da0733b8bf13c5230f8b74a689d2e76082e248ff31b254d245aefd2f6f84"
+    },
+    {
+      "file": "soundboard.html",
+      "source_sha256": "65415330483e29d23f765eea2ef9dbd8e22bea7dcbd1ddd401ed06392536c750",
+      "export_sha256": "65415330483e29d23f765eea2ef9dbd8e22bea7dcbd1ddd401ed06392536c750"
+    },
+    {
+      "file": "sw.js",
+      "source_sha256": "0c387c3a5634275e06ddec490ab77a03bcecae239c2c7357bc50868fcc0d23db",
+      "export_sha256": "0c387c3a5634275e06ddec490ab77a03bcecae239c2c7357bc50868fcc0d23db"
+    },
+    {
+      "file": "vercel.json",
+      "source_sha256": "302e6d911bde1e9db94247377111bb1194f9cc616b523fcbbb989766dd0196df",
+      "export_sha256": "302e6d911bde1e9db94247377111bb1194f9cc616b523fcbbb989766dd0196df"
+    }
+  ]
+}

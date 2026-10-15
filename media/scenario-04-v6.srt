@@ -1,0 +1,29 @@
+1
+00:00:00,000 --> 00:00:05,000
+A strategic technology partner supports critical infrastructure in your environment.
+
+2
+00:00:05,000 --> 00:00:20,000
+10:42 AM / Maya / SOC
+Unusual admin activity from Nexora’s privileged account. We’ve never seen this behaviour. Is it authorized?
+
+3
+00:00:20,000 --> 00:00:33,000
+10:44 AM / Nexora Systems Support
+No alerts on our side. We’re investigating. Please stand by.
+
+4
+00:00:33,000 --> 00:00:47,000
+Evidence check / SOC
+No malware detected. No confirmed lateral movement or known malicious IP traffic. Compromise remains unconfirmed.
+
+5
+00:00:47,000 --> 00:01:02,000
+10:48 AM / Nexora Systems Support
+Our investigation found no evidence of compromise. Disabling access will interrupt critical support services.
+
+6
+00:01:02,000 --> 00:01:13,000
+11:13 AM / Threat intelligence / report
+Another company is investigating suspicious activity involving Nexora. No compromise is confirmed at either organization.
+What should you do with vendor access?

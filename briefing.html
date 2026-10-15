@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>ISACA · Host & Cyber Judge Briefing</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #070c14;
+        --panel: #111c2c;
+        --text: #f3ecd8;
+        --muted: #bbc7cf;
+        --line: #62798b;
+        --blue: #8cd8ff;
+        --red: #ff6571;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          17px/1.6 system-ui,
+          -apple-system,
+          Arial,
+          sans-serif;
+      }
+      main {
+        max-width: 1180px;
+        margin: auto;
+        padding: 48px 28px 64px;
+      }
+      a {
+        color: var(--blue);
+        text-underline-offset: 4px;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--text);
+        outline-offset: 6px;
+      }
+      header {
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 30px;
+      }
+      .eyebrow {
+        font:
+          700 13px/1.5 ui-monospace,
+          monospace;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      h1 {
+        font-size: clamp(36px, 6vw, 70px);
+        letter-spacing: -0.04em;
+        line-height: 1.06;
+        margin: 18px 0 24px;
+        max-width: 850px;
+      }
+      h2 {
+        font-size: 28px;
+        line-height: 1.25;
+        margin: 0 0 18px;
+      }
+      p {
+        max-width: 900px;
+        margin: 14px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 28px 0 0;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 10px 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--panel);
+      }
+      .button.primary {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+        font-weight: 750;
+      }
+      .button:hover {
+        border-color: var(--blue);
+      }
+      section {
+        margin-top: 32px;
+        padding: 28px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .table {
+        overflow-x: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: left;
+      }
+      th,
+      td {
+        vertical-align: top;
+        padding: 13px 14px;
+        border-bottom: 1px solid #62798b66;
+      }
+      th {
+        color: var(--blue);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      td:first-child {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      tr:last-child td {
+        border: 0;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .split section {
+        min-width: 0;
+      }
+      .callout {
+        border-left: 4px solid var(--red);
+        padding-left: 18px;
+      }
+      .time {
+        font:
+          700 15px/1.5 ui-monospace,
+          monospace;
+        color: var(--blue);
+      }
+      ol,
+      ul {
+        padding-left: 24px;
+      }
+      li {
+        margin: 12px 0;
+      }
+      .key {
+        font:
+          700 16px ui-monospace,
+          monospace;
+      }
+      .model {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .model img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        background: var(--text);
+        padding: 4px;
+        border-radius: 6px;
+      }
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      @media (max-width: 760px) {
+        main {
+          padding: 28px 16px;
+        }
+        section {
+          padding: 20px 16px;
+        }
+        .split {
+          display: block;
+        }
+        th,
+        td {
+          padding: 10px 8px;
+          font-size: 15px;
+        }
+        nav .button {
+          flex-grow: 1;
+          justify-content: center;
+        }
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 16px;
+        top: 12px;
+        z-index: 30;
+        padding: 12px 18px;
+        background: var(--text);
+        color: var(--bg);
+        transform: translateY(-180%);
+        border-radius: 6px;
+      }
+      .skip-link:focus {
+        transform: none;
+      }
+      .section-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 14px 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 24px 0 0;
+      }
+      .section-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 6px 14px;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .section-nav a:hover,
+      .section-nav a:focus-visible {
+        background: var(--panel);
+      }
+      section {
+        scroll-margin-top: 96px;
+      }
+      .button {
+        font: inherit;
+        cursor: pointer;
+        transition:
+          transform 150ms,
+          border-color 150ms;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+      }
+      .button[hidden] {
+        display: none;
+      }
+      .button:focus-visible,
+      .share-link:focus-visible {
+        outline: 3px solid var(--text);
+        outline-offset: 4px;
+      }
+      .share-link {
+        display: block;
+        width: min(100%, 720px);
+        font: inherit;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 12px;
+        min-height: 48px;
+      }
+      .share-link[hidden] {
+        display: none;
+      }
+      .share-status {
+        margin: 14px 0 0;
+        min-height: 1.6em;
+        color: var(--muted);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .cell-label {
+        display: none;
+      }
+      @media (max-width: 1080px) {
+        .split {
+          display: block;
+        }
+      }
+      @media (max-width: 760px) {
+        section {
+          scroll-margin-top: 148px;
+        }
+        .section-nav a {
+          padding: 6px 10px;
+          font-size: 15px;
+        }
+        .card-table,
+        .card-table tbody {
+          display: block;
+          width: 100%;
+        }
+        .card-table thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+        }
+        .card-table tbody tr {
+          display: grid;
+          gap: 14px;
+          margin: 12px 0;
+          padding: 16px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+        }
+        .card-table td {
+          display: block;
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          white-space: normal !important;
+          font-size: 16px;
+          line-height: 1.55;
+        }
+        .card-table .cell-label {
+          display: block;
+          margin-bottom: 4px;
+          color: var(--blue);
+          font:
+            700 11px/1.4 system-ui,
+            sans-serif;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .agenda-table tbody tr,
+        .ai-table tbody tr {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .agenda-table td:last-child {
+          grid-column: 1 / -1;
+        }
+        .ai-table .model {
+          gap: 7px;
+        }
+        .ai-table .model img {
+          width: 26px;
+          height: 26px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .button {
+          transition: none;
+        }
+        .button:hover {
+          transform: none;
+        }
+      }
+      @media print {
+        :root {
+          color-scheme: light;
+          --bg: #fff;
+          --panel: #fff;
+          --text: #111;
+          --muted: #333;
+          --line: #777;
+          --blue: #111;
+          --red: #111;
+        }
+        @page {
+          size: Letter;
+          margin: 0.6in;
+        }
+        body {
+          background: white;
+          color: #111;
+          font-size: 10pt;
+          line-height: 1.4;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        header {
+          padding-bottom: 12pt;
+        }
+        h1 {
+          font-size: 25pt;
+          margin: 8pt 0 12pt;
+        }
+        h2 {
+          font-size: 15pt;
+          margin-bottom: 8pt;
+        }
+        p {
+          margin: 8pt 0;
+        }
+        .eyebrow {
+          font-size: 9pt;
+          letter-spacing: 0.08em;
+        }
+        nav,
+        .skip-link,
+        .share-link,
+        .share-status {
+          display: none !important;
+        }
+        .split {
+          display: block;
+        }
+        section {
+          margin-top: 12pt;
+          padding: 12pt;
+          border: 1px solid #aaa;
+          border-radius: 0;
+        }
+        th,
+        td {
+          padding: 6pt;
+          font-size: 9pt;
+        }
+        .card-table {
+          display: table;
+          width: 100%;
+        }
+        .card-table tbody {
+          display: table-row-group;
+        }
+        .card-table thead {
+          display: table-header-group;
+          position: static;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+        }
+        .card-table tbody tr {
+          display: table-row;
+          padding: 0;
+          margin: 0;
+          border: 0;
+        }
+        .card-table td {
+          display: table-cell;
+          padding: 6pt;
+          font-size: 9pt;
+          border-bottom: 1px solid #bbb;
+        }
+        .card-table .cell-label {
+          display: none;
+        }
+        tr {
+          break-inside: avoid;
+        }
+        h2 {
+          break-after: avoid;
+        }
+        li {
+          margin: 6pt 0;
+        }
+        footer {
+          font-size: 8pt;
+          margin-top: 12pt;
+        }
+        a {
+          color: #111;
+        }
+        .model img {
+          background: white;
+        }
+        .callout {
+          border-left: 2px solid #555;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to briefing</a>
+    <main id="main" tabindex="-1"><header><div class="eyebrow">ISACA Vancouver · October 14 chat lock · Show October 14</div><h1>The final rehearsal desk.</h1><p>Chris’s approved flow, revised five-message vendor chat, six films and Slido audience voting. <strong>85-minute show + 20-minute Q&amp;A.</strong> Chris directs; Vipin operates; Nathan owns timing; Levi verifies the venue route. Actual phone/venue acceptance is recorded by the crew.</p><nav aria-label="Briefing tools"><a class="button primary" href="/?tour&amp;films=all&amp;revision=oct14-chat">Start complete rehearsal</a><a class="button" href="review.html">Film review</a><a class="button" href="slido.html">Slido setup + phone test</a><a class="button" href="emergency.html">Emergency host deck</a><a class="button" href="cinema.html?asset=opening">Opening</a><a class="button" href="cinema.html?asset=closing">Closing + credits</a><a class="button" href="media/isaca-rehearsal-oct14-chat.pdf" download>Printable guide</a><button class="button" type="button" id="copy-briefing" hidden>Copy briefing link</button></nav><p class="share-status" id="share-status" role="status" aria-live="polite"></p><input class="share-link" id="share-link" readonly hidden aria-label="Briefing link"></header><nav class="section-nav" aria-label="Briefing sections"><a href="#setup">Setup</a><a href="#agenda">Show clock</a><a href="#ai-responses">AI replies</a><a href="#decisions">Crew checks</a><a href="#saved-show">Saved show</a></nav>
+<section id="setup" tabindex="-1" aria-labelledby="setup-title"><h2 id="setup-title">First five moves</h2><ol><li><strong>Choose the show origin and laptop.</strong> Stage and control share one laptop, browser profile and origin. Open control on the laptop and stage on the extended projector; independently prepare the backup machine.</li><li><strong>Export/reset, then Apply October 14 plan.</strong> Do this only before doors. Existing votes/running clocks block application. Uploaded media and custom AI replies remain; the former provider code is retained in previous polling settings while Chris’s Slido code is selected.</li><li><strong>Load all six current films.</strong> Verify all six slots, refresh both windows, test sound, pause/restart, final manual GO and offline reload. A streaming review player does not install a film in the show.</li><li><strong>Audit Slido #1549 939.</strong> Keep it backstage. One answer per person; fixed A./B./C./D. order, hidden participant results and absolute counts. The app owns the 45-second clock; Vipin closes the provider poll manually.</li><li><strong>Use two real phones.</strong> Rehearse all six polls, late-vote lock, count entry by letter, Human then AI reveal and results export. Keep tour sample data clearly separate; export and clear only disposable test results before doors.</li></ol><p class="callout">Open the operator desk with O. The projector has no rehearsal footer or running score HUD. App transitions and reveals are silent; film sound remains on the active projector.</p></section>
+<section id="agenda" tabindex="-1" aria-labelledby="agenda-title"><h2 id="agenda-title">The 105-minute show</h2><div class="table"><table class="card-table agenda-table"><thead><tr><th scope="col">Pacific time</th><th scope="col">Segment</th><th scope="col">Operator cue</th></tr></thead><tbody><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>17:35–17:40</td><td><span class="cell-label" aria-hidden="true">Segment</span>Opening + rules</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>Opening GO starts show clock. External opener, then five rules cards.</td></tr><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>17:40–18:40</td><td><span class="cell-label" aria-hidden="true">Segment</span>Six ten-minute rounds</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>Five scored rounds, then unscored round six. Scorecards begin rounds 2–6.</td></tr><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>18:40–18:57</td><td><span class="cell-label" aria-hidden="true">Segment</span>Human + AI discussion</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>Dom interrupts after round-six AI; silent three-second reveal, then Cyber Judges discussion.</td></tr><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>18:57–18:58</td><td><span class="cell-label" aria-hidden="true">Segment</span>Futureproof</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>Dom introduces Kris. One-minute festival invitation.</td></tr><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>18:58–19:00</td><td><span class="cell-label" aria-hidden="true">Segment</span>Outro + credits</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>External playback, app black. Confirm measured files and switching fit two minutes.</td></tr><tr><td><span class="cell-label" aria-hidden="true">Pacific time</span>19:00–19:20</td><td><span class="cell-label" aria-hidden="true">Segment</span>Audience Q&amp;A</td><td><span class="cell-label" aria-hidden="true">Operator cue</span>Ask the Cyber Judges. Own twenty-minute clock; manual hold.</td></tr></tbody></table></div><p>Six ten-minute budgets include the five inter-round scorecards. Round six stops at Dom’s interruption. Q&amp;A starts its own full 20-minute clock. If selected closing files plus switching exceed two minutes, Nathan shortens the earlier discussion by the measured excess.</p></section>
+<section id="ai-responses" tabindex="-1" aria-labelledby="ai-responses-title"><h2 id="ai-responses-title">The final AI set</h2><p>Chris’s October 12 stage reasoning supplies three bullets and a conclusion. Round 4 is edited for his October 13 incident update; its B / 70% decision is retained, with no new model call. Original October 10 supplied replies remain labelled as earlier sources in the operator panel. These are prepared replies, not live model calls. Custom overrides need source review.</p><div class="table"><table class="card-table ai-table"><thead><tr><th scope="col">Round</th><th scope="col">Provider</th><th scope="col">Decision</th><th scope="col">Confidence</th></tr></thead><tbody><tr><td><span class="cell-label" aria-hidden="true">Round</span>1</td><td><span class="cell-label" aria-hidden="true">Provider</span>ChatGPT</td><td><span class="cell-label" aria-hidden="true">Decision</span>B</td><td><span class="cell-label" aria-hidden="true">Confidence</span>95%</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>2</td><td><span class="cell-label" aria-hidden="true">Provider</span>Claude</td><td><span class="cell-label" aria-hidden="true">Decision</span>C</td><td><span class="cell-label" aria-hidden="true">Confidence</span>75%</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>3</td><td><span class="cell-label" aria-hidden="true">Provider</span>Grok</td><td><span class="cell-label" aria-hidden="true">Decision</span>D</td><td><span class="cell-label" aria-hidden="true">Confidence</span>70%</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>4</td><td><span class="cell-label" aria-hidden="true">Provider</span>Claude</td><td><span class="cell-label" aria-hidden="true">Decision</span>B</td><td><span class="cell-label" aria-hidden="true">Confidence</span>70%</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>5</td><td><span class="cell-label" aria-hidden="true">Provider</span>ChatGPT</td><td><span class="cell-label" aria-hidden="true">Decision</span>C</td><td><span class="cell-label" aria-hidden="true">Confidence</span>97%</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>6</td><td><span class="cell-label" aria-hidden="true">Provider</span>Grok</td><td><span class="cell-label" aria-hidden="true">Decision</span>C</td><td><span class="cell-label" aria-hidden="true">Confidence</span>68%</td></tr></tbody></table></div><p>The facility’s87% estimate in scenario 5 and incident system’s94% estimate in scenario 6 are incident facts, distinct from the contestant’s97% and68% confidence.</p></section>
+<section id="reveal" tabindex="-1" aria-labelledby="reveal-title"><h2 id="reveal-title">Keep the reveal clean</h2><ul><li>Rounds 1–5: one poll, Human reveal, AI reveal, four judge votes and bare “Cyber Judges Debate.” Matching choices and2–2 draw;3–1/4–0 earn a point.</li><li>Round 6: one poll, Human then AI. No judge-entry screen, automatic draw or point. Export says “Unscored closing discussion” with blank judges.</li><li>Dom: “Have we been asking the right question?” → silent 3-second Human+AI reveal/manual hold → Cyber Judges collaboration discussion → Kris/Futureproof → external outro/credits → audience Q&amp;A.</li><li>Scenario 4:82 seconds,5 seconds empty, five chats at5/24/39/53/74. Full reading plus5 seconds between messages; final hold for Vipin. The SOC manager directs temporary suspension; execution is not shown. The third-company report is removed.</li></ul></section>
+<section id="decisions" tabindex="-1" aria-labelledby="decisions-title"><h2 id="decisions-title">Crew acceptance before doors</h2><div class="table"><table class="card-table"><thead><tr><th scope="col">Check</th><th scope="col">Required evidence</th><th scope="col">Owner</th></tr></thead><tbody><tr><td><span class="cell-label" aria-hidden="true">Check</span>Slido event</td><td><span class="cell-label" aria-hidden="true">Required evidence</span>Six actual polls, capacity/dates, fixed letter order, hidden results and two physical phones. No new purchase.</td><td><span class="cell-label" aria-hidden="true">Owner</span>Chris / Vipin</td></tr><tr><td><span class="cell-label" aria-hidden="true">Check</span>External films</td><td><span class="cell-label" aria-hidden="true">Required evidence</span>Selected opening/outro/complete credits with exact filenames/hashes and measured switching. Alternatives remain available.</td><td><span class="cell-label" aria-hidden="true">Owner</span>Chris / Nathan / Vipin</td></tr><tr><td><span class="cell-label" aria-hidden="true">Check</span>Complete rehearsal</td><td><span class="cell-label" aria-hidden="true">Required evidence</span>Continuous105-minute run plus failure drill on final laptop. Record issues and go/no-go.</td><td><span class="cell-label" aria-hidden="true">Owner</span>Nathan / Vipin</td></tr><tr><td><span class="cell-label" aria-hidden="true">Check</span>Venue route</td><td><span class="cell-label" aria-hidden="true">Required evidence</span>Projector/audio/network, rear-seat chat/text/QR, source switching, blackout/fallback and house lights.</td><td><span class="cell-label" aria-hidden="true">Owner</span>Levi / Vipin</td></tr></tbody></table></div><p class="callout">October 14 technical slot14:30–16:00 is 90 minutes. It cannot certify a continuous105-minute run. Browser tests establish software/media behavior; actual venue approval requires a crew receipt.</p></section>
+<section id="saved-show" tabindex="-1" aria-labelledby="saved-show-title"><h2 id="saved-show-title">For a saved show</h2><p>Refresh online first. Export results, Reset for doors, then Apply October 14 plan. Old show rules and results remain until that explicit action. Existing media and custom answers are retained; review overrides before selecting Chris’s prepared answer. Use current release for any old film slot; it retains a restorable previous file. New rehearsal revision oct14-chat uses separate storage, media and synchronization from the real show and previous tours.</p><p>Provider/network failure: announce a manual A–D room tally, enter actual counts and retain the same show flow. Never substitute tour votes. Failed film: deliberate Skip film / Use full briefing, read the complete host script and facts, then resume.</p></section>
+<section id="event-day" tabindex="-1" aria-labelledby="event-day-title"><h2 id="event-day-title">Wednesday, October 14</h2><p>Annex Theatre. Crew records final operating origin/profile, AV route and selected files before doors. Nathan confirms arrival/volunteer/house-light cues with the team. Stage and control sync across windows on one machine; a second laptop is an independently prepared backup.</p></section><footer>Previous masters and editable sources retained. Scenario performances and synthetic media are fictional/AI-generated. Provider marks identify supplied responses and belong to their owners. Candidate software release and physical acceptance are separate.</footer></main>
+    <script>
+      const briefingLink = "https://isaca-ai-vs-human.vercel.app/briefing.html";
+      const copyButton = document.querySelector("#copy-briefing"),
+        copyStatus = document.querySelector("#share-status"),
+        copyField = document.querySelector("#share-link");
+      copyField.value = briefingLink;
+      copyButton.hidden = false;
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(briefingLink);
+          copyField.hidden = true;
+          copyStatus.textContent = "Briefing link copied.";
+        } catch {
+          copyField.hidden = false;
+          copyField.focus();
+          copyField.select();
+          copyStatus.textContent = "Select and copy the briefing link below.";
+        }
+      });
+    </script>
+  </body>
+</html>

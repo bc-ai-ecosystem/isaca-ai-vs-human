@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISACA emergency host-read fallback</title>
+<style>
+:root{color-scheme:dark;--ink:#141918;--paper:#eae4d7;--oxide:#d85b32;font-family:"DIN Alternate","Arial",sans-serif;background:var(--ink);color:var(--paper)}
+*{box-sizing:border-box}body{margin:0}button,select{font:inherit;color:inherit;background:var(--ink);border:1px solid #747b71;border-radius:4px;padding:.6rem .85rem}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--paper);outline-offset:4px}a{color:var(--paper)}
+.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem;padding:1rem clamp(1rem,4vw,5rem);border-bottom:1px solid #444b43;font-size:clamp(.85rem,1vw,1.1rem)}.toolbar label{display:flex;align-items:center;gap:.65rem}.toolbar select{max-width:min(75vw,32rem)}.toolbar .tools{display:flex;gap:.65rem;margin-left:auto}
+.disclosure{padding:.7rem clamp(1rem,4vw,5rem);margin:0;font-family:monospace;font-size:clamp(.72rem,.9vw,1rem);letter-spacing:.04em;color:var(--paper)}
+#stage{padding:clamp(1.25rem,4vw,5rem);min-height:calc(100svh - 13rem);display:grid;align-items:center}.card{width:min(100%,1600px);margin:auto}.eyebrow{font-family:monospace;font-size:clamp(.85rem,1.2vw,1.5rem);letter-spacing:.12em;text-transform:uppercase;margin:0 0 1.25rem;border-left:4px solid var(--oxide);padding-left:1rem}h1{font-family:"DIN Condensed","Arial Narrow","Impact",sans-serif;font-size:clamp(2rem,4.2vw,5rem);font-weight:700;line-height:1.06;margin:0 0 clamp(1.5rem,3vw,3rem);text-wrap:balance}.brief{font-size:clamp(1.2rem,2.5vw,3rem);line-height:1.3;max-width:58ch;margin:0;text-wrap:pretty}.facts{display:grid;gap:1.5rem;margin:0}.facts div{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;padding:1.4rem 0;border-top:1px solid #747b71;font-size:clamp(1.2rem,2.5vw,3rem);line-height:1.25}.facts dt{font-weight:400}.facts dd{margin:0;font-weight:700}.question{font-size:clamp(1.45rem,2.8vw,3.35rem);line-height:1.2;margin:0 0 1rem}.choice-guidance{font-size:clamp(1rem,1.3vw,1.5rem);line-height:1.35;margin:0 0 1.4rem}.choices{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.choices li{display:grid;grid-template-columns:1.5em 1fr;gap:1rem;align-items:start;border:1px solid #747b71;padding:1.2rem;font-size:clamp(1.1rem,1.8vw,2.2rem);line-height:1.25}.letter{font-family:monospace;font-weight:700}
+.navigation{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem clamp(1rem,4vw,5rem);border-top:1px solid #444b43}.navigation p{margin:0;font-size:clamp(.8rem,1vw,1rem)}.navigation .actions{display:flex;gap:.65rem}.keys{opacity:.85}#blackout{position:fixed;inset:0;background:#000;z-index:10;display:grid;place-items:end center;padding:1rem}#blackout[hidden]{display:none}#blackout button{color:#aaa;border-color:#444;background:#000;font-size:.85rem}
+#notes{padding:2rem clamp(1rem,4vw,5rem);border-top:1px solid #747b71;max-width:1100px;margin:auto}#notes h2{font-size:2rem}#notes h3{font-size:1.2rem}#notes p,#notes li{font-size:1.1rem;line-height:1.5}#notes dl div{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.7rem 0}#notes dd{margin:0}.host-scenario{break-before:page}.host-scenario:first-of-type{break-before:auto}#notes .refs{font-size:1rem}
+@media(max-width:640px){.toolbar label{width:100%;align-items:flex-start;flex-direction:column}.toolbar .tools{margin-left:0}.toolbar select{max-width:100%;width:100%}.choices{grid-template-columns:1fr}.facts div{grid-template-columns:1fr;gap:.5rem}.navigation{align-items:flex-start;flex-wrap:wrap}.navigation .keys{display:none}#stage{min-height:50svh}}
+@page{size:A4;margin:15mm}
+@media print{:root{color-scheme:light;background:#fff;color:#111}body{font-family:Arial,sans-serif}.toolbar,.disclosure,#stage,.navigation,#blackout,noscript{display:none!important}#notes{display:block!important;max-width:none;padding:0;border:0}#notes h2{font-size:20pt;line-height:1.1;margin:0 0 .35em;break-after:avoid}#notes>h2{font-size:16pt}#notes h3{font-size:12pt;line-height:1.2;margin:.65em 0 .2em;break-after:avoid}#notes p,#notes li{font-size:11pt;line-height:1.2;margin:.3em 0}#notes p{orphans:2;widows:2}#notes a{color:#111}#notes dl{margin:.3em 0}#notes dl div{font-size:11pt;line-height:1.2;gap:5mm;margin:.2em 0}#notes ol{padding-left:1.4rem;margin:.35em 0}#notes li p{margin:.15em 0}#notes li,#notes dl div{break-inside:avoid}#notes .refs{font-size:10pt;line-height:1.2;margin:.6em 0}.print-disclosure{font-size:10pt!important;margin:0 0 .6em!important}}
+</style>
+</head>
+<body>
+<header class="toolbar">
+  <label for="scenario">Scenario <select id="scenario"><option value="1">1. The $250K Transfer</option><option value="2">2. Code Red</option><option value="3">3. The AI Pipeline Is Compromised</option><option value="4">4. Your Trusted Vendor May Be Compromised</option><option value="5">5. The Water Is Safe. Or Is It?</option><option value="6">6. The AI Wants to Pull the Plug</option></select></label>
+  <div class="tools"><button id="notesButton" type="button" aria-expanded="false" aria-controls="notes">Host notes</button><button id="printButton" type="button">Print notes</button><button id="blackoutButton" type="button" aria-pressed="false">Blackout · B</button></div>
+</header>
+<p class="disclosure">FICTIONAL EXERCISE / REHEARSAL CANDIDATE / FINAL VENUE ACCEPTANCE PENDING</p>
+<main id="stage" aria-label="Emergency fallback cards"><section class="card" id="card-1" data-scenario="1">
+      <p class="eyebrow">Scenario 01 / Briefing</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><p class="brief">The CFO takes a Microsoft Teams video call from the CEO, who is travelling in Europe. The confidential acquisition they have negotiated for weeks is real.</p></div></section>
+<section class="card" id="card-2" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Briefing</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><p class="brief">“Legal has finally cleared it. We need the $250,000 deposit transferred to this account within the next 30 minutes or the seller can walk.”</p></div></section>
+<section class="card" id="card-3" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Briefing</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><p class="brief">The caller looks and sounds like the CEO. They know the acquisition target, yesterday&#39;s confidential board discussion, a concern one director raised privately, and the CFO&#39;s upcoming vacation. Wire instructions then arrive from the CEO&#39;s legitimate corporate email.</p></div></section>
+<section class="card" id="card-4" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Briefing</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><p class="brief">The CFO calls the CEO&#39;s known mobile number. No answer.</p></div></section>
+<section class="card" id="card-5" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Known facts</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><dl class="facts"><div><dt>Wire instructions sent from</dt><dd>CEO&#39;s real email</dd></div><div><dt>Receiving bank account</dt><dd>New</dd></div></dl></div></section>
+<section class="card" id="card-6" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Known facts</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><dl class="facts"><div><dt>Policy over $100,000</dt><dd>Two executives</dd></div><div><dt>Second authorized executive</dt><dd>In flight, unreachable</dd></div></dl></div></section>
+<section class="card" id="card-7" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Known facts</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><dl class="facts"><div><dt>CEO&#39;s known mobile</dt><dd>No answer</dd></div></dl></div></section>
+<section class="card" id="card-8" data-scenario="1" hidden>
+      <p class="eyebrow">Scenario 01 / Decision</p>
+      <h1>The $250K Transfer</h1><div class="card-content"><h2 class="question">What should the CFO do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Proceed with the transfer</span></li><li><span class="letter">B</span><span>Refuse until the CEO is independently verified</span></li><li><span class="letter">C</span><span>Verify with the seller&#39;s law firm, then proceed</span></li><li><span class="letter">D</span><span>Escalate to security and the board chair</span></li></ol></div></section>
+<section class="card" id="card-9" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Briefing</p>
+      <h1>Code Red</h1><div class="card-content"><p class="brief">2:15 AM at a regional hospital. A ransomware attack has disrupted several systems.</p></div></section>
+<section class="card" id="card-10" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Briefing</p>
+      <h1>Code Red</h1><div class="card-content"><p class="brief">IT believes the attack is contained but cannot guarantee the attackers are completely removed. Clinical leadership reports that prolonged downtime is beginning to increase patient-safety risk.</p></div></section>
+<section class="card" id="card-11" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Briefing</p>
+      <h1>Code Red</h1><div class="card-content"><p class="brief">The attackers demand $2 million and show evidence of a working decryptor. Cyber insurance would cover most of the payment. Police recommend against paying, but the decision belongs to the hospital. A neighbouring hospital can accept some, but not all, critical patients.</p></div></section>
+<section class="card" id="card-12" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Known facts</p>
+      <h1>Code Red</h1><div class="card-content"><dl class="facts"><div><dt>Electronic health records</dt><dd>Offline</dd></div><div><dt>Diagnostic imaging</dt><dd>Intermittent</dd></div></dl></div></section>
+<section class="card" id="card-13" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Known facts</p>
+      <h1>Code Red</h1><div class="card-content"><dl class="facts"><div><dt>Medication systems</dt><dd>Manual procedures</dd></div><div><dt>Emergency department</dt><dd>Operating</dd></div></dl></div></section>
+<section class="card" id="card-14" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Known facts</p>
+      <h1>Code Red</h1><div class="card-content"><dl class="facts"><div><dt>Backups</dt><dd>Appear intact</dd></div><div><dt>Estimated restoration</dt><dd>24–48 hours</dd></div></dl></div></section>
+<section class="card" id="card-15" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Known facts</p>
+      <h1>Code Red</h1><div class="card-content"><dl class="facts"><div><dt>Ransom demand</dt><dd>$2,000,000</dd></div></dl></div></section>
+<section class="card" id="card-16" data-scenario="2" hidden>
+      <p class="eyebrow">Scenario 02 / Decision</p>
+      <h1>Code Red</h1><div class="card-content"><h2 class="question">What should hospital leadership do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Negotiate and keep payment on the table</span></li><li><span class="letter">B</span><span>Refuse payment and recover from backups</span></li><li><span class="letter">C</span><span>Divert patients, run manual, set a recovery deadline</span></li><li><span class="letter">D</span><span>Give the clinical incident commander authority</span></li></ol></div></section>
+<section class="card" id="card-17" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Briefing</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><p class="brief">Your organization runs an internal AI platform for developers, data scientists and several customer-facing applications. Teams routinely upload models, datasets, prompts, code and evaluation data.</p></div></section>
+<section class="card" id="card-18" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Briefing</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><p class="brief">An automated security system detects unusual code execution in the platform&#39;s dataset-processing environment. Minutes later, that service&#39;s credentials are used to access an internal AI repository.</p></div></section>
+<section class="card" id="card-19" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Briefing</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><p class="brief">Several production AI applications depend on the platform. Security can isolate dataset processing immediately, but cannot guarantee the attacker hasn&#39;t already moved elsewhere with the exposed credentials.</p></div></section>
+<section class="card" id="card-20" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Known facts</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Unauthorized code execution</dt><dd>Confirmed</dd></div><div><dt>Service credentials exposed</dt><dd>Likely</dd></div></dl></div></section>
+<section class="card" id="card-21" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Known facts</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Customer data accessed</dt><dd>Unknown</dd></div><div><dt>Production models modified</dt><dd>No evidence</dd></div></dl></div></section>
+<section class="card" id="card-22" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Known facts</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Attacker still present</dt><dd>Unknown</dd></div></dl></div></section>
+<section class="card" id="card-23" data-scenario="3" hidden>
+      <p class="eyebrow">Scenario 03 / Decision</p>
+      <h1>The AI Pipeline Is Compromised</h1><div class="card-content"><h2 class="question">What should you do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Shut down the entire AI platform</span></li><li><span class="letter">B</span><span>Isolate only dataset processing</span></li><li><span class="letter">C</span><span>Keep AI running, rotate credentials, hunt</span></li><li><span class="letter">D</span><span>Restricted operation: isolate, revoke, block intake</span></li></ol></div></section>
+<section class="card" id="card-24" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Briefing</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><p class="brief">10:42 AM. Your SOC detects unusual activity from the privileged account of Nexora Systems, a strategic technology partner supporting critical infrastructure. Maya asks whether it is authorized. At 10:44, Nexora Support says it has seen no alerts and is investigating.</p></div></section>
+<section class="card" id="card-25" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Briefing</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><p class="brief">10:48 AM. Nexora Systems Support: “We’ve investigated and found no evidence that our environment has been compromised.”</p></div></section>
+<section class="card" id="card-26" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Briefing</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><p class="brief">10:49 AM. Maya, SOC Analyst: “Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.” At 10:50 AM, Nexora Systems Support: “Disabling our access will interrupt critical support services.” The instruction has been issued; execution has not been shown.</p></div></section>
+<section class="card" id="card-27" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Known facts</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Malware detected</dt><dd>No</dd></div><div><dt>Confirmed lateral movement</dt><dd>No</dd></div></dl></div></section>
+<section class="card" id="card-28" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Known facts</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Known malicious IP traffic</dt><dd>No</dd></div><div><dt>Unusual privileged admin action</dt><dd>Yes</dd></div></dl></div></section>
+<section class="card" id="card-29" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Known facts</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><dl class="facts"><div><dt>Seen before from this account</dt><dd>Never</dd></div></dl></div></section>
+<section class="card" id="card-30" data-scenario="4" hidden>
+      <p class="eyebrow">Scenario 04 / Decision</p>
+      <h1>Your Trusted Vendor May Be Compromised</h1><div class="card-content"><h2 class="question">What should you do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Disable the vendor&#39;s privileged access now</span></li><li><span class="letter">B</span><span>Cut to least privilege and investigate jointly</span></li><li><span class="letter">C</span><span>Keep access; SOC approves every privileged action</span></li><li><span class="letter">D</span><span>Leave access unchanged until there&#39;s evidence</span></li></ol></div></section>
+<section class="card" id="card-31" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Briefing</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><p class="brief">A municipal water-treatment facility detects unexpected changes to chemical dosing. The control system reports WATER QUALITY: SAFE. Independent physical sensors also read within acceptable limits.</p></div></section>
+<section class="card" id="card-32" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Briefing</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><p class="brief">Cybersecurity detects suspicious communications between an engineering workstation and infrastructure associated with previous cyberattacks. The AI security system recommends: ISOLATE ENGINEERING NETWORK IMMEDIATELY.</p></div></section>
+<section class="card" id="card-33" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Briefing</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><p class="brief">Operations: “If you isolate that network, several automated treatment processes will revert to manual control.” Operators can run manually for about six hours before staffing levels and process complexity become a problem.</p></div></section>
+<section class="card" id="card-34" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Known facts</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><dl class="facts"><div><dt>Unsafe water</dt><dd>No</dd></div><div><dt>Confirmed attacker</dt><dd>No</dd></div></dl></div></section>
+<section class="card" id="card-35" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Known facts</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><dl class="facts"><div><dt>Confirmed sensor manipulation</dt><dd>No</dd></div><div><dt>Suspicious cyber activity</dt><dd>Yes</dd></div></dl></div></section>
+<section class="card" id="card-36" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Known facts</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><dl class="facts"><div><dt>AI: probability of compromise</dt><dd>87%</dd></div><div><dt>Safe manual operation</dt><dd>About 6 hours</dd></div></dl></div></section>
+<section class="card" id="card-37" data-scenario="5" hidden>
+      <p class="eyebrow">Scenario 05 / Decision</p>
+      <h1>The Water Is Safe. Or Is It?</h1><div class="card-content"><h2 class="question">What should you do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Isolate the engineering network immediately</span></li><li><span class="letter">B</span><span>Keep operating while cyber investigates</span></li><li><span class="letter">C</span><span>Switch to manual operations, then isolate</span></li><li><span class="letter">D</span><span>Sample and monitor for 30 minutes, then decide</span></li></ol></div></section>
+<section class="card" id="card-38" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Briefing</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><p class="brief">Your autonomous AI security agent can investigate alerts, correlate telemetry, query identity systems, disable accounts, block network connections and isolate endpoints. High-impact actions on production infrastructure still require human authorization.</p></div></section>
+<section class="card" id="card-39" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Briefing</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><p class="brief">10:30 AM. The agent flags a critical production server, investigates, and calculates a 94% probability of active compromise. It recommends isolating the server immediately.</p></div></section>
+<section class="card" id="card-40" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Briefing</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><p class="brief">That server is carrying a $4.7 million transaction with your largest customer. Isolation will almost certainly terminate it and could cause several hours of customer-facing disruption. Analysts have reviewed the evidence but not confirmed it. The AI estimates that waiting another 10 minutes materially increases the chance of significant lateral movement.</p></div></section>
+<section class="card" id="card-41" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Known facts</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><dl class="facts"><div><dt>Credential compromise</dt><dd>Probable</dd></div><div><dt>Privilege escalation</dt><dd>Detected</dd></div></dl></div></section>
+<section class="card" id="card-42" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Known facts</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><dl class="facts"><div><dt>Unusual outbound traffic</dt><dd>Detected</dd></div><div><dt>Known malware</dt><dd>Not detected</dd></div></dl></div></section>
+<section class="card" id="card-43" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Known facts</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><dl class="facts"><div><dt>Data exfiltration</dt><dd>Not confirmed</dd></div><div><dt>AI: probability of compromise</dt><dd>94%</dd></div></dl></div></section>
+<section class="card" id="card-44" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Known facts</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><dl class="facts"><div><dt>Customer transaction at stake</dt><dd>$4.7M</dd></div></dl></div></section>
+<section class="card" id="card-45" data-scenario="6" hidden>
+      <p class="eyebrow">Scenario 06 / Decision</p>
+      <h1>The AI Wants to Pull the Plug</h1><div class="card-content"><h2 class="question">What should you do?</h2><p class="choice-guidance">Before polling, read all four complete responses from the host notes. These are short labels.</p><ol class="choices"><li><span class="letter">A</span><span>Authorize immediate isolation</span></li><li><span class="letter">B</span><span>Give analysts 10 minutes to validate first</span></li><li><span class="letter">C</span><span>Restrict traffic and access; let the deal close</span></li><li><span class="letter">D</span><span>Let the AI agent decide within risk thresholds</span></li></ol></div></section></main>
+<footer class="navigation"><p id="position" aria-live="polite"></p><p class="keys">← previous / → or Space next / B blackout</p><div class="actions"><button id="previous" type="button">Previous</button><button id="next" type="button">Next</button></div></footer>
+<section id="notes" aria-label="Complete host notes">
+  <h2>Complete host-read notes</h2><p class="print-disclosure">Fictional exercise. Rehearsal candidate; final venue acceptance pending. Read the complete facts and all four choices. No answer is selected.</p>
+  <article class="host-scenario"><h2>1. The $250K Transfer</h2>
+    <h3>Briefing</h3><p>The CFO takes a Microsoft Teams video call from the CEO, who is travelling in Europe. The confidential acquisition they have negotiated for weeks is real.</p><p>“Legal has finally cleared it. We need the $250,000 deposit transferred to this account within the next 30 minutes or the seller can walk.”</p><p>The caller looks and sounds like the CEO. They know the acquisition target, yesterday&#39;s confidential board discussion, a concern one director raised privately, and the CFO&#39;s upcoming vacation. Wire instructions then arrive from the CEO&#39;s legitimate corporate email.</p><p>The CFO calls the CEO&#39;s known mobile number. No answer.</p>
+    <h3>Facts</h3><dl><div><dt>Wire instructions sent from</dt><dd>CEO&#39;s real email</dd></div><div><dt>Receiving bank account</dt><dd>New</dd></div><div><dt>Policy over $100,000</dt><dd>Two executives</dd></div><div><dt>Second authorized executive</dt><dd>In flight, unreachable</dd></div><div><dt>CEO&#39;s known mobile</dt><dd>No answer</dd></div></dl>
+    <h3>What should the CFO do?</h3><ol><li><strong>A. Proceed with the transfer</strong><p>Proceed with the transfer. The acquisition is known to be legitimate, the CEO demonstrated extensive confidential knowledge, and missing the deadline creates significant business risk.</p></li><li><strong>B. Refuse until the CEO is independently verified</strong><p>Refuse to transfer the funds until the CEO can be independently verified. Video, voice, email and confidential information can potentially all be compromised.</p></li><li><strong>C. Verify with the seller&#39;s law firm, then proceed</strong><p>Contact the seller or receiving law firm using previously verified contact information and independently validate the transaction and banking instructions. Proceed if verification succeeds.</p></li><li><strong>D. Escalate to security and the board chair</strong><p>Escalate immediately to security and the board chair and have them determine whether the transaction proceeds.</p></li></ol></article>
+<article class="host-scenario"><h2>2. Code Red</h2>
+    <h3>Briefing</h3><p>2:15 AM at a regional hospital. A ransomware attack has disrupted several systems.</p><p>IT believes the attack is contained but cannot guarantee the attackers are completely removed. Clinical leadership reports that prolonged downtime is beginning to increase patient-safety risk.</p><p>The attackers demand $2 million and show evidence of a working decryptor. Cyber insurance would cover most of the payment. Police recommend against paying, but the decision belongs to the hospital. A neighbouring hospital can accept some, but not all, critical patients.</p>
+    <h3>Facts</h3><dl><div><dt>Electronic health records</dt><dd>Offline</dd></div><div><dt>Diagnostic imaging</dt><dd>Intermittent</dd></div><div><dt>Medication systems</dt><dd>Manual procedures</dd></div><div><dt>Emergency department</dt><dd>Operating</dd></div><div><dt>Backups</dt><dd>Appear intact</dd></div><div><dt>Estimated restoration</dt><dd>24–48 hours</dd></div><div><dt>Ransom demand</dt><dd>$2,000,000</dd></div></dl>
+    <h3>What should hospital leadership do?</h3><ol><li><strong>A. Negotiate and keep payment on the table</strong><p>Begin negotiations and preserve payment as an option. Patient safety may justify payment if restoration cannot occur quickly enough.</p></li><li><strong>B. Refuse payment and recover from backups</strong><p>Refuse payment and commit to recovery from backups. Payment does not guarantee recovery and creates additional legal, security and societal risks.</p></li><li><strong>C. Divert patients, run manual, set a recovery deadline</strong><p>Divert the highest-risk patients, continue manual operations and establish a defined recovery window before reconsidering payment.</p></li><li><strong>D. Give the clinical incident commander authority</strong><p>Transfer operational decision authority to the clinical incident commander and allow patient-safety requirements to determine the response.</p></li></ol></article>
+<article class="host-scenario"><h2>3. The AI Pipeline Is Compromised</h2>
+    <h3>Briefing</h3><p>Your organization runs an internal AI platform for developers, data scientists and several customer-facing applications. Teams routinely upload models, datasets, prompts, code and evaluation data.</p><p>An automated security system detects unusual code execution in the platform&#39;s dataset-processing environment. Minutes later, that service&#39;s credentials are used to access an internal AI repository.</p><p>Several production AI applications depend on the platform. Security can isolate dataset processing immediately, but cannot guarantee the attacker hasn&#39;t already moved elsewhere with the exposed credentials.</p>
+    <h3>Facts</h3><dl><div><dt>Unauthorized code execution</dt><dd>Confirmed</dd></div><div><dt>Service credentials exposed</dt><dd>Likely</dd></div><div><dt>Customer data accessed</dt><dd>Unknown</dd></div><div><dt>Production models modified</dt><dd>No evidence</dd></div><div><dt>Attacker still present</dt><dd>Unknown</dd></div></dl>
+    <h3>What should you do?</h3><ol><li><strong>A. Shut down the entire AI platform</strong><p>Shut down the entire AI platform. The blast radius is unknown and compromised credentials may have enabled lateral movement.</p></li><li><strong>B. Isolate only dataset processing</strong><p>Isolate only the affected dataset-processing environment. There is currently no evidence that production models or customer-facing applications have been compromised.</p></li><li><strong>C. Keep AI running, rotate credentials, hunt</strong><p>Keep production AI operating, immediately revoke and rotate credentials, significantly increase monitoring and aggressively hunt for lateral movement.</p></li><li><strong>D. Restricted operation: isolate, revoke, block intake</strong><p>Move the platform into restricted operation: isolate high-risk components, revoke credentials and block new model/dataset ingestion while allowing validated production workloads to continue.</p></li></ol></article>
+<article class="host-scenario"><h2>4. Your Trusted Vendor May Be Compromised</h2>
+    <h3>Briefing</h3><p>10:42 AM. Your SOC detects unusual activity from the privileged account of Nexora Systems, a strategic technology partner supporting critical infrastructure. Maya asks whether it is authorized. At 10:44, Nexora Support says it has seen no alerts and is investigating.</p><p>10:48 AM. Nexora Systems Support: “We’ve investigated and found no evidence that our environment has been compromised.”</p><p>10:49 AM. Maya, SOC Analyst: “Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.” At 10:50 AM, Nexora Systems Support: “Disabling our access will interrupt critical support services.” The instruction has been issued; execution has not been shown.</p>
+    <h3>Facts</h3><dl><div><dt>Malware detected</dt><dd>No</dd></div><div><dt>Confirmed lateral movement</dt><dd>No</dd></div><div><dt>Known malicious IP traffic</dt><dd>No</dd></div><div><dt>Unusual privileged admin action</dt><dd>Yes</dd></div><div><dt>Seen before from this account</dt><dd>Never</dd></div></dl>
+    <h3>What should you do?</h3><ol><li><strong>A. Disable the vendor&#39;s privileged access now</strong><p>Disable the vendor&#39;s privileged access immediately.</p></li><li><strong>B. Cut to least privilege and investigate jointly</strong><p>Reduce the vendor to least-privilege access and significantly increase monitoring while investigating jointly.</p></li><li><strong>C. Keep access; SOC approves every privileged action</strong><p>Maintain necessary access but require your SOC to approve or validate every privileged action performed by the vendor.</p></li><li><strong>D. Leave access unchanged until there&#39;s evidence</strong><p>Leave access unchanged until evidence of compromise exists.</p></li></ol></article>
+<article class="host-scenario"><h2>5. The Water Is Safe. Or Is It?</h2>
+    <h3>Briefing</h3><p>A municipal water-treatment facility detects unexpected changes to chemical dosing. The control system reports WATER QUALITY: SAFE. Independent physical sensors also read within acceptable limits.</p><p>Cybersecurity detects suspicious communications between an engineering workstation and infrastructure associated with previous cyberattacks. The AI security system recommends: ISOLATE ENGINEERING NETWORK IMMEDIATELY.</p><p>Operations: “If you isolate that network, several automated treatment processes will revert to manual control.” Operators can run manually for about six hours before staffing levels and process complexity become a problem.</p>
+    <h3>Facts</h3><dl><div><dt>Unsafe water</dt><dd>No</dd></div><div><dt>Confirmed attacker</dt><dd>No</dd></div><div><dt>Confirmed sensor manipulation</dt><dd>No</dd></div><div><dt>Suspicious cyber activity</dt><dd>Yes</dd></div><div><dt>AI: probability of compromise</dt><dd>87%</dd></div><div><dt>Safe manual operation</dt><dd>About 6 hours</dd></div></dl>
+    <h3>What should you do?</h3><ol><li><strong>A. Isolate the engineering network immediately</strong><p>Immediately isolate the engineering network. The potential consequences of allowing an attacker to remain inside an OT environment outweigh the operational disruption.</p></li><li><strong>B. Keep operating while cyber investigates</strong><p>Continue operating while cybersecurity investigates. Independent physical measurements currently indicate that the treatment process remains safe.</p></li><li><strong>C. Switch to manual operations, then isolate</strong><p>Transition the facility to manual operations and then isolate the suspected engineering network.</p></li><li><strong>D. Sample and monitor for 30 minutes, then decide</strong><p>Increase independent physical sampling and cyber monitoring for 30 minutes before deciding whether isolation is necessary.</p></li></ol></article>
+<article class="host-scenario"><h2>6. The AI Wants to Pull the Plug</h2>
+    <h3>Briefing</h3><p>Your autonomous AI security agent can investigate alerts, correlate telemetry, query identity systems, disable accounts, block network connections and isolate endpoints. High-impact actions on production infrastructure still require human authorization.</p><p>10:30 AM. The agent flags a critical production server, investigates, and calculates a 94% probability of active compromise. It recommends isolating the server immediately.</p><p>That server is carrying a $4.7 million transaction with your largest customer. Isolation will almost certainly terminate it and could cause several hours of customer-facing disruption. Analysts have reviewed the evidence but not confirmed it. The AI estimates that waiting another 10 minutes materially increases the chance of significant lateral movement.</p>
+    <h3>Facts</h3><dl><div><dt>Credential compromise</dt><dd>Probable</dd></div><div><dt>Privilege escalation</dt><dd>Detected</dd></div><div><dt>Unusual outbound traffic</dt><dd>Detected</dd></div><div><dt>Known malware</dt><dd>Not detected</dd></div><div><dt>Data exfiltration</dt><dd>Not confirmed</dd></div><div><dt>AI: probability of compromise</dt><dd>94%</dd></div><div><dt>Customer transaction at stake</dt><dd>$4.7M</dd></div></dl>
+    <h3>What should you do?</h3><ol><li><strong>A. Authorize immediate isolation</strong><p>Authorize immediate isolation. A 94% probability combined with detected privilege escalation creates sufficient risk to act despite the business consequences.</p></li><li><strong>B. Give analysts 10 minutes to validate first</strong><p>Give analysts 10 minutes to independently validate the AI&#39;s conclusion before authorizing isolation.</p></li><li><strong>C. Restrict traffic and access; let the deal close</strong><p>Do not isolate the server. Restrict outbound connectivity and privileged access while allowing the customer transaction to complete.</p></li><li><strong>D. Let the AI agent decide within risk thresholds</strong><p>Allow the AI agent to determine the appropriate containment action based on its assessment and established organizational risk thresholds.</p></li></ol></article>
+  <p class="refs">Production references: #4228, #4229, #4230 and #4232. Kris/Chris review the host read and facts; Nathan/Annex AV accepts projected readability and playback. Next check: October 5, 2026.</p>
+</section>
+<div id="blackout" hidden role="dialog" aria-modal="true" aria-label="Stage blackout"><button id="restore" type="button">Restore exact card · B</button></div>
+<noscript><p>Read or print the complete host notes below. Manual card controls require JavaScript.</p></noscript>
+<script>
+"use strict";
+const cards = Array.from(document.querySelectorAll(".card"));
+const scenario = document.querySelector("#scenario");
+const previous = document.querySelector("#previous");
+const next = document.querySelector("#next");
+const position = document.querySelector("#position");
+const notes = document.querySelector("#notes");
+const notesButton = document.querySelector("#notesButton");
+const blackout = document.querySelector("#blackout");
+const blackoutButton = document.querySelector("#blackoutButton");
+let cue = 0;
+notes.hidden = true;
+function render() {
+  cards.forEach((card, index) => { card.hidden = index !== cue; });
+  scenario.value = cards[cue].dataset.scenario;
+  previous.disabled = cue === 0;
+  next.disabled = cue === cards.length - 1;
+  position.textContent = `Card ${cue + 1} of ${cards.length} · manual GO`;
+}
+function move(direction) {
+  if (!blackout.hidden) return;
+  cue = Math.max(0, Math.min(cards.length - 1, cue + direction));
+  render();
+}
+function toggleBlackout() {
+  blackout.hidden = !blackout.hidden;
+  blackoutButton.setAttribute("aria-pressed", String(!blackout.hidden));
+  document.querySelectorAll(".toolbar,.navigation,#stage,#notes").forEach(region => { region.inert = !blackout.hidden; });
+  if (!blackout.hidden) document.querySelector("#restore").focus();
+  else blackoutButton.focus();
+}
+previous.addEventListener("click", () => move(-1));
+next.addEventListener("click", () => move(1));
+scenario.addEventListener("change", () => {
+  if (!blackout.hidden) { scenario.value = cards[cue].dataset.scenario; return; }
+  cue = cards.findIndex(card => card.dataset.scenario === scenario.value);
+  render();
+});
+blackoutButton.addEventListener("click", toggleBlackout);
+document.querySelector("#restore").addEventListener("click", toggleBlackout);
+blackout.addEventListener("click", event => { if (event.target === blackout) toggleBlackout(); });
+notesButton.addEventListener("click", () => {
+  notes.hidden = !notes.hidden;
+  notesButton.setAttribute("aria-expanded", String(!notes.hidden));
+});
+document.querySelector("#printButton").addEventListener("click", () => window.print());
+document.addEventListener("keydown", event => {
+  if (event.repeat || event.altKey || event.ctrlKey || event.metaKey ||
+      event.target.matches("select,input,textarea,[contenteditable]")) return;
+  if ((event.key === " " || event.code === "Space") && event.target.closest("button,a")) return;
+  if (event.key.toLowerCase() === "b" || (event.key === "Escape" && !blackout.hidden)) { event.preventDefault(); toggleBlackout(); }
+  else if (["ArrowLeft", "ArrowRight", " "].includes(event.key)) {
+    event.preventDefault();
+    move(event.key === "ArrowLeft" ? -1 : 1);
+  }
+});
+render();
+</script>
+</body>
+</html>

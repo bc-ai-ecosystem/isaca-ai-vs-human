@@ -1,0 +1,303 @@
+{
+  "state": "Replacement-ready complete alternatives",
+  "source": "User authorizes production ratherthan split ownership; supplied names,photos andlogos; fictional/generated cinematics andoriginalscore",
+  "assets": {
+    "opening": {
+      "file": "isaca-opening-alternative-v1-af058b095b6e.mp4",
+      "sha256": "af058b095b6efa5365ab9f4bb2afd3809e2de57a9281461d4d0142be59863ff2",
+      "bytes": 31608405,
+      "duration_seconds": 104.0,
+      "poster": "isaca-opening-alternative-v1-poster.jpg",
+      "captions": "isaca-opening-alternative-v1.vtt",
+      "srt": "isaca-opening-alternative-v1.srt",
+      "title": "Opening / host and Cyber Judges",
+      "transcript": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": "[Original suspense score; distant arena crowd]\nA fictional human boxer and AI square off."
+        },
+        {
+          "start": 4.0,
+          "end": 8.0,
+          "text": "The human studies her opponent."
+        },
+        {
+          "start": 8.0,
+          "end": 15.5,
+          "text": "[Glove movement and impact]\nThe human and AI trade an exchange; neither wins."
+        },
+        {
+          "start": 15.5,
+          "end": 19.0,
+          "text": "The human holds her guard."
+        },
+        {
+          "start": 19.0,
+          "end": 24.0,
+          "text": "[Padded glove impact]\nThe human lands a punch on the AI."
+        },
+        {
+          "start": 24.0,
+          "end": 28.0,
+          "text": "6 CYBER INCIDENTS\nAn interactive cyber awareness experience"
+        },
+        {
+          "start": 28.0,
+          "end": 32.0,
+          "text": "HUMAN JUDGMENT\nARTIFICIAL INTELLIGENCE"
+        },
+        {
+          "start": 32.0,
+          "end": 37.0,
+          "text": "WHO MAKES\nTHE BETTER CALL?\nThe room decides. The Cyber Judges score."
+        },
+        {
+          "start": 37.0,
+          "end": 44.0,
+          "text": "YOUR HOST\nDominic Vogel\nPresident, Vogel Cyber Leadership & Coaching"
+        },
+        {
+          "start": 44.0,
+          "end": 51.0,
+          "text": "CYBER JUDGE\nPenny Longman\nPresident, WiCyS Western Canada Affiliate\nCEO, NKST"
+        },
+        {
+          "start": 51.0,
+          "end": 58.0,
+          "text": "CYBER JUDGE\nLarry Carson\nChief Information Security Officer, UBC"
+        },
+        {
+          "start": 58.0,
+          "end": 65.0,
+          "text": "CYBER JUDGE\nJeffrey Ten Eyck\nSenior Product Advocate, SOCRadar"
+        },
+        {
+          "start": 65.0,
+          "end": 72.0,
+          "text": "CYBER JUDGE\nShashi Gautam\nSenior Sales Engineer, Gigamon"
+        },
+        {
+          "start": 72.0,
+          "end": 79.0,
+          "text": "PRESENTING SPONSOR\nsponsor socradar"
+        },
+        {
+          "start": 79.0,
+          "end": 86.0,
+          "text": "PRESENTING SPONSOR\nsponsor gigamon"
+        },
+        {
+          "start": 86.0,
+          "end": 94.0,
+          "text": "ISACA VANCOUVER\nIn partnership with BC + AI"
+        },
+        {
+          "start": 94.0,
+          "end": 104.0,
+          "text": "AI vs. HUMAN\nDominic Vogel, the floor is yours."
+        }
+      ],
+      "state": "Complete creative alternative for review; venue acceptance pending; Chris may replace it"
+    },
+    "cinematic": {
+      "file": "isaca-cinematic-alternative-v1-f869648f82a5.mp4",
+      "sha256": "f869648f82a506921c151b0554596f8f5d3a3fc33c5b6b8f593b371ebe2ed9c3",
+      "bytes": 60141573,
+      "duration_seconds": 56.208333333333336,
+      "poster": "isaca-cinematic-alternative-v1-poster.jpg",
+      "captions": "isaca-cinematic-alternative-v1.vtt",
+      "srt": "isaca-cinematic-alternative-v1.srt",
+      "title": "Closing cinematic / Human +AI",
+      "transcript": [
+        {
+          "start": 0.0,
+          "end": 2.7083333333333335,
+          "text": "The fight continues after the punch."
+        },
+        {
+          "start": 2.7083333333333335,
+          "end": 10.208333333333334,
+          "text": "[Mechanical servo movement]\nTheAI regains its footing."
+        },
+        {
+          "start": 10.208333333333334,
+          "end": 17.708333333333336,
+          "text": "[Glove movement and impact]\nThe human and AI trade an exchange; neither wins."
+        },
+        {
+          "start": 17.708333333333332,
+          "end": 25.208333333333332,
+          "text": "[Dark shifting texture]\nA nonhumanoid cyber-threat spreads through the arena."
+        },
+        {
+          "start": 25.208333333333332,
+          "end": 32.70833333333333,
+          "text": "Both fighters recognize the scale of the common threat."
+        },
+        {
+          "start": 32.708333333333336,
+          "end": 38.125,
+          "text": "They stop fighting and acknowledge each other."
+        },
+        {
+          "start": 38.125,
+          "end": 39.208333333333336,
+          "text": "TheAI studies the threat."
+        },
+        {
+          "start": 39.208333333333336,
+          "end": 41.708333333333336,
+          "text": "The human directs theAI toward a shared target."
+        },
+        {
+          "start": 41.708333333333336,
+          "end": 49.208333333333336,
+          "text": "[Faceted lattice contracts]\nWorking together, they contain the threat."
+        },
+        {
+          "start": 49.208333333333336,
+          "end": 56.208333333333336,
+          "text": "HUMAN + AI\nSpeed. Context. Judgment. Accountability."
+        }
+      ],
+      "state": "Complete creative alternative for review; venue acceptance pending; Chris may replace it"
+    },
+    "credits": {
+      "file": "isaca-credits-alternative-v1-fea059050fd4.mp4",
+      "sha256": "fea059050fd4c2bdbf616bc4fae0dd73387582746ab068dfb1c81e2785bdf04f",
+      "bytes": 1547475,
+      "duration_seconds": 42.0,
+      "poster": "isaca-credits-alternative-v1-poster.jpg",
+      "captions": "isaca-credits-alternative-v1.vtt",
+      "srt": "isaca-credits-alternative-v1.srt",
+      "title": "Credit roll",
+      "transcript": [
+        {
+          "start": 0.0,
+          "end": 7.0,
+          "text": "ISACA VANCOUVER\nIn partnership with BC + AI"
+        },
+        {
+          "start": 7.0,
+          "end": 14.0,
+          "text": "THANK YOU TO OUR SPONSORS\ncredit socradar"
+        },
+        {
+          "start": 14.0,
+          "end": 21.0,
+          "text": "THANK YOU TO OUR SPONSORS\ncredit gigamon"
+        },
+        {
+          "start": 21.0,
+          "end": 28.0,
+          "text": "OUR HOST & CYBER JUDGES\nHOST / Dominic Vogel\nCYBER JUDGES / Penny Longman · Larry Carson\nJeffrey Ten Eyck · Shashi Gautam"
+        },
+        {
+          "start": 28.0,
+          "end": 35.0,
+          "text": "THANK YOU\nISACA Vancouver Programs Team\nBC + AI community and event partners"
+        },
+        {
+          "start": 35.0,
+          "end": 42.0,
+          "text": "HUMAN + AI\nContinue the conversation with the Cyber Judges."
+        }
+      ],
+      "state": "Complete creative alternative for review; venue acceptance pending; Chris may replace it"
+    },
+    "closing": {
+      "file": "isaca-closing-alternative-v1-bab0bc629228.mp4",
+      "sha256": "bab0bc62922845d6446e8968f50a0d2a9683baf6ed36ae2fbb57df557ce716d9",
+      "bytes": 61691910,
+      "duration_seconds": 98.20833333333333,
+      "poster": "isaca-closing-alternative-v1-poster.jpg",
+      "captions": "isaca-closing-alternative-v1.vtt",
+      "srt": "isaca-closing-alternative-v1.srt",
+      "title": "Closing cinematic andcredits",
+      "transcript": [
+        {
+          "start": 0.0,
+          "end": 2.7083333333333335,
+          "text": "The fight continues after the punch."
+        },
+        {
+          "start": 2.7083333333333335,
+          "end": 10.208333333333334,
+          "text": "[Mechanical servo movement]\nTheAI regains its footing."
+        },
+        {
+          "start": 10.208333333333334,
+          "end": 17.708333333333336,
+          "text": "[Glove movement and impact]\nThe human and AI trade an exchange; neither wins."
+        },
+        {
+          "start": 17.708333333333332,
+          "end": 25.208333333333332,
+          "text": "[Dark shifting texture]\nA nonhumanoid cyber-threat spreads through the arena."
+        },
+        {
+          "start": 25.208333333333332,
+          "end": 32.70833333333333,
+          "text": "Both fighters recognize the scale of the common threat."
+        },
+        {
+          "start": 32.708333333333336,
+          "end": 38.125,
+          "text": "They stop fighting and acknowledge each other."
+        },
+        {
+          "start": 38.125,
+          "end": 39.208333333333336,
+          "text": "TheAI studies the threat."
+        },
+        {
+          "start": 39.208333333333336,
+          "end": 41.708333333333336,
+          "text": "The human directs theAI toward a shared target."
+        },
+        {
+          "start": 41.708333333333336,
+          "end": 49.208333333333336,
+          "text": "[Faceted lattice contracts]\nWorking together, they contain the threat."
+        },
+        {
+          "start": 49.208333333333336,
+          "end": 56.208333333333336,
+          "text": "HUMAN + AI\nSpeed. Context. Judgment. Accountability."
+        },
+        {
+          "start": 56.208333333333336,
+          "end": 63.208333333333336,
+          "text": "ISACA VANCOUVER\nIn partnership with BC + AI"
+        },
+        {
+          "start": 63.208333333333336,
+          "end": 70.20833333333334,
+          "text": "THANK YOU TO OUR SPONSORS\ncredit socradar"
+        },
+        {
+          "start": 70.20833333333334,
+          "end": 77.20833333333334,
+          "text": "THANK YOU TO OUR SPONSORS\ncredit gigamon"
+        },
+        {
+          "start": 77.20833333333334,
+          "end": 84.20833333333334,
+          "text": "OUR HOST & CYBER JUDGES\nHOST / Dominic Vogel\nCYBER JUDGES / Penny Longman · Larry Carson\nJeffrey Ten Eyck · Shashi Gautam"
+        },
+        {
+          "start": 84.20833333333334,
+          "end": 91.20833333333334,
+          "text": "THANK YOU\nISACA Vancouver Programs Team\nBC + AI community and event partners"
+        },
+        {
+          "start": 91.20833333333334,
+          "end": 98.20833333333334,
+          "text": "HUMAN + AI\nContinue the conversation with the Cyber Judges."
+        }
+      ],
+      "state": "Complete creative alternative for review; venue acceptance pending; Chris may replace it"
+    }
+  }
+}

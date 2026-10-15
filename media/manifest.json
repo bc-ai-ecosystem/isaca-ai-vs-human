@@ -1,0 +1,206 @@
+{
+  "vig1": {
+    "name": "Scenario 01 - The $250K Transfer (October13 v3 clean stage)",
+    "file": "scenario-01-v7-94f75f564399.mp4",
+    "sha256": "94f75f5643995cc9a83d6da8f595cb5221a1678e55e1b86042b78eead80a241a",
+    "bytes": 20703804,
+    "duration_seconds": 61.3,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "release_status": "October13 v3 candidate; verified local media; final provider and venue acceptance pending",
+    "source": "Chris October12 picture/graphic revisions from preserved clean sources; approved AAC audio copied unchanged",
+    "revision_date": "2026-10-13",
+    "previous_review_cut": "scenario-01-v6-768bb5d8c2fa.mp4",
+    "captions": {
+      "file": "scenario-01-v7.vtt",
+      "bytes": 1592,
+      "sha256": "2f83b70e9b972ffd9a0076f5a3f8b04e0c5963be61ad29501a80fcd05c2e3682"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "file": "scenario-01-v7.srt",
+      "bytes": 1584,
+      "sha256": "96889f11c9290d623eb441d1a18457c88f4f7d998cbf156600e21c95ec9726d4"
+    },
+    "poster": {
+      "file": "scenario-01-v7-poster.jpg",
+      "bytes": 49826,
+      "sha256": "75497b9b791bc3f2b8f74daf1539251acf25468f708ee8840c8889df3e2d3e4e"
+    }
+  },
+  "opener": {
+    "name": "The Night Desk - 28-second intro creative test (v1)",
+    "file": "night-desk-v1-8de8c74a3342.mp4",
+    "sha256": "8de8c74a33420043341d486367476790bb2705d1e47251e93fbb9f6031ee4ba0",
+    "bytes": 18471599,
+    "duration_seconds": 28,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "release_status": "Kris authorized shipping for ISACA review on 2026-10-03; full opening and venue acceptance pending",
+    "source": "ElevenLabs Veo 3.1; authorized synthetic Kris voice; original Music v2.5 and Sound Effects v2; fictional characters"
+  },
+  "openerPrevious": {
+    "name": "Show your work - 35-second intro creative test (v1)",
+    "file": "opener-intro-v1-5d4bedf03863.mp4",
+    "sha256": "5d4bedf038638f8d8ad1a2719284275e0ab19a7dac665629670d8c86fc06a919",
+    "bytes": 16679788,
+    "duration_seconds": 35,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "release_status": "Creative test integrated at Kris request on 2026-10-03; listening review, complete opener and venue approval pending",
+    "source": "ElevenLabs Kling 3.0 Pro; Bill stock narration; original Music v2.5 score and original title hit"
+  },
+  "vig2": {
+    "name": "Scenario 02: Code Red (October13 v3 clean stage)",
+    "file": "scenario-02-v7-ea4e3a843fd1.mp4",
+    "sha256": "ea4e3a843fd1d23d56d6b0a21ba1cb198d671a068ef1ce9e7f52df02675337a0",
+    "bytes": 27002617,
+    "duration_seconds": 54.125,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24.0,
+    "source": "Chris October12 picture/graphic revisions from preserved clean sources; approved AAC audio copied unchanged",
+    "release_status": "October13 v3 candidate; verified local media; final provider and venue acceptance pending",
+    "revision_date": "2026-10-13",
+    "previous_review_cut": "scenario-02-v6-3686cb71909a.mp4",
+    "captions": {
+      "file": "scenario-02-v7.vtt",
+      "bytes": 1372,
+      "sha256": "229eddb65e8db84ec45f08322b5a132e6c02fd89696d44feb149680d500f8656"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "file": "scenario-02-v7.srt",
+      "bytes": 1364,
+      "sha256": "ec23bce3e3f5c3ee6dbf164e97ab6ef8ceab1dd66a26071dd52c62b38a9e5bf8"
+    },
+    "poster": {
+      "file": "scenario-02-v7-poster.jpg",
+      "bytes": 43570,
+      "sha256": "585a3ce3455a6f4d411432385caf627c9a75156c02b3ad267f3c99dbff760bf5"
+    }
+  },
+  "vig3": {
+    "name": "Scenario 03: The AI Pipeline Is Compromised (October13 v3 clean stage)",
+    "file": "scenario-03-v7-6533bae4f48d.mp4",
+    "sha256": "6533bae4f48d80caec32e43e6cab165b475477bfa837c22c8871dff3778d9348",
+    "bytes": 15012397,
+    "duration_seconds": 48.0,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24.0,
+    "source": "Chris October12 picture/graphic revisions from preserved clean sources; approved AAC audio copied unchanged",
+    "release_status": "October13 v3 candidate; verified local media; final provider and venue acceptance pending",
+    "revision_date": "2026-10-13",
+    "previous_review_cut": "scenario-03-v6-bf09807811f8.mp4",
+    "captions": {
+      "file": "scenario-03-v7.vtt",
+      "bytes": 1250,
+      "sha256": "f1b44a0390f75251f0adff073996531ace9d3a2815dabf81b3c7ca7f7447c783"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "file": "scenario-03-v7.srt",
+      "bytes": 1242,
+      "sha256": "59fb98c00fa53348044d026d02faf869168df5d7f6411cde8c29b3fb7ff248ff"
+    },
+    "poster": {
+      "file": "scenario-03-v7-poster.jpg",
+      "bytes": 45959,
+      "sha256": "a4f73c32049f5e1cab4fb13cc2d57c28bfd0d06aa95ae63b22564c818dcf3dd5"
+    }
+  },
+  "vig4": {
+    "name": "Scenario 04: Your Trusted Vendor May Be Compromised (October14 chat lock)",
+    "file": "scenario-04-v9-1b968585a25e.mp4",
+    "sha256": "1b968585a25e7c0f576145685c842f91b65528b1d12cc1c6fffaeebe0bf8e786",
+    "bytes": 3146220,
+    "duration_seconds": 82.0,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24.0,
+    "source": "Chris October13 five-message script and NorthGrid chat-window reference; original score and five notification sources retimed",
+    "release_status": "October14 chat revision; media verified locally; physical venue acceptance pending",
+    "revision_date": "2026-10-14",
+    "previous_review_cut": "scenario-04-v8-74a1be1ac20a.mp4",
+    "captions": {
+      "bytes": 958,
+      "sha256": "32596267102369aafb5e43731115e2adcc1a02ab9de9d026883cfd56ddcbb48c",
+      "file": "scenario-04-v9.vtt"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "bytes": 950,
+      "sha256": "3002ebc849dbaaf6a7e2839ba6ba7d6b952f8ff44241296116e336e1fc5d1448",
+      "file": "scenario-04-v9.srt"
+    },
+    "poster": {
+      "bytes": 36336,
+      "sha256": "fe74fe298b5da967989549415787e7c21f75b0da1c50bbcda5b7500e4e42b09c",
+      "file": "scenario-04-v9-poster.jpg"
+    }
+  },
+  "vig5": {
+    "name": "Scenario 05: The Water Is Safe. Or Is It? (October13 v3 clean stage)",
+    "file": "scenario-05-v8-661f83481bd0.mp4",
+    "sha256": "661f83481bd029167e1ac684c00c6e0c3143a9f12f0c622281d947d039710464",
+    "bytes": 16470179,
+    "duration_seconds": 48.958008,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24.0,
+    "source": "Chris October12 picture/graphic revisions from preserved clean sources; approved AAC audio copied unchanged",
+    "release_status": "October13 v3 candidate; verified local media; final provider and venue acceptance pending",
+    "revision_date": "2026-10-13",
+    "previous_review_cut": "scenario-05-v7-9e3afb4ad5d3.mp4",
+    "captions": {
+      "file": "scenario-05-v8.vtt",
+      "bytes": 1309,
+      "sha256": "d8c8b8b5eeb6a419b31866e339aa02c53136cc3d6316f447a3464af86bc432e3"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "file": "scenario-05-v8.srt",
+      "bytes": 1301,
+      "sha256": "6b7e9429867ca83b391e7b3f55686f55007f9429120764e6ffa217380aca5e7f"
+    },
+    "poster": {
+      "file": "scenario-05-v8-poster.jpg",
+      "bytes": 46228,
+      "sha256": "7f5f691a03c19c1ace6d362cc9b8eacef8ed2c4481c9660c090c5a70711817e9"
+    }
+  },
+  "vig6": {
+    "name": "Scenario 06: The AI Wants to Pull the Plug (October13 v3 clean stage)",
+    "file": "scenario-06-v6-84721ba3f437.mp4",
+    "sha256": "84721ba3f4379bd5ba2ff1e43340c30b0e43ceef98fa3a66f65c827f76a0acf8",
+    "bytes": 24179844,
+    "duration_seconds": 57.708333,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24.0,
+    "source": "Chris October12 picture/graphic revisions from preserved clean sources; approved AAC audio copied unchanged",
+    "release_status": "October13 v3 candidate; verified local media; final provider and venue acceptance pending",
+    "revision_date": "2026-10-13",
+    "previous_review_cut": "scenario-06-v5-a5f18c99ccdb.mp4",
+    "captions": {
+      "file": "scenario-06-v6.vtt",
+      "bytes": 1437,
+      "sha256": "9156032b847353fa6b4a466aaf14863f06f17fc66b80e44c184d017cbc4b5d25"
+    },
+    "caption_policy": "Native optional captions; essential incident evidence remains in picture; fictional/generated disclosure in review and credits",
+    "srt": {
+      "file": "scenario-06-v6.srt",
+      "bytes": 1429,
+      "sha256": "da52e8d444147a81c23a5cf8ed4ace51046ad9ae7377845ddebac7e966e9a8f5"
+    },
+    "poster": {
+      "file": "scenario-06-v6-poster.jpg",
+      "bytes": 55395,
+      "sha256": "cb3d95c0fbcba8b28a27f8a949f9b2bdcea9f9f420d41bcdd2b5eb41d9dbd0d9"
+    }
+  }
+}

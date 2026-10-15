@@ -1,0 +1,27 @@
+WEBVTT
+
+1
+00:00:05.000 --> 00:00:24.000
+10:42 AM / Maya, SOC Analyst
+Hello Nexora Support. I’m seeing unusual activity from your privileged account in our environment. Can you confirm whether this activity is authorized?
+
+2
+00:00:24.000 --> 00:00:39.000
+10:44 AM / Nexora Systems Support
+Hi Maya. We haven’t seen any alerts on our side. We’re investigating. Please stand by.
+
+3
+00:00:39.000 --> 00:00:53.000
+10:48 AM / Nexora Systems Support
+We’ve investigated and found no evidence that our environment has been compromised.
+
+4
+00:00:53.000 --> 00:01:14.000
+10:49 AM / Maya, SOC Analyst
+Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.
+
+5
+00:01:14.000 --> 00:01:22.000
+10:50 AM / Nexora Systems Support
+Disabling our access will interrupt critical support services.
+What should you do with vendor access?

@@ -1,0 +1,45 @@
+{
+  "source_authority": "Chris October13 19:14 Pacific email 1a13830442125bc5 and Kris approved implementation; supersedes six-message v3 treatment",
+  "chat_duration_seconds": 82,
+  "opening_empty_seconds": 5,
+  "suspense_seconds": 5,
+  "reading_method": "Two words per second including sender and timestamp; minimum eight seconds. Venue readability remains a crew check.",
+  "final_hold": "App retains final frame until Vipin manually advances",
+  "chat_messages": [
+    {
+      "at": 5,
+      "time": "10:42 AM",
+      "sender": "Maya, SOC Analyst",
+      "text": "Hello Nexora Support. I’m seeing unusual activity from your privileged account in our environment. Can you confirm whether this activity is authorized?",
+      "reading_seconds": 14
+    },
+    {
+      "at": 24,
+      "time": "10:44 AM",
+      "sender": "Nexora Systems Support",
+      "text": "Hi Maya. We haven’t seen any alerts on our side. We’re investigating. Please stand by.",
+      "reading_seconds": 10
+    },
+    {
+      "at": 39,
+      "time": "10:48 AM",
+      "sender": "Nexora Systems Support",
+      "text": "We’ve investigated and found no evidence that our environment has been compromised.",
+      "reading_seconds": 9
+    },
+    {
+      "at": 53,
+      "time": "10:49 AM",
+      "sender": "Maya, SOC Analyst",
+      "text": "Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.",
+      "reading_seconds": 16
+    },
+    {
+      "at": 74,
+      "time": "10:50 AM",
+      "sender": "Nexora Systems Support",
+      "text": "Disabling our access will interrupt critical support services.",
+      "reading_seconds": 8
+    }
+  ]
+}

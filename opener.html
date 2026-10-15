@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI vs. Human · Opener studio</title>
+<style>
+:root{color-scheme:dark;--bg:#102D27;--panel:#183D33;--line:#47655B;--text:#F3ECD8;--muted:#B6C4B8;--ai:#AED5CA;--human:#FFC66D;--display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body)}a{color:var(--ai);text-underline-offset:4px}button,input{font:inherit}button,a{touch-action:manipulation}button{min-height:48px;border:1px solid var(--line);background:transparent;color:var(--text);padding:12px 15px;cursor:pointer;transition:background .15s}button:hover{background:var(--panel)}:focus-visible{outline:3px solid var(--human);outline-offset:4px}button.primary{background:var(--human);color:var(--bg);font-weight:750;border-color:var(--human)}
+header{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 30px;border-bottom:1px solid var(--line)}header strong{font:32px/.95 var(--display);letter-spacing:.025em}header small,.eyebrow{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--human)}header small{display:block;margin-top:9px}header a{font-size:13px;min-height:44px;display:flex;align-items:center;max-width:220px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:28px;padding:28px 30px}.player{min-width:0}.screen{aspect-ratio:16/9;background:var(--bg);border:1px solid var(--line);position:relative;box-shadow:0 5px 0 #0B201B}canvas{display:block;width:100%;height:100%;object-fit:contain}.screen:fullscreen{height:100vh;width:100vw;border:0;aspect-ratio:auto;box-shadow:none}
+.transport{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 14px}.transport .time{margin-left:auto;font:13px var(--mono);color:var(--text);font-variant-numeric:tabular-nums}.playback{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.playback output{display:flex;align-items:center;gap:8px;color:var(--human)}.playback output::before{content:"";width:7px;height:7px;background:var(--human)}.playback output[data-state=playing]::before{animation:lamp 2s ease-in-out infinite}.playback span{text-align:right}
+input[type=range]{appearance:none;width:100%;height:44px;display:block;margin:0 0 12px;background:transparent;cursor:pointer}input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--line)}input[type=range]::-webkit-slider-thumb{appearance:none;width:24px;height:24px;margin-top:-10px;border:3px solid var(--bg);background:var(--human);border-radius:50%;box-shadow:0 0 0 1px var(--human)}input[type=range]::-moz-range-track{height:4px;background:var(--line)}input[type=range]::-moz-range-thumb{width:20px;height:20px;border:3px solid var(--bg);background:var(--human);border-radius:50%}.timeline{display:flex;gap:3px;height:10px;margin-bottom:14px}.timeline i{position:relative;display:block;min-width:10px;background:var(--panel);border:1px solid var(--line)}.timeline i[data-proposed=true]{border-style:dashed}.timeline i::before{content:"";position:absolute;inset:0;background:var(--human);transform:scaleX(var(--progress,0));transform-origin:left}
+.chapters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}.chapters button{text-align:left;background:var(--bg);border:0;padding:16px 12px;font-size:12px;line-height:1.5;min-height:92px;overflow-wrap:anywhere}.chapters button[aria-current=true]{box-shadow:inset 0 -4px var(--human);background:var(--panel)}.chapters span{display:block;color:var(--muted);font:11px var(--mono);margin-bottom:8px}.chapters button[data-proposed=true]{border-top:1px dashed var(--human)}.chapters button[data-proposed=true] span{color:var(--human)}.note{color:var(--muted);font-size:13px;line-height:1.65;margin-top:20px}.note strong{color:var(--text);font-weight:600}
+aside{border-left:1px solid var(--line);padding-left:25px}h1{font:52px/.95 var(--display);text-transform:uppercase;margin:14px 0 28px;letter-spacing:.02em}h2{font:25px/1.08 var(--display);text-transform:uppercase;margin:0 0 12px;letter-spacing:.025em}.clock{font:54px var(--mono);letter-spacing:-.05em;color:var(--human);font-variant-numeric:tabular-nums}.metrics{display:flex;gap:30px;margin:15px 0 24px}.metrics small{display:block;color:var(--muted);font:10px var(--mono);margin-bottom:6px}.metrics output{font:16px var(--mono)}.cue{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:19px 0;min-height:150px}.cue p{font-size:13px;line-height:1.6;color:var(--muted)}label.fallback{display:flex;align-items:center;gap:10px;min-height:44px;margin-top:16px;font-size:13px;cursor:pointer}.fallback input{accent-color:var(--human);width:20px;height:20px}
+.embedded .layout{display:block;padding:0}.embedded header,.embedded aside,.embedded .transport,.embedded .playback,.embedded input,.embedded .timeline,.embedded .chapters,.embedded .note,.embedded .player>label{display:none}.embedded .screen{width:100vw;height:100vh;border:0;aspect-ratio:auto;box-shadow:none}.embedded canvas{width:100%;height:100%}
+@keyframes lamp{50%{opacity:.45}}@media(max-width:1100px){.chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:1000px){.layout{grid-template-columns:1fr}aside{border-left:0;border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:15px}h1{font-size:38px;margin-bottom:10px}.cue{grid-row:1/5;grid-column:2}.metrics{margin:0}label.fallback{margin:0}}@media(max-width:580px){header,.layout{padding:18px}header{align-items:flex-start;gap:18px}header strong{font-size:28px}header a{font-size:12px;max-width:130px}.transport{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.transport button{padding:11px 6px;font-size:13px;line-height:18px}.transport .time{grid-column:1/-1;margin:4px 0 0}.playback{font-size:10px;letter-spacing:.02em}.chapters button{min-height:84px}aside{display:block}.cue{margin-top:20px}.clock{font-size:48px}}@media(max-height:540px) and (min-width:581px){header{padding:12px 22px}.layout{padding:16px 22px;gap:20px;grid-template-columns:minmax(0,1fr) 250px}.screen{aspect-ratio:auto;height:max(120px,calc(100svh - 180px));box-shadow:none}aside{display:block;padding:0 0 0 18px;border-left:1px solid var(--line);border-top:0}h1{font-size:30px;margin:10px 0 18px}.clock{font-size:36px}.metrics{margin:14px 0}.transport{margin-top:12px}.chapters{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(prefers-reduced-motion:reduce){*{transition:none;animation:none!important}}
+</style>
+</head>
+<body>
+<header><div><strong>AI vs. HUMAN</strong> <small>Archive / October 2 opener study</small></div><a href="./?tour&opener=prototype">Try the archived study ↗</a></header>
+<main class="layout">
+  <section class="player" aria-label="Opener preview">
+    <div class="screen" id="screen"><canvas id="picture" width="1920" height="1080" aria-label="Silent draft opener animation. Portraits are placeholders."></canvas></div>
+    <div class="transport"><button class="primary" id="play">Play</button><button id="restart">Restart film</button><button id="fullscreen">Full screen</button><span class="time" id="position">03:00 / 05:30</span></div>
+    <div class="playback"><output id="playback-state" aria-live="polite">Paused · silent</output><span id="chapter-count">Chapter 03 / 08</span></div>
+    <label for="seek" class="eyebrow">Global timeline · scrub to any moment</label><input id="seek" type="range" min="0" max="330" step="0.1" value="180" aria-label="Global timeline seconds">
+    <div class="timeline" aria-hidden="true"></div>
+    <nav class="chapters" aria-label="Jump to a chapter"></nav>
+    <p class="note" id="review-note"><strong>Historical silent study, October 2.</strong> This archive preserves the earlier 5:30 candidate and 4:20 alternative. The approved October 6 plan uses Chris’s external opener and a five-minute opening/rules budget within the 97-minute session. Portraits, titles and logos arrived October 5; the silhouettes here preserve the original study. Final external files, music and theatre handoffs still need verification. Dashed edges retain the proposed 04:15–05:20 bridge. <a href="review.html">Review the revised show ↗</a></p>
+  </section>
+  <aside aria-label="Production monitor">
+    <div><span class="eyebrow">Historical study / not for show night</span><h1>Machine speed.<br>Human judgment.</h1></div>
+    <div><span class="eyebrow">Global show clock</span><div class="clock" id="global-clock">03:00</div></div>
+    <div class="metrics"><div><small>FILM ELAPSED</small><output id="film-clock">00:00</output></div><div><small>MUSIC SOURCE*</small><output id="track-clock">00:10</output></div></div>
+    <div class="cue" aria-live="polite"><h2 id="cue-title"></h2><p id="cue-note"></p></div>
+    <label class="fallback"><input id="fallback" type="checkbox">Simple text fallback</label>
+    <p class="note">*Clock mapping only. No music file is loaded or played. Preview starts at film GO; choose Seating to test the full 5:30 sequence. Portrait names fade in only after the image would resolve.</p>
+  </aside>
+</main>
+<script>
+const embedded = new URLSearchParams(location.search).has("embedded");
+document.body.classList.toggle("embedded", embedded);
+const $ = s => document.querySelector(s), canvas = $("#picture"), g = canvas.getContext("2d");
+const color = Object.fromEntries(["bg","panel","line","text","muted","ai","human"].map(k => [k,getComputedStyle(document.documentElement).getPropertyValue("--"+k).trim()]));
+const display=getComputedStyle(document.documentElement).getPropertyValue("--display"),mono=getComputedStyle(document.documentElement).getPropertyValue("--mono");
+const roster = [["Dominic Vogel","HOST"],["Penny Longman","CYBER JUDGE"],["Larry Carson","CYBER JUDGE"],["Jeff Ten Eyck","CYBER JUDGE"],["Shashi Gautam","CYBER JUDGE"]];
+const chapters = [
+  {start:0,end:170,title:"Seating",note:"House lights up. Loop source track 00:00–00:10; keep the seating message readable."},
+  {start:170,end:180,title:"House fade",note:"Cue house lights down over ten seconds. Seating loop continues."},
+  {start:180,end:200,title:"AI / capability & scale",note:"GO film. Continue music at 00:10. Abstract graphics stand in for the opening montage."},
+  {start:200,end:215,title:"The hit / human judgment",note:"At 03:20: AI vs. HUMAN reveal and lighting hit. Shift toward human imagery; no closing-thesis reveal."},
+  {start:215,end:255,title:"Host + four Cyber Judges",note:"Five eight-second portrait reveals. Historical silhouettes remain; portraits and titles were supplied October 5. Chris owns their use in the final external opener."},
+  {start:255,end:300,title:"Six decisions",note:"PROPOSED BRIDGE: the brief leaves 04:15–05:20 without a detailed storyboard. This copy and pacing are for review."},
+  {start:300,end:320,title:"Build to the live host",note:"PROPOSED BRIDGE continues. Hold the competition open; prepare the host entrance."},
+  {start:320,end:330,title:"Fade / host GO",note:"Fade source music 02:30–02:40. At 05:30: audio zero, video out, host GO. The showrunner advances only on your GO."}
+];
+const clamp = (x,a,b) => Math.max(a,Math.min(b,x));
+const fmt = t => `${Math.floor(t/60).toString().padStart(2,"0")}:${Math.floor(t%60).toString().padStart(2,"0")}`;
+function phaseAt(t){
+  t = clamp(t,0,330);
+  const chapter = chapters.find(c=>t>=c.start && t<c.end) || chapters.at(-1);
+  const portrait = t>=215 && t<255 ? Math.floor((t-215)/8) : -1;
+  return {chapter,portrait,portraitTime:portrait<0?0:(t-215)%8,track:t<180?t%10:t-170,film:Math.max(0,t-180),ended:t===330};
+}
+let anchor = 180, started = performance.now(), playing = false, command = null;
+let animationFrame=null,textTick=null;
+const motion = matchMedia("(prefers-reduced-motion: reduce)");
+$("#fallback").checked = motion.matches;
+motion.addEventListener("change",e=>{$("#fallback").checked=e.matches;redraw();});
+$("#fallback").onchange=()=>redraw();
+function position(){
+  if(command) return clamp(180+(command.paused?command.pos:Math.max(0,(Date.now()-command.t)/1000)),180,330);
+  return clamp(anchor+(playing?(performance.now()-started)/1000:0),0,330);
+}
+function seek(t){anchor=clamp(t,0,330);started=performance.now();redraw();}
+$("#play").onclick=()=>{anchor=position();if(anchor===330)anchor=180;playing=!playing;started=performance.now();redraw();};
+$("#restart").onclick=()=>seek(180);
+$("#seek").oninput=e=>seek(Number(e.target.value));
+$("#fullscreen").onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $("#screen").requestFullscreen();}catch{$("#cue-note").textContent="Full screen is unavailable here. Open the preview in a browser window.";}};
+$(".chapters").innerHTML=chapters.map((c,i)=>`<button data-chapter="${i}" data-proposed="${i===5||i===6}"${i===5||i===6?' aria-describedby="review-note"':""}><span>${fmt(c.start)}</span>${c.title}</button>`).join("");
+$(".timeline").innerHTML=chapters.map((c,i)=>`<i data-progress="${i}" data-proposed="${i===5||i===6}" style="flex:${c.end-c.start}"></i>`).join("");
+$(".chapters").onclick=e=>{const b=e.target.closest("button");if(b)seek(chapters[Number(b.dataset.chapter)].start);};
+addEventListener("keydown",e=>{if(embedded || /INPUT|BUTTON|A/.test(e.target.tagName))return;if(e.code==="Space"){e.preventDefault();$("#play").click();}});
+addEventListener("message",e=>{
+  if(!embedded || e.source!==parent || e.origin!==location.origin || e.data?.kind!=="isaca-opener-preview")return;
+  const c=e.data.command;
+  if(!c || typeof c.paused!=="boolean" || !Number.isFinite(c.t) || (c.paused&&!Number.isFinite(c.pos)))return;
+  if(command?.paused===c.paused && command.t===c.t && command.pos===c.pos)return;
+  command=c;redraw();
+});
+document.addEventListener("visibilitychange",()=>redraw());
+function redraw(){
+  cancelAnimationFrame(animationFrame);clearTimeout(textTick);animationFrame=null;textTick=null;
+  if(!document.hidden)frame();
+}
+function text(s,x,y,size=40,fill=color.text,font=display,align="left"){
+  g.fillStyle=fill;g.font=`${size}px ${font}`;g.textAlign=align;g.fillText(s,x,y);g.textAlign="left";
+}
+function label(s,x,y,fill=color.muted,size=22){text(s,x,y,size,fill,mono);}
+const reveal=(age,simple)=>simple?1:1-Math.pow(1-clamp((age+.15)/.85,0,1),3);
+function field(t,warm=false){
+  g.save();g.translate(1450,520);g.strokeStyle=warm?color.human:color.ai;g.lineWidth=2;
+  g.globalAlpha=.13;
+  for(let lane=0;lane<7;lane++){g.strokeRect(-330+lane*28,-350+lane*28,660-lane*56,700-lane*56);}
+  g.beginPath();g.moveTo(-330,0);g.lineTo(330,0);g.ellipse(0,0,100,100,0,0,Math.PI*2);g.stroke();
+  for(let lane=0;lane<14;lane++){
+    const offset=(t*(warm?23:48)+lane*79)%590;
+    g.globalAlpha=.16+(lane%4)*.04;g.fillStyle=warm?color.human:color.ai;
+    g.fillRect(-295+offset,-300+lane*45,26+lane%3*12,5);
+  }g.restore();
+}
+function hero(sub){
+  text("AI",135,440,235,color.ai);text("vs.",435,424,80,color.muted,"Georgia, serif");text("HUMAN",620,440,235,color.human);
+  text(sub,145,560,43);label("AN INTERACTIVE CYBER AWARENESS EXPERIENCE",145,635);
+}
+function portrait(i,age,simple){
+  const resolve=clamp((age-1.5)/2,0,1), nameOpacity=clamp((age-4.5)/1.5,0,1),roleOpacity=clamp((age-5)/2,0,1);
+  const entry=reveal(age,simple);
+  g.save();g.translate((1-entry)*40,0);g.globalAlpha=entry;
+  g.fillStyle=color.panel;g.fillRect(255,210,530,545);g.strokeStyle=color.line;g.lineWidth=2;g.strokeRect(255,210,530,545);
+  g.save();g.translate(520,370);g.strokeStyle=resolve===1?color.human:color.ai;g.lineWidth=3;
+  g.fillStyle=color.panel;g.beginPath();g.ellipse(0,-30,108,143,0,0,Math.PI*2);g.fill();g.stroke();
+  g.beginPath();g.moveTo(-215,335);g.bezierCurveTo(-230,95,230,95,215,335);g.closePath();g.fill();g.stroke();
+  if(!simple){
+    g.globalAlpha=(1-resolve)*.6;
+    for(let n=0;n<90;n++){const x=Math.sin(n*31.1)*230,y=Math.cos(n*15.7)*240+90;g.fillStyle=n%3?color.ai:color.human;g.fillRect(x+(1-resolve)*Math.sin(n+age)*80,y,4+n%12,2+n%8);}
+    g.globalAlpha=(1-resolve)*.35;g.strokeStyle=color.ai;
+    for(let y=-180;y<335;y+=30){g.beginPath();g.moveTo(-215,y);g.lineTo(215,y);g.stroke();}
+  }g.restore();
+  label(`0${i+1} / 05 · ${i===0?"HOST":"CYBER JUDGE"}`,930,305,color.human,30);
+  label(age<1.5?"AI-STYLE IMAGE SLOT":age<3.5?"DIGITAL RECONSTRUCTION":"REAL PORTRAIT SLOT",930,370,color.muted,25);
+  g.save();g.globalAlpha=simple?1:nameOpacity;text(roster[i][0],930,485,82);g.globalAlpha=simple?1:roleOpacity;
+  text(roster[i][1],934,557,34,color.human,mono);label("Historical placeholder title",934,610);g.restore();
+  label("PORTRAIT PLACEHOLDER",285,800,color.muted,24);label("Approved photograph replaces this silhouette",285,841,color.muted,21);
+  g.restore();
+}
+let lastChapter=null;
+const setText=(selector,value)=>{const node=$(selector);if(node.textContent!==value)node.textContent=value;};
+function frame(){
+  animationFrame=null;
+  const t=position(),p=phaseAt(t),simple=$("#fallback").checked;
+  if(!command && t===330){anchor=330;playing=false;}
+  g.fillStyle=color.bg;g.fillRect(0,0,1920,1080);
+  if(!simple)field(t,t>=200);
+  g.strokeStyle=color.line;g.lineWidth=1;g.beginPath();g.moveTo(96,110);g.lineTo(1824,110);g.moveTo(96,956);g.lineTo(1824,956);g.stroke();
+  label("ISACA VANCOUVER × BC + AI",96,74,color.text,24);label("OPENER / DRAFT TIMING STUDY",1290,74,color.human,23);
+  if(t<180){
+    label("THE ANNEX / 14 OCTOBER 2026",145,305,color.ai,27);
+    text("PLEASE TAKE",135,482,170);text("YOUR SEATS",135,662,170,color.human);
+    label("AI vs. HUMAN",145,769,color.ai,37);
+    g.save();g.globalAlpha=simple?1:.65+Math.sin(t*Math.PI/2)*.2;g.fillStyle=color.human;g.fillRect(145,824,240,6);g.restore();
+    if(t>=170)label("HOUSE LIGHTS DOWN / OPERATOR CUE",145,898,color.human,23);
+  }else if(t<200){
+    const words=["PATTERNS.","SPEED.","SCALE.","INTELLIGENCE."];
+    label("01 / MACHINE CAPABILITY",145,300,color.ai,27);
+    const entry=reveal((t-180)%5,simple);g.save();g.globalAlpha=entry;g.translate(0,(1-entry)*35);
+    text(words[Math.min(3,Math.floor((t-180)/5))],135,526,165,color.ai);
+    g.restore();
+    text("Signals become decisions.",145,658,48);label("ABSTRACT MONTAGE STUDY",145,758);
+  }else if(t<215){
+    const entry=reveal(t-200,simple);g.save();g.globalAlpha=entry;g.translate((1-entry)*-40,0);
+    hero(t<204?"The room. The machine. The same evidence.":"Context. Judgment. Accountability.");
+    g.restore();
+    g.fillStyle=color.human;g.fillRect(145,703,simple?340:340*entry,7);
+    label("02 / HUMAN JUDGMENT · FOOTAGE PENDING",145,775,color.human);
+  }else if(p.portrait>=0){portrait(p.portrait,p.portraitTime,simple);
+  }else if(t<300){
+    const bridge=["SIX INCIDENTS.","THE SAME FACTS.","SEPARATE DECISIONS."];
+    label("03 / THE LIVE EXPERIENCE",145,300,color.human,27);
+    const entry=reveal((t-255)%15,simple);g.save();g.globalAlpha=entry;g.translate(0,(1-entry)*28);
+    text(bridge[Math.min(2,Math.floor((t-255)/15))],135,490,135);
+    g.restore();
+    text("Which reasoning stands up to scrutiny?",145,625,48,color.ai);
+    label("PROPOSED BRIDGE / 04:15–05:20",145,785,color.human);
+    for(let i=0;i<6;i++){g.strokeStyle=color.line;g.lineWidth=2;g.strokeRect(145+i*119,829,94,69);label(String(i+1).padStart(2,"0"),170+i*119,873,color.ai,27);}
+  }else if(t<330){
+    g.save();g.globalAlpha=t>=320?1-(t-320)/10:reveal(t-300,simple);
+    hero("Your host, Dominic Vogel.");label(t<320?"PROPOSED BRIDGE / PREPARE HOST ENTRANCE":"AUDIO FADE / PREPARE HOST GO",145,775,color.human);g.restore();
+    if(t>=320)label("OPERATOR HOLDS THIS CUE UNTIL GO",145,882,color.ai,23);
+  }else{
+    text("HOST GO",135,520,205,color.human);text("Dominic Vogel",145,650,65);label("AUDIO ZERO · VIDEO OUT · LIVE STAGE",145,760);
+    label("AWAITING MANUAL SHOWRUNNER GO",145,851,color.human,23);
+  }
+  label(simple?"SIMPLE TEXT FALLBACK / DRAFT":"SILENT ANIMATIC / VISUALS & TIMING FOR REVIEW",96,1013,color.muted,23);
+  label(`${fmt(t)} / 05:30`,1570,1013,color.ai,28);
+  const description=`${fmt(t)}. ${p.ended?"Host GO. Audio zero. Video out.":p.chapter.title}. Silent draft; portraits are placeholders.`;
+  if(canvas.getAttribute("aria-label")!==description)canvas.setAttribute("aria-label",description);
+  $("#seek").value=t;$("#seek").setAttribute("aria-valuetext",`${fmt(t)} global timeline. ${p.chapter.title}.`);
+  setText("#global-clock",fmt(t));setText("#film-clock",t<180?"—":fmt(p.film));setText("#track-clock",fmt(p.track));
+  const running=(command?!command.paused:playing)&&!p.ended;
+  setText("#position",`${fmt(t)} / 05:30`);setText("#play",running?"Pause":"Play");$("#play").setAttribute("aria-pressed",String(running));
+  setText("#playback-state",p.ended?"Awaiting host GO":running?"Playing · silent":"Paused · silent");$("#playback-state").dataset.state=running?"playing":"paused";
+  setText("#chapter-count",p.ended?"Film ended / manual GO":`Chapter ${String(chapters.indexOf(p.chapter)+1).padStart(2,"0")} / 08`);
+  document.querySelectorAll("[data-progress]").forEach((bar,i)=>{const c=chapters[i],progress=String(clamp((t-c.start)/(c.end-c.start),0,1));if(bar.style.getPropertyValue("--progress")!==progress)bar.style.setProperty("--progress",progress);});
+  const chapterKey=p.ended?"end":p.chapter.start;
+  if(chapterKey!==lastChapter){
+    lastChapter=chapterKey;$("#cue-title").textContent=p.ended?"Host GO / audio zero":p.chapter.title;$("#cue-note").textContent=p.chapter.note;
+    document.querySelectorAll("[data-chapter]").forEach(b=>b.setAttribute("aria-current",String(chapters[Number(b.dataset.chapter)]===p.chapter)));
+  }
+  if(running && !document.hidden){
+    if(simple)textTick=setTimeout(redraw,Math.max(16,Math.ceil((Math.floor(t)+1-t)*1000)));
+    else animationFrame=requestAnimationFrame(frame);
+  }
+}
+redraw();
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.000
+INCIDENT 04
+Your trusted vendor
+may be compromised
+A strategic technology partner supports
+critical infrastructure in your environment.
+
+2
+00:00:06.000 --> 00:00:15.000
+10:42 AM
+SOC
+Unusual administrative activity from
+our partner’s privileged account.
+We have never seen this behaviour
+from this account before.
+Observed activity. Compromise is not confirmed.
+
+3
+00:00:15.000 --> 00:00:21.000
+10:42 AM
+SOC / EVIDENCE CHECK
+No malware detected.
+No confirmed lateral movement.
+No known malicious IP traffic.
+Current evidence. These checks do not establish safety.
+
+4
+00:00:21.000 --> 00:00:34.000
+10:48 AM
+VENDOR / STATEMENT
+“We’ve investigated and have found
+no evidence that our environment
+has been compromised.
+Disabling our access will interrupt
+critical support services.”
+Vendor statement. The assurance and consequence are attributed.
+
+5
+00:00:34.000 --> 00:00:49.000
+11:13 AM
+THREAT INTELLIGENCE / REPORT
+Another company is investigating
+suspicious activity involving
+the same vendor.
+No compromise has been confirmed
+at either organization.
+A second investigation. No confirmed compromise.
+
+6
+00:00:49.000 --> 00:00:56.000
+THE EVIDENCE STOPS HERE.
+What should you do?
+Compromise: not confirmed

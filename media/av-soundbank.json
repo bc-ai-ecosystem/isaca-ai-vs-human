@@ -1,0 +1,101 @@
+{
+  "state": "Original manual AV cue bank for rehearsal",
+  "app_transitions": "silent",
+  "cues": [
+    {
+      "id": "tension-bed",
+      "title": "Tension bed",
+      "duration_seconds": 60.0,
+      "purpose": "Manual external AV cue; no automatic app transitions",
+      "loop_available": true,
+      "assets": {
+        "wav": {
+          "file": "av-tension-bed-v1-6009b164f1f9.wav",
+          "sha256": "6009b164f1f9197bfb5959ab13f9b691ee548db567249fc2d8c14cc1c5c5856f",
+          "bytes": 17280102
+        },
+        "mp3": {
+          "file": "av-tension-bed-v1-93fd89a8bb6e.mp3",
+          "sha256": "93fd89a8bb6e9613d9dd320a510762b5b1e7745350993358c7974dfef5e34328",
+          "bytes": 1441197
+        }
+      }
+    },
+    {
+      "id": "thinking-bed",
+      "title": "Thinking bed",
+      "duration_seconds": 60.0,
+      "purpose": "Manual external AV cue; no automatic app transitions",
+      "loop_available": true,
+      "assets": {
+        "wav": {
+          "file": "av-thinking-bed-v1-b29b97f303c3.wav",
+          "sha256": "b29b97f303c3dc390cce8b0199d0ddb0158395383f61b021aa740e9749191e83",
+          "bytes": 17280102
+        },
+        "mp3": {
+          "file": "av-thinking-bed-v1-e3a447b0e97f.mp3",
+          "sha256": "e3a447b0e97f30a9637d80daf9b117e7df092d1c85d25a07e22652bd67b5808d",
+          "bytes": 1441197
+        }
+      }
+    },
+    {
+      "id": "countdown-bed",
+      "title": "30-second countdown bed",
+      "duration_seconds": 30.0,
+      "purpose": "Manual external AV cue; no automatic app transitions",
+      "loop_available": false,
+      "assets": {
+        "wav": {
+          "file": "av-countdown-bed-v1-bdcc7a9972b4.wav",
+          "sha256": "bdcc7a9972b4bf316ad11de1da95bda4a087c1c8f7263cfcdcf4be139c1a2ce0",
+          "bytes": 8640102
+        },
+        "mp3": {
+          "file": "av-countdown-bed-v1-e37e0d46c520.mp3",
+          "sha256": "e37e0d46c5205d6195967d29d9af6f1c579f52018b9130dfcc12e42877e03cf3",
+          "bytes": 721197
+        }
+      }
+    },
+    {
+      "id": "reveal-sting",
+      "title": "Result reveal",
+      "duration_seconds": 2.0,
+      "purpose": "Manual external AV cue; no automatic app transitions",
+      "loop_available": false,
+      "assets": {
+        "wav": {
+          "file": "av-reveal-sting-v1-c50c0e954a47.wav",
+          "sha256": "c50c0e954a47c8ec9dcdc0ca19732aac962409c21894ebaa3a26931fc80b2e61",
+          "bytes": 576102
+        },
+        "mp3": {
+          "file": "av-reveal-sting-v1-a678bb01478c.mp3",
+          "sha256": "a678bb01478c168709b442c11f6f5558efb8a9f1a998ea4a5e5cd18ff19712d2",
+          "bytes": 49581
+        }
+      }
+    },
+    {
+      "id": "round-win-sting",
+      "title": "Round win",
+      "duration_seconds": 3.0,
+      "purpose": "Manual external AV cue; no automatic app transitions",
+      "loop_available": false,
+      "assets": {
+        "wav": {
+          "file": "av-round-win-sting-v1-77af431a2abd.wav",
+          "sha256": "77af431a2abd6576163228cc7b4e11e3ec67a49f7a45a52d90f046ad0c2c320a",
+          "bytes": 864102
+        },
+        "mp3": {
+          "file": "av-round-win-sting-v1-a2370f20e112.mp3",
+          "sha256": "a2370f20e112ddcffe7607ac8da2100bdddcfbaea3ef8d476973cc831c2716c0",
+          "bytes": 73197
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "1": {
+    "provider": "ChatGPT",
+    "decision": "B",
+    "confidence": 95,
+    "reasoning": [
+      "Multiple fraud indicators: The caller may be a deepfake, the corporate email may be compromised, and confidential information is being used to establish credibility.",
+      "Unusual urgency: The demand to transfer $250,000 within 30 minutes creates pressure to bypass normal verification procedures.",
+      "Financial controls: The transaction violates the company’s dual-authorization policy. Even confirmation from the seller’s law firm would not replace the required executive approvals."
+    ],
+    "conclusion": "Business urgency does not justify bypassing established financial controls."
+  },
+  "2": {
+    "provider": "Claude",
+    "decision": "C",
+    "confidence": 75,
+    "reasoning": [
+      "Patient safety comes first: Diverting high-risk patients to another hospital immediately reduces the danger caused by unavailable clinical systems.",
+      "Ransom payment is uncertain: Paying the attackers does not guarantee faster recovery or that the attackers have been removed from the network.",
+      "Controlled recovery: Maintain manual operations, establish recovery milestones and prepare for a possible ransom decision only if clearly defined clinical or operational thresholds are reached."
+    ],
+    "conclusion": "Protect patients first, establish recovery milestones and treat ransom payment as a last resort."
+  },
+  "3": {
+    "provider": "Grok",
+    "decision": "D",
+    "confidence": 70,
+    "reasoning": [
+      "Confirmed unauthorized activity: Attackers have executed code within the dataset-processing environment, and exposed service credentials may provide access to other systems.",
+      "Immediate containment: Revoke compromised credentials, isolate affected processing systems and block new dataset or model uploads while the investigation continues.",
+      "Maintain trusted services: There is no evidence that production models have been altered. Shutting down the entire AI platform would create unnecessary business disruption."
+    ],
+    "conclusion": "Contain the compromised environment immediately while keeping trusted production services running."
+  },
+  "4": {
+    "provider": "Claude",
+    "decision": "B",
+    "confidence": 70,
+    "reasoning": [
+      "Suspicious but unconfirmed: An unusual privileged action correlates with multiple security alerts. The vendor reports no evidence of compromise, while the SOC manager has directed a temporary access suspension.",
+      "Avoid unnecessary disruption: Immediately disabling all vendor access could interrupt critical infrastructure operations without sufficient evidence of an active compromise.",
+      "Reduce exposure: Restrict access to least privilege, terminate active sessions and rotate credentials. Investigate jointly with the vendor and disable access if further suspicious activity emerges."
+    ],
+    "conclusion": "Reduce the risk immediately without unnecessarily disrupting operations. Escalate if further evidence emerges."
+  },
+  "5": {
+    "provider": "ChatGPT",
+    "decision": "C",
+    "confidence": 97,
+    "reasoning": [
+      "Significant cyber threat: An 87% probability of compromise indicates a serious risk requiring prompt containment.",
+      "Public safety takes priority: Immediately disconnecting the engineering network could disrupt critical water-treatment processes and potentially create a greater physical safety risk.",
+      "Controlled transition: The six-hour manual operating window allows operators to safely transition operations before isolating the network and investigating the compromise."
+    ],
+    "conclusion": "Protect public safety first, then contain the cyber threat without disrupting essential services."
+  },
+  "6": {
+    "provider": "Grok",
+    "decision": "C",
+    "confidence": 68,
+    "reasoning": [
+      "High probability, incomplete confirmation: The AI identifies a 94% probability of compromise based on privilege escalation and unusual outbound traffic, but analysts have not independently confirmed the attack.",
+      "Targeted containment: Restrict outbound network traffic and revoke elevated privileges to limit the potential attack without immediately taking the server offline.",
+      "Business impact: Full isolation would likely terminate a $4.7 million transaction with the organization’s largest customer. Maintain restrictions and monitoring, escalating to full isolation if the situation deteriorates."
+    ],
+    "conclusion": "Contain the threat while allowing the transaction to complete. Escalate if the evidence demands it."
+  }
+}

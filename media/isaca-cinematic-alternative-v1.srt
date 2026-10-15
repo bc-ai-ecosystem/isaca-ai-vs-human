@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:02,708
+The fight continues after the punch.
+
+2
+00:00:02,708 --> 00:00:10,208
+[Mechanical servo movement]
+TheAI regains its footing.
+
+3
+00:00:10,208 --> 00:00:17,708
+[Glove movement and impact]
+The human and AI trade an exchange; neither wins.
+
+4
+00:00:17,708 --> 00:00:25,208
+[Dark shifting texture]
+A nonhumanoid cyber-threat spreads through the arena.
+
+5
+00:00:25,208 --> 00:00:32,708
+Both fighters recognize the scale of the common threat.
+
+6
+00:00:32,708 --> 00:00:38,125
+They stop fighting and acknowledge each other.
+
+7
+00:00:38,125 --> 00:00:39,208
+TheAI studies the threat.
+
+8
+00:00:39,208 --> 00:00:41,708
+The human directs theAI toward a shared target.
+
+9
+00:00:41,708 --> 00:00:49,208
+[Faceted lattice contracts]
+Working together, they contain the threat.
+
+10
+00:00:49,208 --> 00:00:56,208
+HUMAN + AI
+Speed. Context. Judgment. Accountability.

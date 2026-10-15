@@ -1,0 +1,77 @@
+1
+00:00:01,380 --> 00:00:02,700
+The water is safe.
+
+2
+00:00:03,180 --> 00:00:05,020
+That is what the control system says.
+
+3
+00:00:05,500 --> 00:00:09,520
+Independent physical sensors are within
+acceptable limits too, but
+
+4
+00:00:09,460 --> 00:00:11,980
+chemical dosing has changed unexpectedly.
+
+5
+00:00:12,320 --> 00:00:16,120
+An engineering workstation is talking to
+infrastructure associated with
+
+6
+00:00:16,060 --> 00:00:17,500
+previous cyberattacks.
+
+7
+00:00:17,960 --> 00:00:19,120
+Suspicious activity?
+
+8
+00:00:19,520 --> 00:00:19,980
+Yes.
+
+9
+00:00:20,320 --> 00:00:21,300
+Confirmed attacker?
+
+10
+00:00:21,720 --> 00:00:22,080
+No.
+
+11
+00:00:22,420 --> 00:00:24,100
+Confirmed sensor manipulation?
+
+12
+00:00:24,460 --> 00:00:24,800
+No.
+
+13
+00:00:25,220 --> 00:00:29,420
+The facility's security AI estimates an eighty-
+seven percent probability
+
+14
+00:00:29,340 --> 00:00:33,300
+of compromise and recommends immediate
+engineering network isolation.
+
+15
+00:00:33,800 --> 00:00:38,160
+Isolation sends several automated treatment
+processes back to manual control.
+
+16
+00:00:38,580 --> 00:00:42,600
+Operators can run safely that way for about six
+hours before staffing
+
+17
+00:00:42,500 --> 00:00:44,680
+and process complexity become a problem.
+
+18
+00:00:45,080 --> 00:00:45,860
+What should you do?

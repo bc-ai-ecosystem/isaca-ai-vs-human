@@ -1,0 +1,14 @@
+{
+  "name": "isaca-ai-vs-human",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI vs. Human interactive cyber-awareness showrunner by Kris Krug for BC + AI and ISACA Vancouver",
+  "scripts": {
+    "test": "node --test test/regressions.mjs test/v3-regressions.mjs",
+    "test:browser": "node test/smoke.mjs",
+    "start": "python3 -m http.server 8080 --bind 127.0.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.60.0"
+  }
+}

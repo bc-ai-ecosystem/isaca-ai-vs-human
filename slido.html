@@ -1,0 +1,484 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>ISACA · Slido operator guide</title><style>
+      :root {
+        color-scheme: dark;
+        --bg: #070c14;
+        --panel: #111c2c;
+        --text: #f3ecd8;
+        --muted: #bbc7cf;
+        --line: #62798b;
+        --blue: #8cd8ff;
+        --red: #ff6571;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          17px/1.6 system-ui,
+          -apple-system,
+          Arial,
+          sans-serif;
+      }
+      main {
+        max-width: 1180px;
+        margin: auto;
+        padding: 48px 28px 64px;
+      }
+      a {
+        color: var(--blue);
+        text-underline-offset: 4px;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--text);
+        outline-offset: 6px;
+      }
+      header {
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 30px;
+      }
+      .eyebrow {
+        font:
+          700 13px/1.5 ui-monospace,
+          monospace;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      h1 {
+        font-size: clamp(36px, 6vw, 70px);
+        letter-spacing: -0.04em;
+        line-height: 1.06;
+        margin: 18px 0 24px;
+        max-width: 850px;
+      }
+      h2 {
+        font-size: 28px;
+        line-height: 1.25;
+        margin: 0 0 18px;
+      }
+      p {
+        max-width: 900px;
+        margin: 14px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 28px 0 0;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 10px 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--panel);
+      }
+      .button.primary {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+        font-weight: 750;
+      }
+      .button:hover {
+        border-color: var(--blue);
+      }
+      section {
+        margin-top: 32px;
+        padding: 28px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .table {
+        overflow-x: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: left;
+      }
+      th,
+      td {
+        vertical-align: top;
+        padding: 13px 14px;
+        border-bottom: 1px solid #62798b66;
+      }
+      th {
+        color: var(--blue);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      td:first-child {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      tr:last-child td {
+        border: 0;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .split section {
+        min-width: 0;
+      }
+      .callout {
+        border-left: 4px solid var(--red);
+        padding-left: 18px;
+      }
+      .time {
+        font:
+          700 15px/1.5 ui-monospace,
+          monospace;
+        color: var(--blue);
+      }
+      ol,
+      ul {
+        padding-left: 24px;
+      }
+      li {
+        margin: 12px 0;
+      }
+      .key {
+        font:
+          700 16px ui-monospace,
+          monospace;
+      }
+      .model {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .model img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        background: var(--text);
+        padding: 4px;
+        border-radius: 6px;
+      }
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      @media (max-width: 760px) {
+        main {
+          padding: 28px 16px;
+        }
+        section {
+          padding: 20px 16px;
+        }
+        .split {
+          display: block;
+        }
+        th,
+        td {
+          padding: 10px 8px;
+          font-size: 15px;
+        }
+        nav .button {
+          flex-grow: 1;
+          justify-content: center;
+        }
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 16px;
+        top: 12px;
+        z-index: 30;
+        padding: 12px 18px;
+        background: var(--text);
+        color: var(--bg);
+        transform: translateY(-180%);
+        border-radius: 6px;
+      }
+      .skip-link:focus {
+        transform: none;
+      }
+      .section-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 14px 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 24px 0 0;
+      }
+      .section-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 6px 14px;
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 6px;
+      }
+      .section-nav a:hover,
+      .section-nav a:focus-visible {
+        background: var(--panel);
+      }
+      section {
+        scroll-margin-top: 96px;
+      }
+      .button {
+        font: inherit;
+        cursor: pointer;
+        transition:
+          transform 150ms,
+          border-color 150ms;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+      }
+      .button[hidden] {
+        display: none;
+      }
+      .button:focus-visible,
+      .share-link:focus-visible {
+        outline: 3px solid var(--text);
+        outline-offset: 4px;
+      }
+      .share-link {
+        display: block;
+        width: min(100%, 720px);
+        font: inherit;
+        color: var(--text);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 12px;
+        min-height: 48px;
+      }
+      .share-link[hidden] {
+        display: none;
+      }
+      .share-status {
+        margin: 14px 0 0;
+        min-height: 1.6em;
+        color: var(--muted);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .cell-label {
+        display: none;
+      }
+      @media (max-width: 1080px) {
+        .split {
+          display: block;
+        }
+      }
+      @media (max-width: 760px) {
+        section {
+          scroll-margin-top: 148px;
+        }
+        .section-nav a {
+          padding: 6px 10px;
+          font-size: 15px;
+        }
+        .card-table,
+        .card-table tbody {
+          display: block;
+          width: 100%;
+        }
+        .card-table thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+        }
+        .card-table tbody tr {
+          display: grid;
+          gap: 14px;
+          margin: 12px 0;
+          padding: 16px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+        }
+        .card-table td {
+          display: block;
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          white-space: normal !important;
+          font-size: 16px;
+          line-height: 1.55;
+        }
+        .card-table .cell-label {
+          display: block;
+          margin-bottom: 4px;
+          color: var(--blue);
+          font:
+            700 11px/1.4 system-ui,
+            sans-serif;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .agenda-table tbody tr,
+        .ai-table tbody tr {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .agenda-table td:last-child {
+          grid-column: 1 / -1;
+        }
+        .ai-table .model {
+          gap: 7px;
+        }
+        .ai-table .model img {
+          width: 26px;
+          height: 26px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .button {
+          transition: none;
+        }
+        .button:hover {
+          transform: none;
+        }
+      }
+      @media print {
+        :root {
+          color-scheme: light;
+          --bg: #fff;
+          --panel: #fff;
+          --text: #111;
+          --muted: #333;
+          --line: #777;
+          --blue: #111;
+          --red: #111;
+        }
+        @page {
+          size: Letter;
+          margin: 0.6in;
+        }
+        body {
+          background: white;
+          color: #111;
+          font-size: 10pt;
+          line-height: 1.4;
+        }
+        main {
+          max-width: none;
+          padding: 0;
+        }
+        header {
+          padding-bottom: 12pt;
+        }
+        h1 {
+          font-size: 25pt;
+          margin: 8pt 0 12pt;
+        }
+        h2 {
+          font-size: 15pt;
+          margin-bottom: 8pt;
+        }
+        p {
+          margin: 8pt 0;
+        }
+        .eyebrow {
+          font-size: 9pt;
+          letter-spacing: 0.08em;
+        }
+        nav,
+        .skip-link,
+        .share-link,
+        .share-status {
+          display: none !important;
+        }
+        .split {
+          display: block;
+        }
+        section {
+          margin-top: 12pt;
+          padding: 12pt;
+          border: 1px solid #aaa;
+          border-radius: 0;
+        }
+        th,
+        td {
+          padding: 6pt;
+          font-size: 9pt;
+        }
+        .card-table {
+          display: table;
+          width: 100%;
+        }
+        .card-table tbody {
+          display: table-row-group;
+        }
+        .card-table thead {
+          display: table-header-group;
+          position: static;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+        }
+        .card-table tbody tr {
+          display: table-row;
+          padding: 0;
+          margin: 0;
+          border: 0;
+        }
+        .card-table td {
+          display: table-cell;
+          padding: 6pt;
+          font-size: 9pt;
+          border-bottom: 1px solid #bbb;
+        }
+        .card-table .cell-label {
+          display: none;
+        }
+        tr {
+          break-inside: avoid;
+        }
+        h2 {
+          break-after: avoid;
+        }
+        li {
+          margin: 6pt 0;
+        }
+        footer {
+          font-size: 8pt;
+          margin-top: 12pt;
+        }
+        a {
+          color: #111;
+        }
+        .model img {
+          background: white;
+        }
+        .callout {
+          border-left: 2px solid #555;
+        }
+      }
+    </style></head><body><a class="skip-link" href="#main">Skip to Slido setup</a><main id="main" tabindex="-1"><header><div class="eyebrow">ISACA · October 14 · Audience voting</div><h1>Six polls. One room.</h1><p>Use Chris’s existing Slido event <strong>#1234 567</strong>. Participant link: <a href="https://www.slido.com/">Join this event</a>. All six existing polls were audited on October13: exact choices, single-choice voting, hidden results, activation and closing. Chris must confirm owner-only capacity/sorting and Vipin access; the physical two-phone drill remains a crew check.</p><nav><a class="button" href="briefing.html">Crew hub</a><a class="button" href="/?tour&amp;films=all&amp;revision=oct14-chat">Complete rehearsal</a><a class="button" href="phone.html?provider=slido&amp;pin=1234567&amp;join=https%3A%2F%2Fqr.sli.do%2FgGusjgjLaYNhUMtNicY6fL">Phone entry</a></nav></header><section><h2>Host setup</h2><ol><li>Open the existing event. Verify event date, access/capacity and Chris/Vipin’s host access. Do not create a second event or buy another plan.</li><li>Six multiple-choice opinion polls, one answer per person. No correct answers, quiz points or leaderboard. Prefix each answer A./B./C./D. exactly as below.</li><li>Keep answer results in fixed letter order; disable popularity sorting. Show absolute vote counts to the host and keep participant results hidden while voting.</li><li>Open the matching provider poll at app voting GO. Vipin manually closes it when the 45-second app timer expires. Read counts by label, never by row position or rounded percentages.</li><li>Enter all four counts at the operator desk. Resolve a top tie deliberately with the host; hold GO if results are missing. Then GO reveals Human, next GO reveals AI.</li></ol></section><section><h2>Exact poll wording and order</h2><div class="table"><table class="card-table"><thead><tr><th scope="col">Round</th><th scope="col">Question</th><th scope="col">Answers</th></tr></thead><tbody><tr><td><span class="cell-label" aria-hidden="true">Round</span>1 · The $250K Transfer</td><td><span class="cell-label" aria-hidden="true">Question</span>What should the CFO do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Proceed with the transfer<br><strong>B.</strong> Refuse until the CEO is independently verified<br><strong>C.</strong> Verify with the seller&#x27;s law firm, then proceed<br><strong>D.</strong> Escalate to security and the board chair</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>2 · Code Red</td><td><span class="cell-label" aria-hidden="true">Question</span>What should hospital leadership do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Negotiate and keep payment on the table<br><strong>B.</strong> Refuse payment and recover from backups<br><strong>C.</strong> Divert patients, run manual, set a recovery deadline<br><strong>D.</strong> Give the clinical incident commander authority</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>3 · The AI Pipeline Is Compromised</td><td><span class="cell-label" aria-hidden="true">Question</span>What should you do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Shut down the entire AI platform<br><strong>B.</strong> Isolate only dataset processing<br><strong>C.</strong> Keep AI running, rotate credentials, hunt<br><strong>D.</strong> Restricted operation: isolate, revoke, block intake</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>4 · Your Trusted Vendor May Be Compromised</td><td><span class="cell-label" aria-hidden="true">Question</span>What should you do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Disable the vendor&#x27;s privileged access now<br><strong>B.</strong> Cut to least privilege and investigate jointly<br><strong>C.</strong> Keep access; SOC approves every privileged action<br><strong>D.</strong> Leave access unchanged until there&#x27;s evidence</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>5 · The Water Is Safe. Or Is It?</td><td><span class="cell-label" aria-hidden="true">Question</span>What should you do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Isolate the engineering network immediately<br><strong>B.</strong> Keep operating while cyber investigates<br><strong>C.</strong> Switch to manual operations, then isolate<br><strong>D.</strong> Sample and monitor for 30 minutes, then decide</td></tr><tr><td><span class="cell-label" aria-hidden="true">Round</span>6 · The AI Wants to Pull the Plug</td><td><span class="cell-label" aria-hidden="true">Question</span>What should you do?</td><td><span class="cell-label" aria-hidden="true">Answers</span><strong>A.</strong> Authorize immediate isolation<br><strong>B.</strong> Give analysts 10 minutes to validate first<br><strong>C.</strong> Restrict traffic and access; let the deal close<br><strong>D.</strong> Let the AI agent decide within risk thresholds</td></tr></tbody></table></div></section><section><h2>Two-phone test before doors</h2><ol><li>Scan the projected QR on two physical phones. Both must enter this same event; verify from the rear seating position.</li><li>For each of the six polls, submit B from both phones and verify B=2, others=0 in absolute counts. Enter by letter and reveal Human, then AI manually.</li><li>Use a disposable poll test to split A/B; verify a tie. Change a vote before close and confirm counts update correctly.</li><li>Close the provider poll. Confirm a late vote is rejected and both phones still have no premature results.</li><li>Export test records, then reset only disposable test responses and the disposable app session. Confirm LIVE/no rehearsal counts before doors. Never reset real audience responses.</li></ol><p>Rounds 1–5 score with four judges. Round 6 is unscored and moves from AI reveal into Dom’s interruption. The app keeps all six responses in its export.</p></section><section><h2>If Wi-Fi or Slido fails</h2><p>Announce a manual A–D room tally. Vipin enters actual counts and continues the same manual reveal flow. Films can be stored offline; Slido voting requires connectivity. Never use rehearsal sample counts as live results.</p></section><footer>The former Kahoot build pack is superseded for this event and retained as an archive. No provider API or custom voting backend is used.</footer></main></body></html>
