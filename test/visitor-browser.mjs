@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import {mkdirSync} from "node:fs";
+import {mkdirSync, readFileSync} from "node:fs";
 import {chromium} from "@playwright/test";
 
 const arg = process.argv.indexOf("--url");
@@ -22,7 +22,7 @@ async function check(name, run, options = {}) {
   } catch (error) {
     console.error(`FAIL ${name}: ${error.stack}`); failed++;
     if (await page.locator("video").count()) console.error("Video state:", await page.locator("video").evaluate(v => ({time: v.currentTime, duration: v.duration, ended: v.ended, paused: v.paused, ready: v.readyState, network: v.networkState, error: v.error?.message, seekable: Array.from({length: v.seekable.length}, (_, i) => [v.seekable.start(i), v.seekable.end(i)])})));
-    await page.screenshot({path: `${output}/failure-${failed}.png`, fullPage: true});
+    await page.screenshot({path: `${output}/failure-${failed}.png`, fullPage: true, animations: "disabled"});
   } finally { await context.close(); }
 }
 
@@ -38,7 +38,7 @@ await check("landing offers all six incidents without downloading films or expos
   assert.deepEqual(films, []);
   assert.deepEqual(errors, []);
   assert.doesNotMatch(await page.locator("body").innerText(), /Slido|Kahoot|event code|SHOW CONTROL/i);
-  await page.screenshot({path: `${output}/landing-desktop.png`, fullPage: true});
+  await page.screenshot({path: `${output}/landing-desktop.png`, fullPage: true, animations: "disabled"});
 });
 
 for (const id of [1, 2, 3, 4, 5, 6]) {
@@ -61,7 +61,7 @@ for (const id of [1, 2, 3, 4, 5, 6]) {
     assert.match(await page.locator("#main").innerText(), /not a measured probability/);
     assert.equal(await page.getByRole("heading", {name: "What would change your mind?", exact: true}).count(), 1);
     if (id === 4) assert.match(await page.locator("#main").innerText(), /edited.*October 13/);
-    if (id === 1) await page.screenshot({path: `${output}/comparison-desktop.png`, fullPage: true});
+    if (id === 1) await page.screenshot({path: `${output}/comparison-desktop.png`, fullPage: true, animations: "disabled"});
   });
 }
 
@@ -90,7 +90,7 @@ for (const id of [1, 2, 3, 4, 5, 6]) {
     await page.waitForFunction(() => document.querySelector("video").ended);
     assert.equal(new URL(page.url()).hash, `#scenario-${id}`);
     assert.equal(await page.getByRole("radio").count(), 4);
-    if (id === 4) await page.screenshot({path: `${output}/vendor-film.png`, fullPage: true});
+    if (id === 4) await page.screenshot({path: `${output}/vendor-film.png`, fullPage: true, animations: "disabled"});
   });
 }
 
@@ -192,6 +192,81 @@ await check("documentary photographs and contributor credits remain separate fro
   assert.match(await page.locator("#main").innerText(), /Natasha, David, Fiann, and Martin/);
   assert.equal(await page.locator("video").count(), 0);
   await page.screenshot({path: `${output}/about.png`, fullPage: true, animations: "disabled"});
+});
+
+for (const width of [320, 360, 768, 1440]) {
+  await check(`${width}px: all incident briefs and the comparison fit without horizontal overflow`, async page => {
+    await page.goto(url);
+    await page.getByRole("heading", {name: /Four choices/}).waitFor();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+    if (width === 360) await page.screenshot({path: `${output}/landing-mobile.png`, fullPage: true, animations: "disabled"});
+    for (const id of [1, 2, 3, 4, 5, 6]) {
+      await page.goto(`${url}#scenario-${id}`);
+      await page.getByRole("button", {name: "Read instead", exact: true}).click();
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true, `incident ${id} at ${width}px`);
+    }
+    await page.locator('input[value="D"]').check();
+    await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+    await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+    if (width === 360) await page.screenshot({path: `${output}/comparison-mobile.png`, fullPage: true, animations: "disabled"});
+  }, {viewport: {width, height: 900}, ...(width === 360 ? {isMobile: true, hasTouch: true} : {})});
+}
+
+await check("keyboard focus, reduced motion, dialog cancellation, and print summary work", async page => {
+  await page.goto(`${url}#scenario-1`);
+  await page.getByRole("button", {name: "Read instead", exact: true}).waitFor();
+  await page.keyboard.press("Tab");
+  assert.equal(await page.getByRole("link", {name: "Skip to the experience", exact: true}).evaluate(el => el === document.activeElement), true);
+  await page.keyboard.press("Enter");
+  assert.equal(await page.evaluate(() => document.activeElement.id), "main");
+  await page.locator('input[value="D"]').focus();
+  await page.keyboard.press("Space");
+  await page.getByRole("button", {name: "Compare my call", exact: true}).focus();
+  await page.keyboard.press("Enter");
+  await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+  await page.waitForFunction(() => document.activeElement.tagName === "H1");
+  assert.equal(await page.locator("#main").evaluate(el => getComputedStyle(el).animationName), "none");
+  await page.getByRole("button", {name: "Make this decision again", exact: true}).click();
+  await page.keyboard.press("Escape");
+  assert.equal(await page.getByRole("dialog").isVisible(), false);
+  await page.getByRole("link", {name: "Your calls", exact: true}).click();
+  await page.getByRole("heading", {name: "Your calls.", exact: true}).waitFor();
+  await page.emulateMedia({media: "print"});
+  assert.equal(await page.locator(".site-header").isVisible(), false);
+  assert.equal(await page.locator("[data-summary-row]").isVisible(), true);
+  await page.screenshot({path: `${output}/print-summary.png`, fullPage: true, animations: "disabled"});
+}, {reducedMotion: "reduce"});
+
+await check("catalogue failure presents recovery links instead of a broken game", async page => {
+  await page.route("**/visitor-scenarios.json", route => route.fulfill({status: 503, body: "Unavailable"}));
+  await page.goto(url);
+  await page.getByRole("alert").waitFor();
+  assert.equal(await page.getByRole("link", {name: "Try again", exact: true}).count(), 1);
+  assert.equal(await page.getByRole("link", {name: "Watch the films", exact: true}).count(), 1);
+});
+
+await check("invalid catalogue choice and media references are rejected before rendering", async page => {
+  const data = JSON.parse(readFileSync(new URL("../media/visitor-scenarios.json", import.meta.url)));
+  data.scenarios[0].choices[0].letter = "Z";
+  data.scenarios[0].media.src = "https://untrusted.example/film.mp4";
+  await page.route("**/visitor-scenarios.json", route => route.fulfill({json: data}));
+  await page.goto(`${url}#scenario-1`);
+  await page.getByRole("alert").waitFor();
+  assert.equal(await page.getByRole("radio").count(), 0);
+});
+
+await check("malformed saved JSON is recoverable and a storage write failure preserves the current choice", async (page, context) => {
+  await context.addInitScript(() => {
+    localStorage.setItem("aivh-visitor-v1", "{invalid");
+    Storage.prototype.setItem = () => {throw new DOMException("Full", "QuotaExceededError");};
+  });
+  await page.goto(`${url}#scenario-3`);
+  await page.locator('input[value="B"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+  assert.equal(await page.locator("[data-your-choice]").textContent(), "B");
+  assert.match(await page.locator("#storage-notice").innerText(), /this tab/);
 });
 
 await browser.close();

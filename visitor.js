@@ -11,7 +11,7 @@ try {
   if (raw) {
     try {
       const saved = JSON.parse(raw);
-      if (saved.version === 1 && saved.answers && typeof saved.answers === "object") {
+      if (saved.version === 1 && saved.answers && typeof saved.answers === "object" && !Array.isArray(saved.answers)) {
         answers = Object.fromEntries(Object.entries(saved.answers).filter(([id, choice]) => /^[1-6]$/.test(id) && typeof choice === "string" && /^[A-D]$/.test(choice)));
       }
     } catch {}
@@ -37,7 +37,7 @@ function incident(s) {
       <dl class="facts">${s.facts.map(([label, value, tone]) => `<div><dt>${esc(label)}</dt><dd data-tone="${esc(tone)}">${esc(value)}</dd></div>`).join("")}</dl>
     </div></details>
     ${answers[s.id] ? `<div class="actions"><a class="button primary" href="#scenario-${s.id}/compare">Return to your comparison</a></div>` : `<form class="choice-form" data-scenario="${s.id}"><fieldset><legend>${esc(s.question)}</legend><p class="choice-help">Choose one response. Commit your call before seeing the prepared AI analysis.</p><div class="choice-list">
-      ${s.choices.map(c => `<label class="choice"><input type="radio" name="decision" value="${c.letter}" required><span class="letter" aria-hidden="true">${c.letter}</span><span><strong>${esc(c.title)}</strong><span class="detail">${esc(c.detail)}</span></span></label>`).join("")}
+      ${s.choices.map(c => `<label class="choice"><input type="radio" name="decision" value="${c.letter}" required><span class="letter">${c.letter}</span><span><strong>${esc(c.title)}</strong><span class="detail">${esc(c.detail)}</span></span></label>`).join("")}
     </div></fieldset><div class="actions"><button class="button primary" type="submit" disabled>Compare my call</button><p class="privacy-note">Your choice stays in this browser. It isn’t submitted to a live poll.</p></div></form>`}
   </div>`;
 }
@@ -59,7 +59,7 @@ function comparison(s) {
 function summary() {
   const completed = scenarios.filter(s => answers[s.id]);
   const matched = completed.filter(s => answers[s.id] === s.ai.decision).length;
-  return `<div class="page summary-page">${backLink}<header class="file-head"><p class="eyebrow">Your decisions · saved on this device</p><h1>Your calls.</h1><p class="lede">${completed.length} of 6 incidents explored. ${completed.length ? `${matched} choices matched the prepared AI option. The reasoning matters more than the match.` : "Your first call is still ahead. Start with any incident."}</p></header>
+  return `<div class="page summary-page">${backLink}<header class="file-head"><p class="eyebrow">Your decisions · ${storageAvailable ? "saved on this device" : "for this tab"}</p><h1>Your calls.</h1><p class="lede">${completed.length} of 6 incidents explored. ${completed.length ? `${matched} choices matched the prepared AI option. The reasoning matters more than the match.` : "Your first call is still ahead. Start with any incident."}</p></header>
     ${completed.length ? `<div class="summary-list">${completed.map(s => `<section class="summary-row" data-summary-row><div><p class="eyebrow">File ${number(s.id)}</p><h2>${esc(s.title)}</h2><p>${esc(s.themes.join(" / "))}</p></div><div class="summary-decisions"><span>Your call <strong>${answers[s.id]}</strong></span><span>${esc(s.ai.provider)} <strong>${s.ai.decision}</strong></span></div><a class="button" href="#scenario-${s.id}/compare">Review this call →</a></section>`).join("")}</div>
     <section class="reflection"><h2>Human + AI. Keep asking.</h2><p class="lede">The live show brought cybersecurity professionals into the conversation. Here, the next step is yours: ask someone else to make a call, compare your assumptions, and question the model’s reasoning together.</p><p class="small">These are your choices alone. Matching a prepared answer does not establish correctness or professional competence.</p></section>
     <div class="actions"><button class="button" type="button" data-print>Print my summary</button><button class="text-button" type="button" data-reset="all">Clear my progress</button></div>` : `<div class="actions"><a class="button primary" href="#scenario-1">Make your first call →</a></div>`}
@@ -131,6 +131,7 @@ function home() {
 }
 
 function render(focus = false) {
+  if (!scenarios.length) return;
   const route = location.hash.match(/^#scenario-([1-6])(?:\/(compare|watch))?$/);
   const s = route && scenarios.find(s => s.id === Number(route[1]));
   main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : location.hash === "#summary" ? summary() : location.hash === "#about" ? about() : home();
@@ -146,6 +147,11 @@ function render(focus = false) {
 }
 
 addEventListener("hashchange", () => render(true));
+document.querySelector(".skip-link").addEventListener("click", event => {
+  event.preventDefault();
+  main.focus();
+  main.scrollIntoView();
+});
 main.addEventListener("change", event => {
   if (event.target.matches('input[name="decision"]')) event.target.closest("form").querySelector('[type="submit"]').disabled = false;
 });
@@ -192,7 +198,23 @@ try {
   const response = await fetch("media/visitor-scenarios.json");
   if (!response.ok) throw new Error("Catalogue unavailable");
   const data = await response.json();
-  if (data.version !== 1 || data.scenarios?.length !== 6) throw new Error("Invalid catalogue");
+  const mediaPath = /^media\/[a-zA-Z0-9.-]+$/;
+  if (data.version !== 1 || !Array.isArray(data.scenarios) || data.scenarios.length !== 6 ||
+      !data.scenarios.every((s, i) => s.id === i + 1 && typeof s.title === "string" &&
+        Array.isArray(s.themes) && s.themes.every(t => typeof t === "string") &&
+        [s.tension, s.question, s.tradeoffs, s.discussion].every(text => typeof text === "string") &&
+        Array.isArray(s.brief) && s.brief.every(p => typeof p === "string") &&
+        Array.isArray(s.facts) && s.facts.every(f => Array.isArray(f) && f.length === 3 && f.every(v => typeof v === "string")) &&
+        Array.isArray(s.choices) && s.choices.length === 4 &&
+        s.choices.every((c, index) => c.letter === "ABCD"[index] && typeof c.title === "string" && typeof c.detail === "string") &&
+        ["ChatGPT", "Claude", "Grok"].includes(s.ai?.provider) && /^[A-D]$/.test(s.ai.decision) &&
+        Number.isFinite(s.ai.confidence) && s.ai.confidence >= 0 && s.ai.confidence <= 100 &&
+        [s.ai.provenance, s.ai.conclusion].every(text => typeof text === "string") &&
+        Array.isArray(s.ai.reasoning) && s.ai.reasoning.every(r => typeof r === "string") &&
+        Number.isFinite(s.media?.seconds) && s.media.seconds > 0 &&
+        [s.media?.src, s.media?.poster, s.media?.captions].every(path => typeof path === "string" && mediaPath.test(path)))) {
+    throw new Error("Invalid catalogue");
+  }
   scenarios = data.scenarios;
   render();
 } catch {
