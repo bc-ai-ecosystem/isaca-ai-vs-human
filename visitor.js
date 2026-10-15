@@ -2,8 +2,26 @@ const main = document.querySelector("#main");
 const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"}[c]));
 const number = id => String(id).padStart(2, "0");
 const minutes = seconds => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, "0")}`;
-let scenarios = [];
-const answers = {};
+let scenarios = [], answers = {}, storageAvailable = true, pendingReset = null;
+const progressKey = "aivh-visitor-v1";
+const dialog = document.querySelector("#reset-dialog");
+
+try {
+  const raw = localStorage.getItem(progressKey);
+  if (raw) {
+    try {
+      const saved = JSON.parse(raw);
+      if (saved.version === 1 && saved.answers && typeof saved.answers === "object") {
+        answers = Object.fromEntries(Object.entries(saved.answers).filter(([id, choice]) => /^[1-6]$/.test(id) && typeof choice === "string" && /^[A-D]$/.test(choice)));
+      }
+    } catch {}
+  }
+} catch { storageAvailable = false; }
+
+function saveProgress() {
+  try { localStorage.setItem(progressKey, JSON.stringify({version: 1, answers})); }
+  catch { storageAvailable = false; }
+}
 
 const choiceOf = (s, letter) => s.choices.find(c => c.letter === letter);
 const backLink = `<a class="back-link" href="#scenarios">← All six scenarios</a>`;
@@ -34,8 +52,18 @@ function comparison(s) {
       <p class="source-note">${esc(s.ai.provenance)}<br><br>This confidence is the response’s stated confidence, not a measured probability or a security verdict. Any compromise estimate inside the incident is a separate claim.</p>
     </section></div>
     <section class="reflection"><p class="eyebrow">Stay with the difficult part.</p><h2>What would change your mind?</h2><p class="debate">${esc(s.discussion)}</p><details><summary>Explore the tradeoffs in all four options</summary><p>${esc(s.tradeoffs)}</p></details>
-      <div class="actions"><a class="button primary" href="#scenario-${s.id % 6 + 1}">Try another scenario →</a><a class="button" href="#summary">See your calls</a><a class="text-link" href="#scenario-${s.id}/watch">Replay the film or read again</a></div>
+      <div class="actions"><a class="button primary" href="#scenario-${s.id % 6 + 1}">Try another scenario →</a><a class="button" href="#summary">See your calls</a><a class="text-link" href="#scenario-${s.id}/watch">Replay the film or read again</a><button class="text-button" type="button" data-reset="${s.id}">Make this decision again</button></div>
     </section></div>`;
+}
+
+function summary() {
+  const completed = scenarios.filter(s => answers[s.id]);
+  const matched = completed.filter(s => answers[s.id] === s.ai.decision).length;
+  return `<div class="page summary-page">${backLink}<header class="file-head"><p class="eyebrow">Your decisions · saved on this device</p><h1>Your calls.</h1><p class="lede">${completed.length} of 6 incidents explored. ${completed.length ? `${matched} choices matched the prepared AI option. The reasoning matters more than the match.` : "Your first call is still ahead. Start with any incident."}</p></header>
+    ${completed.length ? `<div class="summary-list">${completed.map(s => `<section class="summary-row" data-summary-row><div><p class="eyebrow">File ${number(s.id)}</p><h2>${esc(s.title)}</h2><p>${esc(s.themes.join(" / "))}</p></div><div class="summary-decisions"><span>Your call <strong>${answers[s.id]}</strong></span><span>${esc(s.ai.provider)} <strong>${s.ai.decision}</strong></span></div><a class="button" href="#scenario-${s.id}/compare">Review this call →</a></section>`).join("")}</div>
+    <section class="reflection"><h2>Human + AI. Keep asking.</h2><p class="lede">The live show brought cybersecurity professionals into the conversation. Here, the next step is yours: ask someone else to make a call, compare your assumptions, and question the model’s reasoning together.</p><p class="small">These are your choices alone. Matching a prepared answer does not establish correctness or professional competence.</p></section>
+    <div class="actions"><button class="button" type="button" data-print>Print my summary</button><button class="text-button" type="button" data-reset="all">Clear my progress</button></div>` : `<div class="actions"><a class="button primary" href="#scenario-1">Make your first call →</a></div>`}
+  </div>`;
 }
 
 function watchFilm(id) {
@@ -92,7 +120,10 @@ function home() {
 function render(focus = false) {
   const route = location.hash.match(/^#scenario-([1-6])(?:\/(compare|watch))?$/);
   const s = route && scenarios.find(s => s.id === Number(route[1]));
-  main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : home();
+  main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : location.hash === "#summary" ? summary() : home();
+  const notice = document.querySelector("#storage-notice");
+  notice.hidden = storageAvailable;
+  notice.textContent = storageAvailable ? "" : "Browser storage is unavailable. Your progress lasts for this tab; reloading will clear it.";
   main.classList.remove("enter");
   requestAnimationFrame(() => {
     main.classList.add("enter");
@@ -111,15 +142,37 @@ main.addEventListener("submit", event => {
   const id = Number(event.target.dataset.scenario), choice = new FormData(event.target).get("decision");
   if (!scenarios.some(s => s.id === id) || !/^[A-D]$/.test(choice)) return;
   answers[id] = choice;
+  saveProgress();
   location.hash = `scenario-${id}/compare`;
 });
 main.addEventListener("click", event => {
+  const reset = event.target.closest("[data-reset]");
+  if (reset) {
+    pendingReset = reset.dataset.reset;
+    document.querySelector("#reset-title").textContent = pendingReset === "all" ? "Clear your decisions?" : "Revisit this decision?";
+    document.querySelector("#reset-description").textContent = pendingReset === "all" ? "This clears your visitor choices on this device. You can then start fresh." : "This clears this incident’s committed choice. Your other decisions stay saved.";
+    dialog.showModal();
+  }
+  if (event.target.closest("[data-print]")) window.print();
   const watch = event.target.closest("[data-watch]");
   if (watch) watchFilm(watch.dataset.watch);
   if (event.target.closest("[data-read]")) {
     document.querySelector("#incident-brief").open = true;
     document.querySelector("#brief-heading").focus();
   }
+});
+document.querySelector("[data-cancel-reset]").addEventListener("click", () => {pendingReset = null; dialog.close();});
+dialog.addEventListener("cancel", () => {pendingReset = null;});
+document.querySelector("[data-confirm-reset]").addEventListener("click", () => {
+  const target = pendingReset;
+  if (target === "all") answers = {};
+  else if (/^[1-6]$/.test(target)) delete answers[target];
+  else return;
+  saveProgress();
+  pendingReset = null;
+  dialog.close();
+  if (target === "all") render(true);
+  else location.hash = `scenario-${target}`;
 });
 
 try {

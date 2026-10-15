@@ -16,7 +16,13 @@
     <a class="wordmark" href="#home" aria-label="AI vs. Human home">AI <span>vs.</span> HUMAN<span class="mark-dot" aria-hidden="true"> ●</span></a>
     <nav aria-label="Main navigation"><a href="#scenarios">The scenarios</a><a href="#summary">Your calls</a><a href="#about">Behind the show</a></nav>
   </header>
+  <p id="storage-notice" class="storage-notice" role="status" hidden></p>
   <main id="main"><p class="loading" role="status">Preparing the incident files…</p></main>
+  <dialog id="reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
+    <h2 id="reset-title">Start again?</h2>
+    <p id="reset-description"></p>
+    <div class="actions"><button class="button" type="button" data-cancel-reset autofocus>Keep my calls</button><button class="button primary" type="button" data-confirm-reset>Start again</button></div>
+  </dialog>
   <noscript><p class="loading">The interactive choices need JavaScript. You can still <a href="review.html">watch the scenario films</a>.</p></noscript>
   <footer class="site-footer">
     <p>Built by <a href="https://kriskrug.com/">Kris Krüg</a> for <a href="https://bc-ai.ca/">BC + AI</a>, in partnership with ISACA Vancouver.</p>

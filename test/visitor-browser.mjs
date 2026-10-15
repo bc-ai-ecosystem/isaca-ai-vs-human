@@ -107,6 +107,78 @@ await check("failed film leaves the complete incident and choice path usable", a
   assert.equal(await page.locator("[data-your-choice]").textContent(), "B");
 });
 
+await check("progress saves only committed choices and resumes after reload", async page => {
+  await page.goto(`${url}#scenario-1`);
+  await page.locator('input[value="B"]').check();
+  await page.reload();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).waitFor();
+  assert.equal(await page.getByRole("radio", {checked: true}).count(), 0);
+  await page.locator('input[value="B"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+  await page.reload();
+  await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+  assert.equal(await page.locator("[data-your-choice]").textContent(), "B");
+  await page.getByRole("link", {name: "Your calls", exact: true}).click();
+  await page.getByRole("heading", {name: "Your calls.", exact: true}).waitFor();
+  assert.equal(await page.locator("[data-summary-row]").count(), 1);
+  assert.match(await page.locator("#main").innerText(), /1 of 6/);
+});
+
+await check("explicit reset cancels safely and never changes stage or rehearsal state", async page => {
+  await page.goto(`${url}#scenario-2`);
+  const sentinels = {"aivh-show-v1": "preserve-show", "aivh-fullfilms-tour-v1-oct14-chat": "preserve-rehearsal", "another-app": "preserve-other"};
+  await page.evaluate(data => {for (const [k, v] of Object.entries(data)) localStorage.setItem(k, v);}, sentinels);
+  await page.locator('input[value="C"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.getByRole("link", {name: "Your calls", exact: true}).click();
+  await page.getByRole("button", {name: "Clear my progress", exact: true}).click();
+  await page.getByRole("dialog").waitFor();
+  await page.getByRole("button", {name: "Keep my calls", exact: true}).click();
+  assert.equal(await page.locator("[data-summary-row]").count(), 1);
+  await page.getByRole("button", {name: "Clear my progress", exact: true}).click();
+  await page.getByRole("button", {name: "Start again", exact: true}).click();
+  assert.equal(await page.locator("[data-summary-row]").count(), 0);
+  assert.deepEqual(await page.evaluate(keys => Object.fromEntries(keys.map(k => [k, localStorage.getItem(k)])), Object.keys(sentinels)), sentinels);
+});
+
+await check("one decision can be deliberately restarted without clearing the others", async page => {
+  await page.goto(`${url}#scenario-1`);
+  await page.locator('input[value="A"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.getByRole("link", {name: "Try another scenario →", exact: true}).click();
+  await page.locator('input[value="D"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.goto(`${url}#scenario-1/compare`);
+  await page.getByRole("button", {name: "Make this decision again", exact: true}).click();
+  await page.getByRole("button", {name: "Start again", exact: true}).click();
+  await page.getByRole("radio").first().waitFor();
+  await page.getByRole("link", {name: "Your calls", exact: true}).click();
+  await page.getByRole("heading", {name: "Your calls.", exact: true}).waitFor();
+  assert.equal(await page.locator("[data-summary-row]").count(), 1);
+  assert.match(await page.locator("[data-summary-row]").innerText(), /CODE RED/);
+});
+
+await check("invalid stored values and invalid scenario links have a usable safe default", async (page, context) => {
+  await context.addInitScript(() => localStorage.setItem("aivh-visitor-v1", JSON.stringify({version: 1, answers: {1: "<script>", 2: "B", 99: "A"}})));
+  await page.goto(`${url}#summary`);
+  await page.getByRole("heading", {name: "Your calls.", exact: true}).waitFor();
+  assert.equal(await page.locator("[data-summary-row]").count(), 1);
+  assert.match(await page.locator("[data-summary-row]").innerText(), /CODE RED/);
+  await page.goto(`${url}#scenario-99`);
+  await page.getByRole("heading", {name: /Four choices/}).waitFor();
+});
+
+await check("unavailable browser storage still permits the full decision journey", async (page, context) => {
+  await context.addInitScript(() => Object.defineProperty(window, "localStorage", {get() {throw new DOMException("Blocked", "SecurityError");}}));
+  await page.goto(`${url}#scenario-1`);
+  await page.locator('input[value="C"]').check();
+  await page.getByRole("button", {name: "Compare my call", exact: true}).click();
+  await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+  assert.match(await page.locator("#storage-notice").innerText(), /this tab/);
+  assert.equal(await page.locator("[data-your-choice]").textContent(), "C");
+});
+
 await browser.close();
 console.log(`${passed} visitor browser groups passed; ${failed} failed.`);
 if (failed) process.exitCode = 1;
