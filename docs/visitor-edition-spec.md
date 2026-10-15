@@ -1,13 +1,13 @@
 # AI vs. Human: visitor edition
 
-State: reviewable specification, awaiting Kris's approval before implementation.
+State: approved by Kris on October 14, 2026; implementation in progress.
 Owner: Codex. Requested by Kris after the October 14, 2026 event.
 
 ## Objective and assumptions
 
 Turn the completed stage production into an experience a website visitor can use alone. Keep its dramatic films, dark visual character, and difficult choices. Replace the host-dependent cue sequence with clear personal decisions and reflection.
 
-Assumptions for review:
+Approved assumptions:
 
 - A standalone public route, `play.html`, is linked from the BC + AI article. The existing showrunner and rehearsal links keep working.
 - The six released films and approved audio are reused. New generation, paid API calls, accounts, analytics, and a backend are unnecessary for this version.
@@ -50,7 +50,7 @@ Do not change the production origin's root route, live-show configuration, servi
 
 ### Ordered work
 
-- [ ] **Content contract.** Export the six incidents, full choices, effective prepared responses, provenance, discussion prompts, and pinned media. Validate all A/B/C/D decisions, ids, and asset references; fail on source drift. Files: exporter, generated catalogue, content tests.
+- [x] **Content contract.** Export the six incidents, full choices, effective prepared responses, provenance, discussion prompts, and pinned media. Validate all A/B/C/D decisions, ids, and asset references; fail on source drift. Files: exporter, generated catalogue, content tests.
 - [ ] **Core journey.** Build landing/index, watch/read, choice commitment, comparison, and next-scenario navigation. Verify every scenario and both media/text routes. Files: visitor HTML, CSS, JS, browser tests.
 - [ ] **Persistence and access.** Save and resume only visitor progress; provide a clear local reset. Verify reload, invalid saved data, unavailable storage, keyboard/focus, narrow screens, and reduced motion. Files: visitor JS/CSS and tests.
 - [ ] **Finish and release review.** Add the local decision summary, credits, documentary context, accurate MC credit, and website article CTA once the visitor route exists. Verify actual six-film playback, captions, loading failures, mobile layout, and no stage regressions. Open a reviewable implementation PR and record release/rollback instructions.
