@@ -1,6 +1,6 @@
 # AI vs. Human: visitor edition
 
-State: approved by Kris on October 14, 2026; implementation in progress.
+State: scope approved by Kris on October 14, 2026; implementation verified locally; public release pending approval.
 Owner: Codex. Requested by Kris after the October 14, 2026 event.
 
 ## Objective and assumptions
@@ -34,7 +34,7 @@ Show the supplied event-night photograph and prep collage in a clearly labelled 
 
 ## Project structure and implementation plan
 
-The current app is static HTML/CSS/JavaScript. Node 24 runs verification; Python 3 serves it. `index.html` currently owns scenario facts and prepared responses; `media/manifest.json` pins films, captions, and posters.
+The current app is static HTML/CSS/JavaScript. Node 24 runs verification; Node 24 serves the local preview with byte-range support for native seeking. `index.html` currently owns scenario facts and prepared responses; `media/manifest.json` pins films, captions, and posters.
 
 Use a checked, generated visitor catalogue derived from those existing constants and the media manifest. Do not manually rewrite or fork incident facts. A small Node export/check script generates the catalogue and fails when it drifts from its source. This keeps the first visitor release isolated from showrunner behavior.
 
@@ -51,9 +51,9 @@ Do not change the production origin's root route, live-show configuration, servi
 ### Ordered work
 
 - [x] **Content contract.** Export the six incidents, full choices, effective prepared responses, provenance, discussion prompts, and pinned media. Validate all A/B/C/D decisions, ids, and asset references; fail on source drift. Files: exporter, generated catalogue, content tests.
-- [ ] **Core journey.** Build landing/index, watch/read, choice commitment, comparison, and next-scenario navigation. Verify every scenario and both media/text routes. Files: visitor HTML, CSS, JS, browser tests.
-- [ ] **Persistence and access.** Save and resume only visitor progress; provide a clear local reset. Verify reload, invalid saved data, unavailable storage, keyboard/focus, narrow screens, and reduced motion. Files: visitor JS/CSS and tests.
-- [ ] **Finish and release review.** Add the local decision summary, credits, documentary context, accurate MC credit, and website article CTA once the visitor route exists. Verify actual six-film playback, captions, loading failures, mobile layout, and no stage regressions. Open a reviewable implementation PR and record release/rollback instructions.
+- [x] **Core journey.** Build landing/index, watch/read, choice commitment, comparison, and next-scenario navigation. Verify every scenario and both media/text routes. Files: visitor HTML, CSS, JS, browser tests.
+- [x] **Persistence and access.** Save and resume only visitor progress; provide a clear local reset. Verify reload, invalid saved data, unavailable storage, keyboard/focus, narrow screens, and reduced motion. Files: visitor JS/CSS and tests.
+- [x] **Finish and release review.** Add the local decision summary, credits, documentary context, accurate MC credit, and website article CTA once the visitor route exists. Verify actual six-film playback, captions, loading failures, mobile layout, and no stage regressions. Open a reviewable implementation PR and record release/rollback instructions.
 
 ## Code style
 
@@ -75,8 +75,8 @@ Validate persisted input and external catalogue/media responses at their boundar
 Existing baseline:
 
 ```sh
-node --test test/regressions.mjs test/v3-regressions.mjs
-python3 -m http.server 8080 --bind 127.0.0.1
+npm test
+node scripts/serve.mjs
 npm run test:browser -- --url http://127.0.0.1:8080
 ```
 
@@ -111,4 +111,4 @@ Run on local verified media and again on the eventual deployed visitor route. Us
 - **Ask first:** approve this visitor contract; merge/deploy the public edition and publish the article; add spending, accounts, tracking, data collection, a public crowd leaderboard, or a reuse licence.
 - **Never:** alter the original event's poll, invent event results or judge reactions, label prepared model confidence as accuracy, expose secrets, or reuse generated voices for new speech without authorization.
 
-Recommended decision: approve this scoped visitor edition, then implement the four ordered tasks as one reviewable feature. There are no other required product decisions for version one.
+Kris approved this contract on October 14, 2026. The four implementation tasks are complete and the review candidate is available locally. See `visitor-release.md` for verification, the additive release boundary, and rollback. Public deployment and the article CTA/publication remain release gates; no new product decision is required.

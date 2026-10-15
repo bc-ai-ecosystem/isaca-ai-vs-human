@@ -10,5 +10,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test test/regressions.mjs test/v3-regressions.mjs
+      - run: npm test
       - run: git diff --check
