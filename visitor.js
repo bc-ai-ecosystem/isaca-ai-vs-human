@@ -66,6 +66,19 @@ function summary() {
   </div>`;
 }
 
+function about() {
+  return `<article class="page about-page">${backLink}
+    <header class="file-head"><p class="eyebrow">BC + AI × ISACA Vancouver · October 14, 2026</p><h1>From stage to browser.</h1><p class="lede">Six incidents built for a room full of people. Now you can make the calls yourself.</p></header>
+    <div class="about-copy"><p>ISACA Vancouver brought <strong>AI vs. Human: An Interactive Cyber Awareness Experience</strong> to the Annex in Vancouver, in partnership with BC + AI. Kris Krüg built the showrunner and developed the scenario-film production with AI-assisted tools.</p><p>The stage format put audience decisions beside prepared model responses, with Cyber Judges examining the reasoning. This visitor edition gives you the incident evidence, time to make a choice, and a way to question the analysis.</p></div>
+    <figure class="documentary"><img src="media/visitor-event-night.png" alt="Group selfie at AI vs. Human, with red theatre seating and the audience behind" width="1600" height="900" loading="lazy" decoding="async"><figcaption>BC + AI members Natasha, David, Fiann, and Martin at AI vs. Human. Colin is lurking in the background.</figcaption></figure>
+    <div class="about-copy"><h2>Built for the room.</h2><p>Chris Shachtay and Nathan Chan shaped the production and show flow with Kris. Vipin supported operator delivery, with Levi supporting the venue technical route. The stage app gives the operator a separate view, deliberate film holds, incident briefings, and results export.</p><p>The prep work included slowing down a vendor-chat sequence so people could read it, simplifying debate screens, and checking the films in the show itself.</p></div>
+    <figure class="documentary"><img src="media/visitor-prep-sessions.png" alt="Three-panel collage of people rehearsing with laptops and a projected show screen, plus a close view of the production desk" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>Prep sessions for AI vs. Human: rehearsing the showrunner, scenario films, and projector setup.</figcaption></figure>
+    <div class="about-copy"><h2>The people behind it.</h2><p>Chris Shachtay was the MC. The Cyber Judges were Penny Longman, Larry Carson, Jeffrey Ten Eyck, and Shashi Gautam. SOCRadar and Gigamon were the presenting sponsors. ISACA Vancouver supplied the event direction, scenarios, and cybersecurity review.</p><p><a href="https://luma.com/q5ifj88x">See the official event listing and contributor details ↗</a></p>
+    <h2>Question the answer.</h2><p>The model responses are prepared show material, with edited stage reasoning. They are not live model calls or a scientific benchmark. Stated confidence is not a calibrated probability. The incidents and generated film performances are fictional; the photographs above document the event and preparation.</p><p>Your committed choices are stored in this browser only. This edition has no account, public leaderboard, or connection to the event’s phone voting. If browser storage is blocked, you can still play in the current tab.</p><p>The code is shared for inspection. Films, voices, artwork, and third-party marks have separate rights; viewing this experience does not grant a general reuse licence.</p>
+    <div class="actions"><a class="button primary" href="#scenario-1">Make your first call →</a><a class="button" href="https://github.com/bc-ai-ecosystem/isaca-ai-vs-human">Explore the source ↗</a></div></div>
+  </article>`;
+}
+
 function watchFilm(id) {
   const s = scenarios.find(s => s.id === Number(id));
   if (!s) return;
@@ -120,7 +133,7 @@ function home() {
 function render(focus = false) {
   const route = location.hash.match(/^#scenario-([1-6])(?:\/(compare|watch))?$/);
   const s = route && scenarios.find(s => s.id === Number(route[1]));
-  main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : location.hash === "#summary" ? summary() : home();
+  main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : location.hash === "#summary" ? summary() : location.hash === "#about" ? about() : home();
   const notice = document.querySelector("#storage-notice");
   notice.hidden = storageAvailable;
   notice.textContent = storageAvailable ? "" : "Browser storage is unavailable. Your progress lasts for this tab; reloading will clear it.";

@@ -179,6 +179,21 @@ await check("unavailable browser storage still permits the full decision journey
   assert.equal(await page.locator("[data-your-choice]").textContent(), "C");
 });
 
+await check("documentary photographs and contributor credits remain separate from fictional films", async page => {
+  await page.goto(`${url}#about`);
+  await page.getByRole("heading", {name: "From stage to browser.", exact: true}).waitFor();
+  assert.equal(await page.locator(".documentary img").count(), 2);
+  for (const image of await page.locator(".documentary img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate(img => img.decode());
+    assert.equal(await image.evaluate(img => img.naturalWidth > 1000), true);
+  }
+  assert.match(await page.locator("#main").innerText(), /Chris Shachtay was the MC/);
+  assert.match(await page.locator("#main").innerText(), /Natasha, David, Fiann, and Martin/);
+  assert.equal(await page.locator("video").count(), 0);
+  await page.screenshot({path: `${output}/about.png`, fullPage: true, animations: "disabled"});
+});
+
 await browser.close();
 console.log(`${passed} visitor browser groups passed; ${failed} failed.`);
 if (failed) process.exitCode = 1;
