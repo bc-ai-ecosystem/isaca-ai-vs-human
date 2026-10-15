@@ -12,6 +12,7 @@ let passed = 0, failed = 0;
 async function check(name, run, options = {}) {
   const context = await browser.newContext({viewport: {width: 1440, height: 1000}, ...options});
   const page = await context.newPage();
+  page.setDefaultTimeout(7000);
   try {
     await run(page, context);
     console.log(`PASS ${name}`); passed++;
@@ -35,6 +36,30 @@ await check("landing offers all six incidents without downloading films or expos
   assert.doesNotMatch(await page.locator("body").innerText(), /Slido|Kahoot|event code|SHOW CONTROL/i);
   await page.screenshot({path: `${output}/landing-desktop.png`, fullPage: true});
 });
+
+for (const id of [1, 2, 3, 4, 5, 6]) {
+  await check(`incident ${id}: read, commit a decision, and compare the current prepared reasoning`, async page => {
+    await page.goto(`${url}#scenario-${id}`);
+    await page.getByRole("button", {name: "Read instead", exact: true}).waitFor();
+    assert.equal(await page.locator("video").count(), 0);
+    assert.equal(await page.locator("[data-ai-choice]").count(), 0);
+    const commit = page.getByRole("button", {name: "Compare my call", exact: true});
+    assert.equal(await commit.isDisabled(), true);
+    await page.getByRole("button", {name: "Read instead", exact: true}).click();
+    assert.equal(await page.locator("#incident-brief").getAttribute("open"), "");
+    assert.equal(await page.getByRole("radio").count(), 4);
+    await page.locator('input[value="A"]').check();
+    await commit.click();
+    await page.getByRole("heading", {name: "Two calls. Same evidence.", exact: true}).waitFor();
+    assert.equal(await page.locator("[data-your-choice]").textContent(), "A");
+    assert.equal(await page.locator("[data-ai-choice]").textContent(), ["B", "C", "D", "B", "C", "C"][id - 1]);
+    assert.match(await page.locator("#main").innerText(), /prepared|Prepared/);
+    assert.match(await page.locator("#main").innerText(), /not a measured probability/);
+    assert.equal(await page.getByRole("heading", {name: "What would change your mind?", exact: true}).count(), 1);
+    if (id === 4) assert.match(await page.locator("#main").innerText(), /edited.*October 13/);
+    if (id === 1) await page.screenshot({path: `${output}/comparison-desktop.png`, fullPage: true});
+  });
+}
 
 await browser.close();
 console.log(`${passed} visitor browser groups passed; ${failed} failed.`);

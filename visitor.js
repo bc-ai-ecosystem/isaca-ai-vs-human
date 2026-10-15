@@ -3,6 +3,40 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;",
 const number = id => String(id).padStart(2, "0");
 const minutes = seconds => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, "0")}`;
 let scenarios = [];
+const answers = {};
+
+const choiceOf = (s, letter) => s.choices.find(c => c.letter === letter);
+const backLink = `<a class="back-link" href="#scenarios">← All six scenarios</a>`;
+function incident(s) {
+  return `<div class="page">${backLink}
+    <div class="steps"><b>01 Watch or read</b><span>02 Your call</span><span>03 Compare</span></div>
+    <header class="file-head"><p class="eyebrow">Incident file ${number(s.id)} · ${esc(s.themes.join(" / "))}</p><h1>${esc(s.title)}</h1><p class="lede">${esc(s.tension)}</p></header>
+    <div class="watch-layout"><div><div class="film-frame" id="film-frame"><img src="${esc(s.media.poster)}" alt="Still from the fictional scenario film" width="1280" height="720"><button class="button primary" type="button" data-watch="${s.id}">▶ Watch the film · ${minutes(s.media.seconds)}</button></div><p class="film-status" id="film-status" role="status"></p></div>
+      <div class="watch-notes"><h2>The clock is part of the story.<br>Take your time here.</h2><p>Watch the scene, or read the complete incident. You have the same evidence as the prepared AI response.</p><button class="button" type="button" data-read>Read instead</button><p class="small">Fictional incident · generated performances<br>Captions available in the player.</p></div>
+    </div>
+    <details class="briefing" id="incident-brief"><summary>Read the full incident and evidence</summary><div class="brief-copy"><h2 tabindex="-1" id="brief-heading">Incident briefing</h2>
+      ${s.brief.map(p => p.startsWith("q:") ? `<blockquote>${esc(p.slice(2))}</blockquote>` : `<p>${esc(p)}</p>`).join("")}
+      <dl class="facts">${s.facts.map(([label, value, tone]) => `<div><dt>${esc(label)}</dt><dd data-tone="${esc(tone)}">${esc(value)}</dd></div>`).join("")}</dl>
+    </div></details>
+    ${answers[s.id] ? `<div class="actions"><a class="button primary" href="#scenario-${s.id}/compare">Return to your comparison</a></div>` : `<form class="choice-form" data-scenario="${s.id}"><fieldset><legend>${esc(s.question)}</legend><p class="choice-help">Choose one response. Commit your call before seeing the prepared AI analysis.</p><div class="choice-list">
+      ${s.choices.map(c => `<label class="choice"><input type="radio" name="decision" value="${c.letter}" required><span class="letter" aria-hidden="true">${c.letter}</span><span><strong>${esc(c.title)}</strong><span class="detail">${esc(c.detail)}</span></span></label>`).join("")}
+    </div></fieldset><div class="actions"><button class="button primary" type="submit" disabled>Compare my call</button><p class="privacy-note">Your choice stays in this browser. It isn’t submitted to a live poll.</p></div></form>`}
+  </div>`;
+}
+
+function comparison(s) {
+  const yours = choiceOf(s, answers[s.id]), ai = choiceOf(s, s.ai.decision);
+  return `<div class="page">${backLink}<div class="steps"><span>01 Watch or read</span><span>02 Your call</span><b>03 Compare</b></div>
+    <header class="file-head"><p class="eyebrow">File ${number(s.id)} · ${esc(s.title)}</p><h1>Two calls. Same evidence.</h1><p class="comparison-note">${yours.letter === ai.letter ? "You chose the same option." : "You chose differently."} The reasoning deserves a closer look either way.</p></header>
+    <div class="comparison-grid"><section class="call-card" aria-label="Your decision"><h2>Your call</h2><div class="decision-letter" data-your-choice>${yours.letter}</div><h3>${esc(yours.title)}</h3><p>${esc(yours.detail)}</p></section>
+    <section class="call-card ai-card" aria-label="Prepared AI decision"><h2 class="provider"><img src="media/ai-provider-${s.ai.provider.toLowerCase()}.${s.ai.provider === "Claude" ? "png" : "svg"}" alt="">${esc(s.ai.provider)} · prepared AI call</h2><div class="decision-letter" data-ai-choice>${ai.letter}</div><h3>${esc(ai.title)}</h3>
+      <span class="confidence">${s.ai.confidence}% stated response confidence</span><ul>${s.ai.reasoning.map(r => `<li>${esc(r)}</li>`).join("")}</ul><p><strong>${esc(s.ai.conclusion)}</strong></p>
+      <p class="source-note">${esc(s.ai.provenance)}<br><br>This confidence is the response’s stated confidence, not a measured probability or a security verdict. Any compromise estimate inside the incident is a separate claim.</p>
+    </section></div>
+    <section class="reflection"><p class="eyebrow">Stay with the difficult part.</p><h2>What would change your mind?</h2><p class="debate">${esc(s.discussion)}</p><details><summary>Explore the tradeoffs in all four options</summary><p>${esc(s.tradeoffs)}</p></details>
+      <div class="actions"><a class="button primary" href="#scenario-${s.id % 6 + 1}">Try another scenario →</a><a class="button" href="#summary">See your calls</a><a class="text-link" href="#scenario-${s.id}/watch">Replay the film or read again</a></div>
+    </section></div>`;
+}
 
 function home() {
   const first = scenarios[0];
@@ -26,11 +60,36 @@ function home() {
   </section>`;
 }
 
-function render() {
-  main.innerHTML = home();
+function render(focus = false) {
+  const route = location.hash.match(/^#scenario-([1-6])(?:\/(compare|watch))?$/);
+  const s = route && scenarios.find(s => s.id === Number(route[1]));
+  main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : home();
   main.classList.remove("enter");
-  requestAnimationFrame(() => main.classList.add("enter"));
+  requestAnimationFrame(() => {
+    main.classList.add("enter");
+    if (location.hash === "#scenarios") document.querySelector("#scenarios")?.scrollIntoView();
+    else if (focus) { window.scrollTo(0, 0); const h = main.querySelector("h1"); h.tabIndex = -1; h.focus({preventScroll: true}); }
+  });
 }
+
+addEventListener("hashchange", () => render(true));
+main.addEventListener("change", event => {
+  if (event.target.matches('input[name="decision"]')) event.target.closest("form").querySelector('[type="submit"]').disabled = false;
+});
+main.addEventListener("submit", event => {
+  if (!event.target.matches(".choice-form")) return;
+  event.preventDefault();
+  const id = Number(event.target.dataset.scenario), choice = new FormData(event.target).get("decision");
+  if (!scenarios.some(s => s.id === id) || !/^[A-D]$/.test(choice)) return;
+  answers[id] = choice;
+  location.hash = `scenario-${id}/compare`;
+});
+main.addEventListener("click", event => {
+  if (event.target.closest("[data-read]")) {
+    document.querySelector("#incident-brief").open = true;
+    document.querySelector("#brief-heading").focus();
+  }
+});
 
 try {
   const response = await fetch("media/visitor-scenarios.json");
