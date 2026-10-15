@@ -69,7 +69,7 @@ npm ci
 npm run test:browser -- --url http://127.0.0.1:8080
 ```
 
-Install the films first for full media tests. `test/show-films.mjs` exercises all six films, two-window playback and offline recovery. `test/chat-pacing.mjs` observes the final vendor-chat sequence at normal speed. Run tests in disposable browser contexts, never a live event's saved profile.
+Install the films first for full media tests. `test/show-films.mjs` exercises all six films, two-window playback and offline recovery. `test/chat-pacing.mjs` observes the final vendor-chat sequence at normal speed. Run `python3 scripts/prepare_test_media.py` first to fetch and verify the previous cut used by its replacement/restore check. Run tests in disposable browser contexts, never a live event's saved profile.
 
 ## Credits and rights
 
