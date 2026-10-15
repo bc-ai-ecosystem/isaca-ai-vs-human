@@ -8,7 +8,7 @@ const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
 const portArg = process.argv.indexOf("--port");
 const port = portArg >= 0 ? Number(process.argv[portArg + 1]) : 8080;
 if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error("Invalid port");
-const types = {".html": "text/html; charset=utf-8", ".js": "text/javascript", ".mjs": "text/javascript", ".json": "application/json", ".css": "text/css", ".mp4": "video/mp4", ".vtt": "text/vtt", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".pdf": "application/pdf"};
+const types = {".html": "text/html; charset=utf-8", ".js": "text/javascript", ".mjs": "text/javascript", ".json": "application/json", ".css": "text/css", ".mp4": "video/mp4", ".vtt": "text/vtt", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".pdf": "application/pdf", ".ttf": "font/ttf", ".txt": "text/plain; charset=utf-8"};
 const server = createServer(async (request, response) => {
   if (!["GET", "HEAD"].includes(request.method)) { response.writeHead(405).end(); return; }
   let path;
