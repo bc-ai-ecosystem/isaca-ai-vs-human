@@ -132,6 +132,12 @@ function home() {
 
 function render(focus = false) {
   if (!scenarios.length) return;
+  const previousFilm = main.querySelector("video");
+  if (previousFilm) {
+    previousFilm.pause();
+    previousFilm.removeAttribute("src");
+    previousFilm.load();
+  }
   const route = location.hash.match(/^#scenario-([1-6])(?:\/(compare|watch))?$/);
   const s = route && scenarios.find(s => s.id === Number(route[1]));
   main.innerHTML = s ? answers[s.id] && route[2] !== "watch" ? comparison(s) : incident(s) : location.hash === "#summary" ? summary() : location.hash === "#about" ? about() : home();

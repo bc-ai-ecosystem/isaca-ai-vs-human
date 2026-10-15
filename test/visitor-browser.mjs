@@ -107,6 +107,17 @@ await check("failed film leaves the complete incident and choice path usable", a
   assert.equal(await page.locator("[data-your-choice]").textContent(), "B");
 });
 
+await check("leaving an incident stops its film and audio before the next screen", async page => {
+  await page.goto(`${url}#scenario-1`);
+  await page.getByRole("button", {name: /Watch the film/}).click();
+  await page.waitForFunction(() => document.querySelector("video")?.currentTime > 0.1);
+  const previousFilm = await page.locator("video").elementHandle();
+  await page.getByRole("link", {name: "The scenarios", exact: true}).click();
+  await page.getByRole("heading", {name: /Four choices/}).waitFor();
+  assert.equal(await previousFilm.evaluate(v => v.paused), true);
+  assert.equal(await previousFilm.evaluate(v => v.getAttribute("src")), null);
+});
+
 await check("progress saves only committed choices and resumes after reload", async page => {
   await page.goto(`${url}#scenario-1`);
   await page.locator('input[value="B"]').check();
