@@ -1,7 +1,8 @@
 # Visitor edition: review and release
 
-State: implemented and verified locally; public deployment awaits Kris's approval.
-Owner: Codex. Scope approved October 14, 2026. Next check: October 15, or on Kris's review reply.
+State: shipped October 15, 2026, after Kris approved publication of all three surfaces.
+Owner: Codex. Public visitor route: https://isaca-ai-vs-human.vercel.app/play.html.
+BC + AI links: [Partners](https://bc-ai.ca/about/partners#isaca-project-title) and [illustrated story](https://bc-ai.ca/news/we-built-a-cyber-crisis-you-can-walk-into).
 
 ## What changed
 
@@ -38,13 +39,19 @@ Local results on October 14: 34 Node checks, 29 visitor browser groups, and 33 o
 
 There is no separate build or lint command in this static app. Browser execution, source regressions, content drift checks, HTTP range checks, and whitespace validation are the configured verification surfaces.
 
-## Public release gate
+## Production release record
 
-The intended visitor path is `/play.html` on the existing show origin. The public article remains an unpublished editorial draft; publishing it is a separate approval.
+The visitor source was merged through [PR #1](https://github.com/bc-ai-ecosystem/isaca-ai-vs-human/pull/1), commit `7ace3355415ece9125653c16eafc39ff7b96d4dc`. Deployment `dpl_6hkLAcRBChxk71692PwNYHDisLoa` was checked before promotion and then promoted to the existing show origin. The previous deployment `dpl_BL3QUEFidHcixPXzKNaUYfj8iS8f` is the rollback target.
+
+The complete provider inventory contains 249 pre-existing files (1,286,774,561 bytes). All were preserved unchanged, with eight visitor additions, for 257 deployed files. The first connector file-tree response was truncated; use an uncapped CLI API inventory and inspect truncation metadata for future releases. All 257 provider hashes match the prepared package. Independent anonymous HTTP checks also match all eight additions and six unchanged show/cache/crew entry files by SHA-256 and byte count.
+
+All 29 visitor browser groups pass on the actual public `/play.html` route, including all six real films, seeking/end holds, captions, saved decisions, mobile layouts, reset isolation, and failed-media recovery. A separate browser check confirms the visitor works while the existing show service worker controls the origin. The preserved production show passes 31 of 33 community harness groups: the two remaining assertions require blank polling defaults, while production intentionally retains the original event polling configuration. Do not report that run as 33/33. The original source checkout passed all 33 before packaging.
+
+BC + AI's publication is tracked in [website PR #3240](https://github.com/WalksWithASwagger/bcai-website/pull/3240), under the same explicit approval. Notion remains the private editorial source; the public reading route is on bc-ai.ca.
 
 Do **not** deploy this entire community checkout over the live show. Its source intentionally starts with unbound polling, whereas the current show origin retains event settings. Production also contains separately hosted audiovisual assets not fully tracked in Git. A replacement deployment could erase those assets or change the stage configuration.
 
-After explicit merge/deploy approval, use the verified current production package and add only these visitor web files:
+For a future visitor update, refresh the verified current production package and change only the visitor web files:
 
 ```text
 play.html
@@ -61,7 +68,7 @@ Preserve the complete existing package, root `index.html`, headers, service work
 
 After release, verify anonymous access and exact deployed bytes for all eight added files. Re-run visitor browser checks against the actual public route, including mobile, storage isolation, playback, captions, and media-failure recovery. Verify unchanged root/rehearsal behavior and all six media paths. Inspect cache refresh in a browser that previously used the show. The visitor does not register a new service worker or change the existing scope.
 
-Only then replace the private website/Notion article's rehearsal CTA with “Try the six scenarios” pointing to the verified visitor route, and describe personal choices instead of sample audience votes. Keep an optional rehearsal/source link for people interested in the stage tool. Do not link an unreleased visitor route from the article or publish the article without approval.
+The published article points to the verified visitor route and describes personal decisions. Future updates must keep public links working and retain separate approval for new publication scope.
 
 ## Rollback
 
