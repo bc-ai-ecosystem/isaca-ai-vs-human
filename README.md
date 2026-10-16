@@ -15,7 +15,7 @@ The hosted rehearsal uses separate state, media and sync from the live show. Sam
 
 The new `play.html` route is a self-guided edition: watch or read a fictional incident, commit a personal A/B/C/D decision, compare the attributed prepared AI response, and reflect. All six incidents work independently. Films load only when selected. Native playback, captions, text fallbacks, private local progress, deliberate reset, and a printable decision summary are included. Documentary event/prep photographs and contributor credits live under “Behind the show.”
 
-Implementation is ready for review; the production visitor route has not been released. Run the preview below and open `/play.html`. The existing showrunner and rehearsal remain unchanged. The visitor uses only the `aivh-visitor-v1` storage key and makes no polling or model API calls. Progress cannot move between devices; unavailable storage limits it to the current tab.
+The visitor edition is live: [play the six scenarios](https://isaca-ai-vs-human.vercel.app/play.html). Read the illustrated [build story](https://bc-ai.ca/news/we-built-a-cyber-crisis-you-can-walk-into) or find the project on [BC + AI’s Partners page](https://bc-ai.ca/about/partners#isaca-project-title). Run the preview below for local development. The existing showrunner and rehearsal remain unchanged. The visitor uses only the `aivh-visitor-v1` storage key and makes no polling or model API calls. Progress cannot move between devices; unavailable storage limits it to the current tab.
 
 ## Run locally
 
