@@ -4,9 +4,11 @@
   "private": true,
   "description": "AI vs. Human interactive cyber-awareness showrunner by Kris Krug for BC + AI and ISACA Vancouver",
   "scripts": {
-    "test": "node --test test/regressions.mjs test/v3-regressions.mjs",
+    "test": "node --test test/regressions.mjs test/v3-regressions.mjs test/visitor-content.mjs test/visitor-server.mjs",
     "test:browser": "node test/smoke.mjs",
-    "start": "python3 -m http.server 8080 --bind 127.0.0.1"
+    "start": "node scripts/serve.mjs",
+    "test:visitor": "node test/visitor-browser.mjs",
+    "check:visitor-content": "node scripts/export_visitor_scenarios.mjs --check"
   },
   "devDependencies": {
     "@playwright/test": "1.60.0"

@@ -1,0 +1,554 @@
+{
+  "version": 1,
+  "sourceHash": "e49faee0e5ace098e002a5035fe44a6cd36725c04823045bc16e69f566cc3cc7",
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "The $250K Transfer",
+      "themes": [
+        "Deepfake",
+        "Business email compromise",
+        "Identity"
+      ],
+      "tension": "Verification vs. business urgency",
+      "brief": [
+        "The CFO takes a Microsoft Teams video call from the CEO, who is travelling in Europe. The confidential acquisition they have negotiated for weeks is real.",
+        "q:“Legal has finally cleared it. We need the $250,000 deposit transferred to this account within the next 30 minutes or the seller can walk.”",
+        "The caller looks and sounds like the CEO. They know the acquisition target, yesterday's confidential board discussion, a concern one director raised privately, and the CFO's upcoming vacation. Wire instructions then arrive from the CEO's legitimate corporate email.",
+        "The CFO calls the CEO's known mobile number. No answer."
+      ],
+      "facts": [
+        [
+          "Wire instructions sent from",
+          "CEO's real email",
+          "warn"
+        ],
+        [
+          "Receiving bank account",
+          "New",
+          "bad"
+        ],
+        [
+          "Policy over $100,000",
+          "Two executives",
+          "info"
+        ],
+        [
+          "Second authorized executive",
+          "In flight, unreachable",
+          "bad"
+        ],
+        [
+          "CEO's known mobile",
+          "No answer",
+          "warn"
+        ]
+      ],
+      "question": "What should the CFO do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Proceed with the transfer",
+          "detail": "Proceed with the transfer. The acquisition is known to be legitimate, the CEO demonstrated extensive confidential knowledge, and missing the deadline creates significant business risk."
+        },
+        {
+          "letter": "B",
+          "title": "Refuse until the CEO is independently verified",
+          "detail": "Refuse to transfer the funds until the CEO can be independently verified. Video, voice, email and confidential information can potentially all be compromised."
+        },
+        {
+          "letter": "C",
+          "title": "Verify with the seller's law firm, then proceed",
+          "detail": "Contact the seller or receiving law firm using previously verified contact information and independently validate the transaction and banking instructions. Proceed if verification succeeds."
+        },
+        {
+          "letter": "D",
+          "title": "Escalate to security and the board chair",
+          "detail": "Escalate immediately to security and the board chair and have them determine whether the transaction proceeds."
+        }
+      ],
+      "tradeoffs": "A protects the transaction but accepts authentication risk. B protects the control environment but could kill a legitimate acquisition. C provides independent verification, but the third party could itself be compromised. D escalates an extraordinary decision but consumes precious time.",
+      "discussion": "How much verification is enough when video, voice, email and private information can all potentially be compromised?",
+      "ai": {
+        "provider": "ChatGPT",
+        "decision": "B",
+        "confidence": 95,
+        "reasoning": [
+          "Multiple fraud indicators: The caller may be a deepfake, the corporate email may be compromised, and confidential information is being used to establish credibility.",
+          "Unusual urgency: The demand to transfer $250,000 within 30 minutes creates pressure to bypass normal verification procedures.",
+          "Financial controls: The transaction violates the company’s dual-authorization policy. Even confirmation from the seller’s law firm would not replace the required executive approvals."
+        ],
+        "conclusion": "Business urgency does not justify bypassing established financial controls.",
+        "provenance": "Prepared response supplied by Chris, with October 12 edited stage reasoning. Model version not supplied."
+      },
+      "media": {
+        "src": "media/scenario-01-v7-94f75f564399.mp4",
+        "poster": "media/scenario-01-v7-poster.jpg",
+        "captions": "media/scenario-01-v7.vtt",
+        "seconds": 61.3,
+        "bytes": 20703804,
+        "sha256": "94f75f5643995cc9a83d6da8f595cb5221a1678e55e1b86042b78eead80a241a"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Code Red",
+      "themes": [
+        "Ransomware",
+        "Healthcare",
+        "Business continuity"
+      ],
+      "tension": "Cyber containment vs. patient safety",
+      "brief": [
+        "2:15 AM at a regional hospital. A ransomware attack has disrupted several systems.",
+        "IT believes the attack is contained but cannot guarantee the attackers are completely removed. Clinical leadership reports that prolonged downtime is beginning to increase patient-safety risk.",
+        "The attackers demand $2 million and show evidence of a working decryptor. Cyber insurance would cover most of the payment. Police recommend against paying, but the decision belongs to the hospital. A neighbouring hospital can accept some, but not all, critical patients."
+      ],
+      "facts": [
+        [
+          "Electronic health records",
+          "Offline",
+          "bad"
+        ],
+        [
+          "Diagnostic imaging",
+          "Intermittent",
+          "warn"
+        ],
+        [
+          "Medication systems",
+          "Manual procedures",
+          "warn"
+        ],
+        [
+          "Emergency department",
+          "Operating",
+          "ok"
+        ],
+        [
+          "Backups",
+          "Appear intact",
+          "ok"
+        ],
+        [
+          "Estimated restoration",
+          "24–48 hours",
+          "warn"
+        ],
+        [
+          "Ransom demand",
+          "$2,000,000",
+          "bad"
+        ]
+      ],
+      "question": "What should hospital leadership do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Negotiate and keep payment on the table",
+          "detail": "Begin negotiations and preserve payment as an option. Patient safety may justify payment if restoration cannot occur quickly enough."
+        },
+        {
+          "letter": "B",
+          "title": "Refuse payment and recover from backups",
+          "detail": "Refuse payment and commit to recovery from backups. Payment does not guarantee recovery and creates additional legal, security and societal risks."
+        },
+        {
+          "letter": "C",
+          "title": "Divert patients, run manual, set a recovery deadline",
+          "detail": "Divert the highest-risk patients, continue manual operations and establish a defined recovery window before reconsidering payment."
+        },
+        {
+          "letter": "D",
+          "title": "Give the clinical incident commander authority",
+          "detail": "Transfer operational decision authority to the clinical incident commander and allow patient-safety requirements to determine the response."
+        }
+      ],
+      "tradeoffs": "A preserves the possibility of faster recovery but accepts the risks associated with paying an attacker. B follows cyber-resilience principles but may increase clinical risk. C maintains multiple options but may postpone the difficult decision. D places authority closest to patient safety but potentially separates the decision from cybersecurity, legal and financial considerations.",
+      "discussion": "When cybersecurity and physical human safety conflict, who should own the decision?",
+      "ai": {
+        "provider": "Claude",
+        "decision": "C",
+        "confidence": 75,
+        "reasoning": [
+          "Patient safety comes first: Diverting high-risk patients to another hospital immediately reduces the danger caused by unavailable clinical systems.",
+          "Ransom payment is uncertain: Paying the attackers does not guarantee faster recovery or that the attackers have been removed from the network.",
+          "Controlled recovery: Maintain manual operations, establish recovery milestones and prepare for a possible ransom decision only if clearly defined clinical or operational thresholds are reached."
+        ],
+        "conclusion": "Protect patients first, establish recovery milestones and treat ransom payment as a last resort.",
+        "provenance": "Prepared response supplied by Chris, with October 12 edited stage reasoning. Model version not supplied."
+      },
+      "media": {
+        "src": "media/scenario-02-v7-ea4e3a843fd1.mp4",
+        "poster": "media/scenario-02-v7-poster.jpg",
+        "captions": "media/scenario-02-v7.vtt",
+        "seconds": 54.125,
+        "bytes": 27002617,
+        "sha256": "ea4e3a843fd1d23d56d6b0a21ba1cb198d671a068ef1ce9e7f52df02675337a0"
+      }
+    },
+    {
+      "id": 3,
+      "title": "The AI Pipeline Is Compromised",
+      "themes": [
+        "AI infrastructure",
+        "AI supply chain",
+        "Autonomous attack"
+      ],
+      "tension": "Containment vs. AI availability",
+      "brief": [
+        "Your organization runs an internal AI platform for developers, data scientists and several customer-facing applications. Teams routinely upload models, datasets, prompts, code and evaluation data.",
+        "An automated security system detects unusual code execution in the platform's dataset-processing environment. Minutes later, that service's credentials are used to access an internal AI repository.",
+        "Several production AI applications depend on the platform. Security can isolate dataset processing immediately, but cannot guarantee the attacker hasn't already moved elsewhere with the exposed credentials."
+      ],
+      "facts": [
+        [
+          "Unauthorized code execution",
+          "Confirmed",
+          "bad"
+        ],
+        [
+          "Service credentials exposed",
+          "Likely",
+          "bad"
+        ],
+        [
+          "Customer data accessed",
+          "Unknown",
+          "warn"
+        ],
+        [
+          "Production models modified",
+          "No evidence",
+          "ok"
+        ],
+        [
+          "Attacker still present",
+          "Unknown",
+          "warn"
+        ]
+      ],
+      "question": "What should you do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Shut down the entire AI platform",
+          "detail": "Shut down the entire AI platform. The blast radius is unknown and compromised credentials may have enabled lateral movement."
+        },
+        {
+          "letter": "B",
+          "title": "Isolate only dataset processing",
+          "detail": "Isolate only the affected dataset-processing environment. There is currently no evidence that production models or customer-facing applications have been compromised."
+        },
+        {
+          "letter": "C",
+          "title": "Keep AI running, rotate credentials, hunt",
+          "detail": "Keep production AI operating, immediately revoke and rotate credentials, significantly increase monitoring and aggressively hunt for lateral movement."
+        },
+        {
+          "letter": "D",
+          "title": "Restricted operation: isolate, revoke, block intake",
+          "detail": "Move the platform into restricted operation: isolate high-risk components, revoke credentials and block new model/dataset ingestion while allowing validated production workloads to continue."
+        }
+      ],
+      "tradeoffs": "A maximizes containment but creates significant customer and operational disruption. B follows the evidence but risks underestimating the blast radius. C protects availability while accepting residual risk. D balances containment and continuity but depends on being able to distinguish trustworthy workloads from potentially compromised ones.",
+      "discussion": "How much evidence do you need to shut down AI? Should AI infrastructure be treated differently from traditional production IT during a security incident?",
+      "ai": {
+        "provider": "Grok",
+        "decision": "D",
+        "confidence": 70,
+        "reasoning": [
+          "Confirmed unauthorized activity: Attackers have executed code within the dataset-processing environment, and exposed service credentials may provide access to other systems.",
+          "Immediate containment: Revoke compromised credentials, isolate affected processing systems and block new dataset or model uploads while the investigation continues.",
+          "Maintain trusted services: There is no evidence that production models have been altered. Shutting down the entire AI platform would create unnecessary business disruption."
+        ],
+        "conclusion": "Contain the compromised environment immediately while keeping trusted production services running.",
+        "provenance": "Prepared response supplied by Chris, with October 12 edited stage reasoning. Model version not supplied."
+      },
+      "media": {
+        "src": "media/scenario-03-v7-6533bae4f48d.mp4",
+        "poster": "media/scenario-03-v7-poster.jpg",
+        "captions": "media/scenario-03-v7.vtt",
+        "seconds": 48,
+        "bytes": 15012397,
+        "sha256": "6533bae4f48d80caec32e43e6cab165b475477bfa837c22c8871dff3778d9348"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Your Trusted Vendor May Be Compromised",
+      "themes": [
+        "Third-party risk",
+        "Privileged access",
+        "Zero trust"
+      ],
+      "tension": "Trust vs. evidence",
+      "brief": [
+        "10:42 AM. Your SOC detects unusual activity from the privileged account of Nexora Systems, a strategic technology partner supporting critical infrastructure. Maya asks whether it is authorized. At 10:44, Nexora Support says it has seen no alerts and is investigating.",
+        "q:10:48 AM. Nexora Systems Support: “We’ve investigated and found no evidence that our environment has been compromised.”",
+        "10:49 AM. Maya, SOC Analyst: “Understood. We’re correlating this activity with multiple security alerts. I’ve been directed by our SOC Manager to temporarily disable your privileged access while we investigate further.” At 10:50 AM, Nexora Systems Support: “Disabling our access will interrupt critical support services.” The instruction has been issued; execution has not been shown."
+      ],
+      "facts": [
+        [
+          "Malware detected",
+          "No",
+          "ok"
+        ],
+        [
+          "Confirmed lateral movement",
+          "No",
+          "ok"
+        ],
+        [
+          "Known malicious IP traffic",
+          "No",
+          "ok"
+        ],
+        [
+          "Unusual privileged admin action",
+          "Yes",
+          "bad"
+        ],
+        [
+          "Seen before from this account",
+          "Never",
+          "bad"
+        ]
+      ],
+      "question": "What should you do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Disable the vendor's privileged access now",
+          "detail": "Disable the vendor's privileged access immediately."
+        },
+        {
+          "letter": "B",
+          "title": "Cut to least privilege and investigate jointly",
+          "detail": "Reduce the vendor to least-privilege access and significantly increase monitoring while investigating jointly."
+        },
+        {
+          "letter": "C",
+          "title": "Keep access; SOC approves every privileged action",
+          "detail": "Maintain necessary access but require your SOC to approve or validate every privileged action performed by the vendor."
+        },
+        {
+          "letter": "D",
+          "title": "Leave access unchanged until there's evidence",
+          "detail": "Leave access unchanged until evidence of compromise exists."
+        }
+      ],
+      "tradeoffs": "A maximizes containment but could disrupt critical support. B reduces exposure but continues allowing a potentially compromised identity into the environment. C maintains operations with additional human oversight but may not prevent automated malicious activity. D avoids acting on circumstantial evidence but potentially gives an attacker additional time.",
+      "discussion": "When does anomalous behaviour become sufficient evidence to withdraw trust?",
+      "ai": {
+        "provider": "Claude",
+        "decision": "B",
+        "confidence": 70,
+        "reasoning": [
+          "Suspicious but unconfirmed: An unusual privileged action correlates with multiple security alerts. The vendor reports no evidence of compromise, while the SOC manager has directed a temporary access suspension.",
+          "Avoid unnecessary disruption: Immediately disabling all vendor access could interrupt critical infrastructure operations without sufficient evidence of an active compromise.",
+          "Reduce exposure: Restrict access to least privilege, terminate active sessions and rotate credentials. Investigate jointly with the vendor and disable access if further suspicious activity emerges."
+        ],
+        "conclusion": "Reduce the risk immediately without unnecessarily disrupting operations. Escalate if further evidence emerges.",
+        "provenance": "Prepared analysis edited for Chris’s October 13 incident update. The original reply predates this incident revision; no new model call or confidence estimate was made."
+      },
+      "media": {
+        "src": "media/scenario-04-v9-1b968585a25e.mp4",
+        "poster": "media/scenario-04-v9-poster.jpg",
+        "captions": "media/scenario-04-v9.vtt",
+        "seconds": 82,
+        "bytes": 3146220,
+        "sha256": "1b968585a25e7c0f576145685c842f91b65528b1d12cc1c6fffaeebe0bf8e786"
+      }
+    },
+    {
+      "id": 5,
+      "title": "The Water Is Safe. Or Is It?",
+      "themes": [
+        "Critical infrastructure",
+        "OT",
+        "AI-assisted cybersecurity"
+      ],
+      "tension": "Physical evidence vs. cyber intelligence",
+      "brief": [
+        "A municipal water-treatment facility detects unexpected changes to chemical dosing. The control system reports WATER QUALITY: SAFE. Independent physical sensors also read within acceptable limits.",
+        "Cybersecurity detects suspicious communications between an engineering workstation and infrastructure associated with previous cyberattacks. The AI security system recommends: ISOLATE ENGINEERING NETWORK IMMEDIATELY.",
+        "q:Operations: “If you isolate that network, several automated treatment processes will revert to manual control.” Operators can run manually for about six hours before staffing levels and process complexity become a problem."
+      ],
+      "facts": [
+        [
+          "Unsafe water",
+          "No",
+          "ok"
+        ],
+        [
+          "Confirmed attacker",
+          "No",
+          "ok"
+        ],
+        [
+          "Confirmed sensor manipulation",
+          "No",
+          "ok"
+        ],
+        [
+          "Suspicious cyber activity",
+          "Yes",
+          "bad"
+        ],
+        [
+          "AI: probability of compromise",
+          "87%",
+          "bad"
+        ],
+        [
+          "Safe manual operation",
+          "About 6 hours",
+          "warn"
+        ]
+      ],
+      "question": "What should you do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Isolate the engineering network immediately",
+          "detail": "Immediately isolate the engineering network. The potential consequences of allowing an attacker to remain inside an OT environment outweigh the operational disruption."
+        },
+        {
+          "letter": "B",
+          "title": "Keep operating while cyber investigates",
+          "detail": "Continue operating while cybersecurity investigates. Independent physical measurements currently indicate that the treatment process remains safe."
+        },
+        {
+          "letter": "C",
+          "title": "Switch to manual operations, then isolate",
+          "detail": "Transition the facility to manual operations and then isolate the suspected engineering network."
+        },
+        {
+          "letter": "D",
+          "title": "Sample and monitor for 30 minutes, then decide",
+          "detail": "Increase independent physical sampling and cyber monitoring for 30 minutes before deciding whether isolation is necessary."
+        }
+      ],
+      "tradeoffs": "A prioritizes containment but creates operational consequences. B trusts physical evidence but potentially gives an attacker additional time. C establishes a safer operational state before containment but extends the potential exposure period. D gathers additional evidence, but those 30 minutes could also provide an attacker additional opportunity.",
+      "discussion": "AI says there is an 87% probability of compromise. Is that enough to disrupt a city's water-treatment operations? Which do you trust more: the AI, the cyber evidence or the physical process?",
+      "ai": {
+        "provider": "ChatGPT",
+        "decision": "C",
+        "confidence": 97,
+        "reasoning": [
+          "Significant cyber threat: An 87% probability of compromise indicates a serious risk requiring prompt containment.",
+          "Public safety takes priority: Immediately disconnecting the engineering network could disrupt critical water-treatment processes and potentially create a greater physical safety risk.",
+          "Controlled transition: The six-hour manual operating window allows operators to safely transition operations before isolating the network and investigating the compromise."
+        ],
+        "conclusion": "Protect public safety first, then contain the cyber threat without disrupting essential services.",
+        "provenance": "Prepared response supplied by Chris, with October 12 edited stage reasoning. Model version not supplied."
+      },
+      "media": {
+        "src": "media/scenario-05-v8-661f83481bd0.mp4",
+        "poster": "media/scenario-05-v8-poster.jpg",
+        "captions": "media/scenario-05-v8.vtt",
+        "seconds": 48.958008,
+        "bytes": 16470179,
+        "sha256": "661f83481bd029167e1ac684c00c6e0c3143a9f12f0c622281d947d039710464"
+      }
+    },
+    {
+      "id": 6,
+      "title": "The AI Wants to Pull the Plug",
+      "themes": [
+        "Agentic AI",
+        "Autonomous cybersecurity",
+        "Human oversight"
+      ],
+      "tension": "Machine speed vs. human authority",
+      "brief": [
+        "Your autonomous AI security agent can investigate alerts, correlate telemetry, query identity systems, disable accounts, block network connections and isolate endpoints. High-impact actions on production infrastructure still require human authorization.",
+        "10:30 AM. The agent flags a critical production server, investigates, and calculates a 94% probability of active compromise. It recommends isolating the server immediately.",
+        "That server is carrying a $4.7 million transaction with your largest customer. Isolation will almost certainly terminate it and could cause several hours of customer-facing disruption. Analysts have reviewed the evidence but not confirmed it. The AI estimates that waiting another 10 minutes materially increases the chance of significant lateral movement."
+      ],
+      "facts": [
+        [
+          "Credential compromise",
+          "Probable",
+          "bad"
+        ],
+        [
+          "Privilege escalation",
+          "Detected",
+          "bad"
+        ],
+        [
+          "Unusual outbound traffic",
+          "Detected",
+          "bad"
+        ],
+        [
+          "Known malware",
+          "Not detected",
+          "ok"
+        ],
+        [
+          "Data exfiltration",
+          "Not confirmed",
+          "warn"
+        ],
+        [
+          "AI: probability of compromise",
+          "94%",
+          "bad"
+        ],
+        [
+          "Customer transaction at stake",
+          "$4.7M",
+          "warn"
+        ]
+      ],
+      "question": "What should you do?",
+      "choices": [
+        {
+          "letter": "A",
+          "title": "Authorize immediate isolation",
+          "detail": "Authorize immediate isolation. A 94% probability combined with detected privilege escalation creates sufficient risk to act despite the business consequences."
+        },
+        {
+          "letter": "B",
+          "title": "Give analysts 10 minutes to validate first",
+          "detail": "Give analysts 10 minutes to independently validate the AI's conclusion before authorizing isolation."
+        },
+        {
+          "letter": "C",
+          "title": "Restrict traffic and access; let the deal close",
+          "detail": "Do not isolate the server. Restrict outbound connectivity and privileged access while allowing the customer transaction to complete."
+        },
+        {
+          "letter": "D",
+          "title": "Let the AI agent decide within risk thresholds",
+          "detail": "Allow the AI agent to determine the appropriate containment action based on its assessment and established organizational risk thresholds."
+        }
+      ],
+      "tradeoffs": "A trusts the AI's analysis but retains human authority. B preserves human validation but accepts potentially dangerous delay. C attempts to contain the threat while preserving the transaction but risks insufficient containment. D delegates the decision itself to AI, raising both autonomy and accountability questions.",
+      "discussion": "How confident does AI need to be before we allow it to disrupt the business? If a human analyst cannot process the evidence as quickly or comprehensively as the AI, why should the human automatically have final authority? Who is accountable when AI makes the decision?",
+      "ai": {
+        "provider": "Grok",
+        "decision": "C",
+        "confidence": 68,
+        "reasoning": [
+          "High probability, incomplete confirmation: The AI identifies a 94% probability of compromise based on privilege escalation and unusual outbound traffic, but analysts have not independently confirmed the attack.",
+          "Targeted containment: Restrict outbound network traffic and revoke elevated privileges to limit the potential attack without immediately taking the server offline.",
+          "Business impact: Full isolation would likely terminate a $4.7 million transaction with the organization’s largest customer. Maintain restrictions and monitoring, escalating to full isolation if the situation deteriorates."
+        ],
+        "conclusion": "Contain the threat while allowing the transaction to complete. Escalate if the evidence demands it.",
+        "provenance": "Prepared response supplied by Chris, with October 12 edited stage reasoning. Model version not supplied."
+      },
+      "media": {
+        "src": "media/scenario-06-v6-84721ba3f437.mp4",
+        "poster": "media/scenario-06-v6-poster.jpg",
+        "captions": "media/scenario-06-v6.vtt",
+        "seconds": 57.708333,
+        "bytes": 24179844,
+        "sha256": "84721ba3f4379bd5ba2ff1e43340c30b0e43ceef98fa3a66f65c827f76a0acf8"
+      }
+    }
+  ]
+}
